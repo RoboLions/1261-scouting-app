@@ -15,6 +15,6 @@ function submitData() {
         $.post( "/postmethod", {
             javascript_data: data
         });
-        console.log("YASS QUEEN")
+        console.log("Hello World")
     } )
 }
