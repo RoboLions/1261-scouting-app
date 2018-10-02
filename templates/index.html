@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title> 1261 Scouting App </title>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/robocon.ico') }}">
+
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/submitData.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/incrementNumericLabel.js')}}"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/animate.min.css') }}">
+
+    <style>
+        body {
+            background-color: #00229e;
+            background-image: url(https://prhsrobotics.com/wp-content/uploads/2014/04/bg2.png);
+            background-position: center top;
+            background-size: auto;
+            background-repeat: repeat;
+            background-attachment: scroll;
+        }
+
+        ul li {
+            display: list-item;
+            list-style-type:circle;
+        }
+
+        h2, td, b{
+            color: #FFFFFF;
+        }
+
+        button, input, select, option {
+            color: #000000;
+        }
+    </style>
+
+</head>
+
+<body class="home blog custom-background">
+
+<h1 align="center" style="color:#FFFFFF;"> 1261 Robo Lions Scouting App </h1>
+<hr>
+<div class="col-md-10 col-md-offset-1 text-center">
+    <h4 align="center" style="color:#FFFFFF"> Welcome to the Peachtree Ridge HS Robo Lions Scouting App! This site is in a sort of 'beta test mode', so understand that stuff might be glitchy. However, I encourage you to play around with it and send me (Tejas) any feedback!</h4>
+</div>
+
+<section id="descripton" class="section descripton">
+    <div style="width: 100%; display: table;">
+        <div style="display: table-row">
+            <div style="width: 800px; display: table-cell;">
+                <div class="col-md-10 col-md-offset-1">
+                    <h2 style="color:#FFFFFF">Stand Scouting</h2>
+
+                    <div id='main'>
+
+                        <form action="{{ url_for('getSubmittedData') }}" method="post">
+
+                        <table border=1>
+                            <tr>
+                                <h2>
+                                    Add New Team
+                                </h2>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Team Number
+                                </td>
+                                <td>
+                                    <input type='number' name='team_number'>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Balls Thrown
+                                </td>
+                                <td>
+                                    <label id="balls_thrown">0</label>
+                                    <button onclick="incrementNumericLabel('balls_thrown', 1)">+</button>
+                                    <button onclick="incrementNumericLabel('balls_thrown', -1)">-</button>
+                                </td>
+                            <tr>
+                                <td>
+                                    Can Climb
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="can_climb">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Team Color
+                                </td>
+                                <td>
+                                    <select name="team_color">
+                                        <option value="red">Red</option>
+                                        <option value="blue">Blue</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                        <h3>
+                            <b>
+                                Notes
+                            </b>
+                        </h3>
+                        <textarea name="notes" rows=5></textarea>
+                        <br>
+
+                        <input type="submit">
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
