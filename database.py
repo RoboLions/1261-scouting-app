@@ -3,23 +3,30 @@ from pymongo import MongoClient
 from secrets import MONGO_DB_URI
 import webbrowser
 
-client = MongoClient(MONGO_DB_URI, connectTimeoutMS=30000)
+client = MongoClient(MONGO_DB_URI)
 db = client.get_database().robolions
 
-def getData():
-    col = db.find_one({"team_number":1261})
-    return col
+def getData(team_number):
+    if isinstance(team_number, dict):
+        team_number = team_number['team_number']
+    col = db.find_one({"team_number": team_number})
+    return dict(col)
 
 def setData(data_dict):
+    if db.find_one({"team_number":data_dict['team_number']}) is None:  # creates a document for the given team
+        db.insert_one({"team_number": int(data_dict['team_number'])})      # assuming that it doesn't exist
     db.update_one(
-        {"team_number":1261},
+        {"team_number":data_dict['team_number']},
         {'$set':
-            {"balls_thrown": data_dict['balls_thrown'],
+            {"auto": data_dict['auto'],
+             "switch_cubes": data_dict['switch_cubes'],
+             "scale_cubes": data_dict['scale_cubes'],
+             "vault_cubes": data_dict['vault_cubes'],
              "can_climb": data_dict['can_climb'],
-             "team_color": data_dict['team_color'],
              "notes": data_dict['notes']}
         }
     )
 
 def printDataInBrowser(data_dict):
-    webbrowser.open_new_tab('https://www.google.com/?q=' + str(data))
+    webbrowser.open_new_tab('https://www.google.com/?q=' + str(data_dict))
+

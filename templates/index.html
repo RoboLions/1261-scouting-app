@@ -47,6 +47,7 @@
 <hr>
 <div class="col-md-10 col-md-offset-1 text-center">
     <h4 align="center" style="color:#FFFFFF"> Welcome to the Peachtree Ridge HS Robo Lions Scouting App! This site is in a sort of 'beta test mode', so understand that stuff might be glitchy. However, I encourage you to play around with it and send me (Tejas) any feedback!</h4>
+    <h4 align="center" style="color:#FFFFFF"> It is very important that you leave nothing blank: fill in every box or else the server will return an error!</h4>
 </div>
 
 <section id="descripton" class="section descripton">
@@ -58,14 +59,9 @@
 
                     <div id='main'>
 
-                        <form action="{{ url_for('getSubmittedData') }}" method="post">
+                        <form action="{{ url_for('submitData') }}" method="post">
 
                         <table border=1>
-                            <tr>
-                                <h2>
-                                    Add New Team
-                                </h2>
-                            </tr>
                             <tr>
                                 <td>
                                     Team Number
@@ -76,29 +72,51 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Balls Thrown
+                                    Autonomous
                                 </td>
                                 <td>
-                                    <label id="balls_thrown">0</label>
-                                    <button onclick="incrementNumericLabel('balls_thrown', 1)">+</button>
-                                    <button onclick="incrementNumericLabel('balls_thrown', -1)">-</button>
+                                    <select name="auto">
+                                        <option value="1 in Switch"> 1 in Switch </option>
+                                        <option value="2+ in Switch"> 2 or More in Switch </option>
+                                        <option value="1 in Scale"> 1 in Scale </option>
+                                        <option value="2+ in Scale"> 2 or More in Scale </option>
+                                        <option value="Auto Line only"> Only crossed Auto Line </option>
+                                        <option value="Nothing"> None of the above/Stayed motionless</option>
+                                    </select>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Switch Cubes
+                                </td>
+                                <td>
+                                    <input type="number" name="switch_cubes">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Scale Cubes
+                                </td>
+                                <td>
+                                    <input type="number" name="scale_cubes">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Vault Cubes
+                                </td>
+                                <td>
+                                    <input type="number" name="vault_cubes">
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     Can Climb
                                 </td>
                                 <td>
-                                    <input type="checkbox" name="can_climb">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Team Color
-                                </td>
-                                <td>
-                                    <select name="team_color">
-                                        <option value="red">Red</option>
-                                        <option value="blue">Blue</option>
+                                    <select name="can_climb">
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
                                     </select>
                                 </td>
                             </tr>

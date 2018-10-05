@@ -2,12 +2,14 @@
 // to the Python backend to be saved in a data file
 function submitData() {
 
-    var data =
+    let data =
     {
         'team_number': parseInt(document.getElementById('team_number').value),
-        'balls_thrown': parseInt(document.getElementById('balls_thrown').value),
-        'team_color': document.getElementById('team_color').value,
-        'can_climb': document.getElementById('can_climb').checked,
+        'auto': document.getElementById('auto').value,
+        'switch_cubes': parseInt(document.getElementById('switch_cubes').value),
+        'scale_cubes': parseInt(document.getElementById('scale_cubes').value),
+        'vault_cubes': parseInt(document.getElementById('vault_cubes').value),
+        'can_climb': document.getElementById('can_climb').value,
         'notes': document.getElementById('notes').value
     };
 
