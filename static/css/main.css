@@ -118,7 +118,7 @@ ul li {
 	float: left;
 }
 #header.fixed {
-	background-color: rgba(0, 0, 0, 0.25);
+	background-color: #000000;
 }
 #header.fixed .header-content {
 	border-bottom: 0;
@@ -271,7 +271,7 @@ ul li {
 	transform: scale(1);
 }
 .nav-toggle.close-nav span {
-	background-color: rgba(255, 255, 255, 0);
+	background-color: #FFFFFF;
 }
 .nav-toggle.close-nav span:before, .nav-toggle.close-nav span:after {
 	background-color: #fff;
@@ -396,7 +396,7 @@ ul li {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); }
 	
-	/* ------------------------------------------------------------------------------
+/* ------------------------------------------------------------------------------
 	Work animation
 -------------------------------------------------------------------------------*/
 .work:nth-child(1) {
@@ -434,49 +434,6 @@ ul li {
 
 .animated {
   visibility: visible; }
-
-/* ------------------------------------------------------------------------------
-	Footer
--------------------------------------------------------------------------------*/
-.footer {
-	text-align: center;
-}
-.footer h6 {
-	font-family: "Roboto", sans-serif;
-	font-size: 11px;
-	color: #7f7f7f;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-}
-.footer a {
-	color: #7f7f7f;
-}
-.footer a:hover {
-	color: #e84545;
-}
-.footer .footer-share {
-	margin-top: 0;
-}
-.footer .footer-share li {
-	background: #3d3d3d none repeat scroll 0 0;
-	border-radius: 50%;
-	color: #ffffff;
-	width: 26px;
-	height: 26px;
-	border-radius: 50%;
-	padding: 4px 0;
-	margin: 0 5px;
-	display: inline-block;
-	float: none;
-}
-.footer .footer-share a {
-	color: #fff;
-}
-.footer .fa-heart {
-	color: #e84545;
-	font-size: 11px;
-	margin: 0 2px;
-}
   
 /* ------------------------------------------------------------------------------
 	Inner Page Banner
