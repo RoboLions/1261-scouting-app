@@ -19,10 +19,16 @@
         body {
             background-color: #00229e;
             background-image: url(https://prhsrobotics.com/wp-content/uploads/2014/04/bg2.png);
-            background-position: center top;
+            background-position: left top;
             background-size: auto;
             background-repeat: repeat;
             background-attachment: scroll;
+        }
+
+        @media only screen and (max-device-width: 480px) {
+            body {
+                width: 50%;
+            }
         }
 
         ul li {
