@@ -58,7 +58,6 @@ six==1.10.0
 SpeechRecognition==3.6.3
 subprocess32==3.5.2
 svgwrite==1.1.11
-TBB==0.1
 textract==1.6.1
 tornado==4.5.2
 traitlets==4.3.2
