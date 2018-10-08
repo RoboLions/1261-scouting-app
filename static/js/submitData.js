@@ -10,6 +10,7 @@ function submitData() {
         'scale_cubes': parseInt(document.getElementById('scale_cubes').value),
         'vault_cubes': parseInt(document.getElementById('vault_cubes').value),
         'can_climb': document.getElementById('can_climb').value,
+        'type': document.getElementById('type').value,
         'notes': document.getElementById('notes').value
     };
 
