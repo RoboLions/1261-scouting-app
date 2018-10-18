@@ -1,1 +1,1 @@
-web: gunicorn scouting-app-1261.wsgi --log-file -
+web: python run_app.py $PORT

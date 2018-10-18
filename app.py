@@ -102,6 +102,3 @@ def getRankingData():
         data = db.getAlgorithmicRankings() # algorithmic rankings are default
     return render_template("rankings.html",
                            data=data)
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
