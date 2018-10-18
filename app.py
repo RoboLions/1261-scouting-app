@@ -9,7 +9,7 @@ def main():
     return render_template('index.html')  # the main page
 
 
-@app.route('/submitData', methods=['POST']) # ONLY the post responses will be filtered here and dealt with here
+@app.route('/submitdata', methods=['POST']) # ONLY the post responses will be filtered here and dealt with here
 def submitData():
     formdata = dict(request.form)
     global num  # this process must be done with each integer that is collected
@@ -54,14 +54,14 @@ def submitData():
                            notes=data['notes'])
 
 
-@app.route('/getData')
+@app.route('/getdata')
 def getTeamData():
     team_number = request.args.get('team')
     if team_number is None or team_number == 0:
-        return(""" No team number was specified, therefore no team data was fetched from the database. Please try again! """)
+        return """ No team number was specified, therefore no team data was fetched from the database. Please try again! """
     matches = db.getData(int(team_number))
     if matches is None or matches == []:  # if there is no match data in the list 'matches'
-        return(""" This team has not been scouted yet! Get on that! """)
+        return """ This team has not been scouted yet! Get on that! """
     try:
         return render_template('team_data.html',
                                number=team_number,
@@ -73,12 +73,35 @@ def getTeamData():
                                type=[match['type'] for match in matches],
                                notes=[match['notes'] for match in matches])
     except KeyError:
-        return(""" This team has not been scouted yet! Get on that! """)
+        return """ This team has not been scouted yet! Get on that! """
 
 
-@app.route('/exportData')
+@app.route('/exportdata')
 def exportDataAsCSV():
     return("""TODO""")
 
+
+@app.route('/rankings')
+def toRankings():
+    return render_template('rankings.html',
+                           data=db.getAlgorithmicRankings())
+
+
+@app.route('/getrankings', methods=['POST'])
+def getRankingData():
+    config = dict(request.form)['config']
+    if config == "default":
+        data = db.getAlgorithmicRankings()
+    elif config == "switch":
+        data = db.getSwitchRankings()
+    elif config == "scale":
+        data = db.getScaleRankings()
+    elif config == "vault":
+        data = db.getVaultRankings()
+    else:
+        data = db.getAlgorithmicRankings() # algorithmic rankings are default
+    return render_template("rankings.html",
+                           data=data)
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', debug=True)
