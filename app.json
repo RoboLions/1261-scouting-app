@@ -1,5 +1,15 @@
 {
   "name": "1261-scouting-app",
+  "description": "A Flask Web Application for Scouting at FRC Events by Team 1261 The RoboLions",
+  "keywords": [
+    "frc",
+    "scouting",
+    "flask",
+    "mongodb"
+  ],
+  "website": "https://www.prhsrobotics.com/",
+  "repository": "https://github.com/RoboLions/1261-scouting-app",
+  "logo": "http://wiki.prhsrobotics.com/images/2/2e/RobolionsNewLogo.png",
   "scripts": {
   },
   "env": {
