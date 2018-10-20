@@ -6,3 +6,5 @@ Hello! This is the 1261 Scouting App, for use to gather data on teams during eve
 make decisions on who to bring onto our all-star alliance!
 
 The application utilizes Flask, a python-based web service similar to Express.js which allows one to tie together HTML/CSS and send data back and forth between python and javascript. It is hosted off a heroku, a free web-hosting service, but it may move to a private VPS server if that's the route our team decides to go.
+
+How to use: https://docs.google.com/document/d/1ZeLWFDGlkCN273EXpPVSuwCSdNKAa6BNDGa6SA4WPzo/edit?usp=sharing
