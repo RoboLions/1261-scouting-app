@@ -1,5 +1,5 @@
 // A function to collect information from the user interface and send it off
-// to the Python backend to be saved in a data file
+// to the Python backend to be stored in the database
 function submitData() {
 
     let data =
