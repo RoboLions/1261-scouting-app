@@ -1,7 +1,7 @@
-MONGO_DB_URI = "mongodb://webmaster1261:1261robolions@ds243212.mlab.com:43212/robolions-scouting-app"
-X_TBA_Auth_Key = "nmchvrlnrDUnrDhAtnNwT8xme8NqX5W98MBCNK7cTHy5Dc8zAfFkIqfZmdvOIo9l"
-EMAIL = "webmaster@prhsrobolions.com"
+from boto.s3.connection import S3Connection
+import os
 
-# SECRET INFORMATION - put in .gitignore or keep in a private repo
-# THIS INFO IS NOT TO LEAVE 1261
-# For everything that is used (blue alliance, mongodb, etc), the password is either 'robolions' or '1261robolions'
+s3 = S3Connection(os.environ['MONGO_DB_URI'], os.environ['X_TBA_Auth_Key'])
+
+MONGO_DB_URI = os.environ.get('MONGO_DB_URI')
+X_TBA_Auth_Key = os.environ.get('X_TBA_Auth_Key')
