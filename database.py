@@ -68,7 +68,7 @@ def getSwitchRankings():
         average = sum(data) / len(data)
         db.update_one(
             {"team_number":team['team_number']},
-            {'$push':
+            {'$set':
                  {"switch_avg": average}
              }
         )
@@ -88,7 +88,7 @@ def getScaleRankings():
         average = sum(data) / len(data)
         db.update_one(
             {"team_number":team['team_number']},
-            {'$push':
+            {'$set':
                  {"scale_avg": average}
              }
         )
@@ -108,7 +108,7 @@ def getVaultRankings():
         average = sum(data) / len(data)
         db.update_one(
             {"team_number":team['team_number']},
-            {'$push':
+            {'$set':
                  {"vault_avg": average}
              }
         )
