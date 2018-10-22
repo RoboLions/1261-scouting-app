@@ -508,3 +508,7 @@ div#main {
 	margin: auto;
 	padding: 10px;
 }
+
+textarea {
+	color: #000000;
+}
