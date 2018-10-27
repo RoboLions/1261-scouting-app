@@ -1,4 +1,4 @@
-# 1261-scouting-app
+# 1261 Scouting App
 Repository for Python Flask Scouting Web Application for team 1261 <br>
 Currently hosting off of http://scouting-app-1261.herokuapp.com/
 
