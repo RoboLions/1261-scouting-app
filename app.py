@@ -1,13 +1,12 @@
 from flask import Flask, render_template, request
 import database as db
-from secrets import PASSWORD
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def main():
-    return render_template('index.html', password=str(PASSWORD))  # the main page
+    return render_template('index.html')  # the main page
 
 
 @app.route('/submitdata', methods=['POST']) # ONLY the post responses will be filtered here and dealt with here
