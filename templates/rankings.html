@@ -21,7 +21,20 @@
     <input type="submit">
 </form>
 
-<p> {{ data }} </p>
+<h3> Rank by {{ name }}</h3>
+
+<script>
+
+    let teamslist = {{ data }};
+    let rank = 1;
+    for (team in teamslist) {
+        document.writeln("<input type='checkbox'>");
+        document.writeln(rank + ": " + teamslist[team]);
+        document.writeln("<br>");
+        rank++;
+    }
+
+</script>
 
 </body>
 </html>

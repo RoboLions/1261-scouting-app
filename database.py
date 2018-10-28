@@ -76,7 +76,7 @@ def getSwitchRankings():
     rankings = {}
     for team in getAllTeamData():
         rankings[int(team['team_number'])] = team['switch_avg']
-    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number]))
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
 
@@ -96,7 +96,7 @@ def getScaleRankings():
     rankings = {}
     for team in getAllTeamData():
         rankings[int(team['team_number'])] = team['scale_avg']
-    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number]))
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
 
@@ -116,7 +116,7 @@ def getVaultRankings():
     rankings = {}
     for team in getAllTeamData():
         rankings[int(team['team_number'])] = team['vault_avg']
-    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number]))
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
 
