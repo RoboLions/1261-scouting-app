@@ -84,6 +84,7 @@ def exportDataAsCSV():
 @app.route('/rankings')
 def toRankings():
     return render_template('rankings.html',
+                           name="algorithm",
                            data=db.getAlgorithmicRankings())
 
 

@@ -1,35 +1,89 @@
 import tbapy as frc
-from secrets import X_TBA_Auth_Key
+#from secrets import X_TBA_Auth_Key
 
-tba = frc.TBA(X_TBA_Auth_Key)
+tba = frc.TBA("nmchvrlnrDUnrDhAtnNwT8xme8NqX5W98MBCNK7cTHy5Dc8zAfFkIqfZmdvOIo9l")
 
-teams = {}
-scores = []
+competition_code = "2018gaalb" # needs to be changed after each event
 
-fout = open(r'teams.txt', 'w')
-fout.write("Lets do this!\n")
+'''
 
-our_events = tba.team_events(1261, 2018)
-event_lists = [tba.events(year) for year in range(2002, 2019)]
-for eventlist in event_lists:
-    for event in eventlist:
-        for match in tba.event_matches(event.key):
+Common Competition Codes for 1261:
+
+Replace year with current year
+
+2018gaalb - Albany
+2018gacmp - GA District Championship
+2018gacol - Columbus
+2018gadal - Dalton
+2018gadul - Duluth (deprecated)
+2018gagai - Gainesville
+2018gagr - GRITS
+2019gafor - Forsyth/Cumming
+2018arc - Archimedes
+2018cars - Carson
+2018cur - Curie
+2018dal - Daly
+2018dar - Darwin
+2018tes - Tesla
+2018carv - Carver
+2018gal - Galileo
+2018hop - Hopper
+2018new - Newton
+2018roe - Roebling
+2018tur - Turing
+2018cmptx - Houston Einsteins Championship, hopefully we'll be using this one!
+
+'''
+
+
+class TBAData():
+    def __init__(self, comp):
+        self.competition = comp  # current competition code, for example, "2018gaalb"
+
+        self.teams = {}
+        self.rankings = {}
+        self.scores = []
+        self.matches = {}
+
+    def reset(self):
+        self.teams = {}
+        self.rankings = {}
+        self.scores = []
+        self.matches = {}
+
+    def calculate(self):
+        self.reset()
+        for match in tba.event_matches(self.competition):
             for alliance in match.alliances:
                 for team in match.alliances[alliance]['team_keys']:
                     try:
                         score = int(match.alliances[alliance]['score'])
-                        teams[team] += score
-                        scores.append(score)
+                        self.teams[team] += score
+                        self.scores.append(score)
                     except KeyError:
-                        teams[team] = 0
+                        self.teams[team] = 0
 
-teamlist = sorted(teams, key=lambda team: teams[team], reverse=True)
+        for teamdata in tba.event_rankings(self.competition)['rankings']:
+            self.rankings[teamdata['team_key']] = teamdata['rank']
+            self.matches[teamdata['team_key']] = teamdata['matches_played']
 
-average = sum(scores) / len(scores)
-fout.write("The average score was " + str(average) + '\n')
+    def getTotalScore(self, team_num):
+        self.calculate()
+        team_code = str("frc" + str(team_num))
+        return self.teams[team_code]
 
-fout.write("Final Rankings!\n")
-for count, team in enumerate(teamlist):
-    fout.write(str(count) + ". " + str(team) + ": " + str(teams[team]))
+    def getAverageEventScore(self):
+        self.calculate()
+        return sum(self.scores) / len(self.scores)
 
-fout.close()
+    def getAverageScore(self, team_num):
+        self.calculate()
+        team_code = str("frc" + str(team_num))
+        return self.teams[team_code] / float(self.matches[team_code])
+
+    def getRanking(self, team_num):
+        self.calculate()
+        team_code = str("frc" + str(team_num))
+        return self.rankings[team_code]
+
+competition_data = TBAData(competition_code)

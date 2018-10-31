@@ -1,9 +1,9 @@
 import pymongo
 from pymongo import MongoClient
-from secrets import MONGO_DB_URI
+#from secrets import MONGO_DB_URI
 import webbrowser
 
-client = MongoClient(MONGO_DB_URI)
+client = MongoClient("mongodb://webmaster1261:1261robolions@ds243212.mlab.com:43212/robolions-scouting-app")
 db = client.get_database().robolions
 
 # To clear all data (a process that should be done after every event),
@@ -16,6 +16,39 @@ def getData(team_number):
     col = db.find_one({"team_number": team_number})
     matchlist = list(dict(col)['matches'])
     return matchlist
+
+
+def getMostCommonAuto(team_number):
+    data = getData(team_number)
+    autos = {}
+    maximum = 0
+    most_common = ""
+    for match in data:
+        try:
+            autos[match['auto']] += 1
+        except KeyError:
+            autos[match['auto']] = 1
+    for auto in autos:
+        if autos[auto] > maximum:
+            most_common = auto
+    return most_common
+
+
+def getMostCommonClimb(team_number):
+    data = getData(team_number)
+    climbs = {}
+    maximum = 0
+    most_common = ""
+    for match in data:
+        try:
+            climbs[match['can_climb']] += 1
+        except KeyError:
+            climbs[match['can_climb']] = 1
+    for climb in climbs:
+        if climbs[climbs] > maximum:
+            most_common = climb
+    return most_common
+
 
 def setData(data_dict):
     if db.find_one({"team_number":data_dict['team_number']}) is None:  # creates a document for the given team
