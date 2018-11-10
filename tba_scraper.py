@@ -1,7 +1,7 @@
 import tbapy as frc
-#from secrets import X_TBA_Auth_Key
+from secrets import X_TBA_Auth_Key
 
-tba = frc.TBA("nmchvrlnrDUnrDhAtnNwT8xme8NqX5W98MBCNK7cTHy5Dc8zAfFkIqfZmdvOIo9l")
+tba = frc.TBA(X_TBA_Auth_Key)
 
 competition_code = "2018gaalb" # needs to be changed after each event
 

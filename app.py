@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
 import database as db
 
 app = Flask(__name__)
@@ -76,9 +76,13 @@ def getTeamData():
         return """ This team has not been scouted yet! Get on that! """
 
 
-@app.route('/exportdata')
+@app.route('/exportdata', methods=["POST"])
 def exportDataAsCSV():
-    return("""TODO""")
+    return Response(
+        csv,
+        mimetype="text/csv",
+        headers={"Content-disposition":
+                     "attachment; filename=myplot.csv"})
 
 
 @app.route('/rankings')

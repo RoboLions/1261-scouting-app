@@ -1,9 +1,9 @@
 import pymongo
 from pymongo import MongoClient
-#from secrets import MONGO_DB_URI
+from secrets import MONGO_DB_URI
 import webbrowser
 
-client = MongoClient("mongodb://webmaster1261:1261robolions@ds243212.mlab.com:43212/robolions-scouting-app")
+client = MongoClient(MONGO_DB_URI)
 db = client.get_database().robolions
 
 # To clear all data (a process that should be done after every event),
