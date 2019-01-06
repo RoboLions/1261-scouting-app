@@ -1,6 +1,7 @@
 # 1261 Scouting App
 Repository for Python Flask Scouting Web Application for team 1261 <br>
 Currently hosting off of http://scouting-app-1261.herokuapp.com/
+If you are not on 1261 please do not use this site - make a fork for your own team and play around with that - Thanks!
 
 Hello! This is the 1261 Scouting App, for use to gather data on teams during events and 
 make decisions on who to bring onto our all-star alliance!
