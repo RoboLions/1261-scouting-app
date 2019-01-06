@@ -3,7 +3,7 @@ from secrets import X_TBA_Auth_Key
 
 tba = frc.TBA(X_TBA_Auth_Key)
 
-competition_code = "2018gaalb" # needs to be changed after each event
+competition_code = "2019gaalb"  # needs to be changed after each event
 
 '''
 
@@ -87,3 +87,5 @@ class TBAData():
         return self.rankings[team_code]
 
 competition_data = TBAData(competition_code)
+
+print(competition_data.getAverageEventScore())

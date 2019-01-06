@@ -2,6 +2,7 @@ import pymongo
 from pymongo import MongoClient
 from secrets import MONGO_DB_URI
 import webbrowser
+import gsheets
 
 client = MongoClient(MONGO_DB_URI)
 db = client.get_database().robolions
@@ -9,6 +10,11 @@ db = client.get_database().robolions
 # To clear all data (a process that should be done after every event),
 # go to mlab, sign in with webmaster@prhsrobotics.com, and go to the robolions collection
 # and delete all documents in the robolions collection. Savvy?
+
+
+def getTeamLikabilityIndex(team_number):
+    pass  # TODO CONNECT GOOGLE SHEETS TO PYTHON
+
 
 def getData(team_number):
     if isinstance(team_number, dict):
@@ -34,16 +40,16 @@ def getMostCommonAuto(team_number):
     return most_common
 
 
-def getMostCommonClimb(team_number):
+def getMostCommonHabitat(team_number):
     data = getData(team_number)
     climbs = {}
     maximum = 0
     most_common = ""
     for match in data:
         try:
-            climbs[match['can_climb']] += 1
+            climbs[match['habitat']] += 1
         except KeyError:
-            climbs[match['can_climb']] = 1
+            climbs[match['habitat']] = 1
     for climb in climbs:
         if climbs[climbs] > maximum:
             most_common = climb
@@ -65,10 +71,9 @@ def setData(data_dict):
             {"matches":         # time this team has played in this specific event
                 {
                 "auto": data_dict['auto'],
-                "switch_cubes": data_dict['switch_cubes'],
-                "scale_cubes": data_dict['scale_cubes'],
-                "vault_cubes": data_dict['vault_cubes'],
-                "can_climb": data_dict['can_climb'],
+                "cargo": data_dict['cargo'],
+                "hatches": data_dict['hatches'],
+                "habitat": data_dict['habitat'],
                 "type":data_dict['type'],
                 "notes": data_dict['notes']
                 }
@@ -91,67 +96,50 @@ def getAllTeamData():
 # AHH YES the big one
 def getAlgorithmicRankings():
     # TODO create the algorithm and rank teams accordingly, no point in doing so till 2019 season tho
-    return getSwitchRankings()
+    return getCargoRankings()
 
-def getSwitchRankings():
+def getCargoRankings():
     data = []
     for team in getAllTeamData():
         for match in team['matches']:
-            data.append(int(match['switch_cubes']))
+            data.append(int(match['cargo']))
         average = sum(data) / len(data)
         db.update_one(
             {"team_number":team['team_number']},
             {'$set':
-                 {"switch_avg": average}
-             }
+                 {"cargo_avg": average}
+            }
         )
         data = []
     rankings = {}
     for team in getAllTeamData():
-        rankings[int(team['team_number'])] = team['switch_avg']
+        rankings[int(team['team_number'])] = team['cargo_avg']
     final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
 
-def getScaleRankings():
+def getHatchRankings():
     data = []
     for team in getAllTeamData():
         for match in team['matches']:
-            data.append(int(match['scale_cubes']))
+            data.append(int(match['hatches']))
         average = sum(data) / len(data)
         db.update_one(
             {"team_number":team['team_number']},
             {'$set':
-                 {"scale_avg": average}
+                 {"hatch_avg": average}
              }
         )
         data = []
     rankings = {}
     for team in getAllTeamData():
-        rankings[int(team['team_number'])] = team['scale_avg']
-    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
-    return final
-
-
-def getVaultRankings():
-    data = []
-    for team in getAllTeamData():
-        for match in team['matches']:
-            data.append(int(match['vault_cubes']))
-        average = sum(data) / len(data)
-        db.update_one(
-            {"team_number":team['team_number']},
-            {'$set':
-                 {"vault_avg": average}
-             }
-        )
-        data = []
-    rankings = {}
-    for team in getAllTeamData():
-        rankings[int(team['team_number'])] = team['vault_avg']
+        rankings[int(team['team_number'])] = team['hatch_avg']
     final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
 
 def printDataInBrowser(data_dict):
     webbrowser.open_new_tab('https://www.google.com/?q=' + str(data_dict))
+
+
+#print(getData(1261))

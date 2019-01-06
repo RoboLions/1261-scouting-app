@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request
 import database as db
 
 app = Flask(__name__)
@@ -17,28 +17,22 @@ def submitData():
         num = int(formdata['team_number'][0])
     except:
         num = 0
-    global switch
+    global cargo
     try:
-        switch = int(formdata['switch_cubes'][0])
+        cargo = int(formdata['cargo'][0])
     except:
-        switch = 0
-    global scale
+        cargo = 0
+    global hatch
     try:
-        scale = int(formdata['scale_cubes'][0])
+        hatch = int(formdata['hatches'][0])
     except:
-        scale = 0
-    global vault
-    try:
-        vault = int(formdata['vault_cubes'][0])
-    except:
-        vault = 0
+        hatch = 0
     data = {  # to clear things up, this data is the data of a single match
         'team_number': num,
         'auto': str(formdata['auto'][0]),
-        'switch_cubes': switch,
-        'scale_cubes': scale,
-        'vault_cubes': vault,
-        'can_climb': str(formdata['can_climb'][0]),
+        'cargo': cargo,
+        'hatches': hatch,
+        'habitat': str(formdata['habitat'][0]),
         'type': str(formdata['type'][0]),
         'notes': str(formdata['notes'][0])
     }
@@ -46,10 +40,9 @@ def submitData():
     return render_template('confirm.html',
                            number=data['team_number'],
                            auto=data['auto'],
-                           switch=data['switch_cubes'],
-                           scale=data['scale_cubes'],
-                           vault=data['vault_cubes'],
-                           climb=data['can_climb'],
+                           cargo=data['cargo'],
+                           hatches=data['hatches'],
+                           habitat=data['habitat'],
                            type=data['type'],
                            notes=data['notes'])
 
@@ -66,10 +59,9 @@ def getTeamData():
         return render_template('team_data.html',
                                number=team_number,
                                auto=[match['auto'] for match in matches],
-                               switch=[match['switch_cubes'] for match in matches],
-                               scale=[match['scale_cubes'] for match in matches],
-                               vault=[match['vault_cubes'] for match in matches],
-                               climb=[match['can_climb'] for match in matches],
+                               cargo=[match['cargo'] for match in matches],
+                               hatches=[match['hatches'] for match in matches],
+                               habitat=[match['habitat'] for match in matches],
                                type=[match['type'] for match in matches],
                                notes=[match['notes'] for match in matches])
     except KeyError:
@@ -78,11 +70,7 @@ def getTeamData():
 
 @app.route('/exportdata', methods=["POST"])
 def exportDataAsCSV():
-    return Response(
-        csv,
-        mimetype="text/csv",
-        headers={"Content-disposition":
-                     "attachment; filename=myplot.csv"})
+    return ''' Ah yes '''
 
 
 @app.route('/rankings')
@@ -97,19 +85,21 @@ def getRankingData():
     config = dict(request.form)['config'][0]
     if config == "default":
         data = db.getAlgorithmicRankings()
-    elif config == "switch":
-        data = db.getSwitchRankings()
-    elif config == "scale":
-        data = db.getScaleRankings()
-    elif config == "vault":
-        data = db.getVaultRankings()
+    elif config == "cargo":
+        data = db.getCargoRankings()
+    elif config == "hatch":
+        data = db.getHatchRankings()
     else:
-        data = db.getAlgorithmicRankings() # algorithmic rankings are default
+        data = db.getAlgorithmicRankings()  # algorithmic rankings are default
     if config == "default":
         config = "algorithm"
     return render_template("rankings.html",
                            name=str(config).capitalize(),
                            data=data)
+
+@app.route('/pit')
+def pitScouting():
+    return render_template('pit.html')
 
 if __name__ == '__main__':
     app.run()

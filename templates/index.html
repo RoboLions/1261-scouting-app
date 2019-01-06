@@ -76,10 +76,12 @@
                                 </td>
                                 <td>
                                     <select name="auto">
-                                        <option value="1 in Switch"> 1 in Switch </option>
-                                        <option value="2+ in Switch"> 2 or More in Switch </option>
-                                        <option value="1 in Scale"> 1 in Scale </option>
-                                        <option value="2+ in Scale"> 2 or More in Scale </option>
+                                        <option value="Human Controller"> Human Controlled </option>
+                                        <option value="1 Cargo"> 1 Cargo </option>
+                                        <option value="2+ Cargo"> 2 or More Cargo </option>
+                                        <option value="1 Hatch"> 1 Hatch </option>
+                                        <option value="2+ Hatches"> 2 or More Hatches </option>
+                                        <option value="combination"> Both Cargo and Hatches loaded </option>
                                         <option value="Auto Line only"> Only crossed Auto Line </option>
                                         <option value="Nothing"> None of the above/Stayed motionless</option>
                                     </select>
@@ -87,38 +89,30 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Switch Cubes
+                                    Cargo
                                 </td>
                                 <td>
-                                    <input type="number" name="switch_cubes">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Scale Cubes
-                                </td>
-                                <td>
-                                    <input type="number" name="scale_cubes">
+                                    <input type="number" name="cargo">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    Vault Cubes
+                                    Hatches
                                 </td>
                                 <td>
-                                    <input type="number" name="vault_cubes">
+                                    <input type="number" name="hatches">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    Can Climb
+                                    Habitat
                                 </td>
                                 <td>
-                                    <select name="can_climb">
-                                        <option value="Climbs by itself">Climbs by itself</option>
-                                        <option value="Climbs and carries up one">Climbs and carries up one</option>
-                                        <option value="Climbs and carries up two">Climbs and carries up two</option>
-                                        <option value="Cannot climb">Cannot climb</option>
+                                    <select name="habitat">
+                                        <option value="Carry"> Carries robots to platforms </option>
+                                        <option value="Highest"> Climbs to Highest platform </option>
+                                        <option value="Lowest">Climbs to Lower platform </option>
+                                        <option value="Cannot">Did not go to any platforms</option>
                                     </select>
                                 </td>
                             </tr>
