@@ -2,7 +2,6 @@ import pymongo
 from pymongo import MongoClient
 from secrets import MONGO_DB_URI
 import webbrowser
-import gsheets
 
 client = MongoClient(MONGO_DB_URI)
 db = client.get_database().robolions
