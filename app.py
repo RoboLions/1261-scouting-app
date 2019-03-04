@@ -27,6 +27,11 @@ def submitData():
         hatch = int(formdata['hatches'][0])
     except:
         hatch = 0
+    global driver
+    try:
+        driver = int(formdata['driver'][0])
+    except:
+        driver = 0
     data = {  # to clear things up, this data is the data of a single match
         'team_number': num,
         'auto': str(formdata['auto'][0]),
@@ -34,6 +39,7 @@ def submitData():
         'hatches': hatch,
         'habitat': str(formdata['habitat'][0]),
         'type': str(formdata['type'][0]),
+        'driver': driver,
         'notes': str(formdata['notes'][0])
     }
     db.setData(data)
@@ -44,6 +50,7 @@ def submitData():
                            hatches=data['hatches'],
                            habitat=data['habitat'],
                            type=data['type'],
+                           driver=data['driver'],
                            notes=data['notes'])
 
 
@@ -63,6 +70,7 @@ def getTeamData():
                                hatches=[match['hatches'] for match in matches],
                                habitat=[match['habitat'] for match in matches],
                                type=[match['type'] for match in matches],
+                               driver=[match['driver'] for match in matches],
                                notes=[match['notes'] for match in matches])
     except KeyError:
         return """ This team has not been scouted yet! Get on that! """
@@ -85,14 +93,15 @@ def getRankingData():
     config = dict(request.form)['config'][0]
     if config == "default":
         data = db.getAlgorithmicRankings()
+        config = "algorithm"
     elif config == "cargo":
         data = db.getCargoRankings()
     elif config == "hatch":
         data = db.getHatchRankings()
+    elif config == "driver":
+        data = db.getDriverRankings()
     else:
         data = db.getAlgorithmicRankings()  # algorithmic rankings are default
-    if config == "default":
-        config = "algorithm"
     return render_template("rankings.html",
                            name=str(config).capitalize(),
                            data=data)

@@ -23,22 +23,6 @@ def getData(team_number):
     return matchlist
 
 
-def getMostCommonAuto(team_number):
-    data = getData(team_number)
-    autos = {}
-    maximum = 0
-    most_common = ""
-    for match in data:
-        try:
-            autos[match['auto']] += 1
-        except KeyError:
-            autos[match['auto']] = 1
-    for auto in autos:
-        if autos[auto] > maximum:
-            most_common = auto
-    return most_common
-
-
 def getMostCommonHabitat(team_number):
     data = getData(team_number)
     climbs = {}
@@ -74,6 +58,7 @@ def setData(data_dict):
                 "hatches": data_dict['hatches'],
                 "habitat": data_dict['habitat'],
                 "type":data_dict['type'],
+                "driver":data_dict['driver'],
                 "notes": data_dict['notes']
                 }
             }
@@ -127,7 +112,7 @@ def getHatchRankings():
             {"team_number":team['team_number']},
             {'$set':
                  {"hatch_avg": average}
-             }
+            }
         )
         data = []
     rankings = {}
@@ -136,9 +121,25 @@ def getHatchRankings():
     final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
+def getDriverRankings():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            data.append(int(match['driver']))
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"driver_avg": average}
+             }
+        )
+        data = []
+    rankings = {}
+    for team in getAllTeamData():
+        rankings[int(team['team_number'])] = team['driver_avg']
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
+    return final
+
 
 def printDataInBrowser(data_dict):
     webbrowser.open_new_tab('https://www.google.com/?q=' + str(data_dict))
-
-
-#print(getData(1261))

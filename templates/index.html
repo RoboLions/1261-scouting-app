@@ -46,8 +46,8 @@
 <h1 align="center" style="color:#FFFFFF;"> 1261 Robo Lions Scouting App </h1>
 <hr>
 <div class="col-md-10 col-md-offset-1 text-center">
-    <h4 align="center" style="color:#FFFFFF"> Welcome to the Peachtree Ridge HS Robo Lions Scouting App! This site is in a sort of 'beta test mode', so understand that stuff might be glitchy. However, I encourage you to play around with it and send me (Tejas) any feedback!</h4>
-    <h4 align="center" style="color:#FFFFFF"> It is very important that you leave nothing blank: fill in every box or else the server will return an error!</h4>
+    <h4 align="center" style="color:#FFFFFF"> Welcome to the Peachtree Ridge HS Robo Lions Scouting App! This site is now in a secure Alpha mode.</h4>
+    <h4 align="center" style="color:#FFFFFF"> If you experience any errors during competition, immediately notify Tejas. Have fun!</h4>
 </div>
 
 <section id="descripton" class="section descripton">
@@ -110,25 +110,34 @@
                                 <td>
                                     <select name="habitat">
                                         <option value="Carry"> Carries robots to platforms </option>
-                                        <option value="Highest"> Climbs to Highest platform </option>
-                                        <option value="Lowest">Climbs to Lower platform </option>
+                                        <option value="Highest"> Climbs to Highest platform (Level 3) </option>
+                                        <option value="Lowest">Climbs to Lower platform (Level 2) </option>
+                                        <option value="Park">Drives to lower Ramp area (Level 1)</option>
                                         <option value="Cannot">Did not go to any platforms</option>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    Type of Robot
+                                    Robot's Reach
                                 </td>
                                 <td>
                                     <select name="type">
-                                        <option value="Elevator With Wheel Intake">Elevator with Wheel Intake</option>
-                                        <option value="Arm Based With Wheel Intake">Arm with Wheel Intake</option>
-                                        <option value="Elevator With Clampers">Elevator with Clampers</option>
-                                        <option value="Arm With Clampers">Arm with Clampers</option>
-                                        <option value="Shooter">Shooter Bot (Shoots cubes in air)</option>
-                                        <option value="Other">Other Type</option>
+                                        <option value="Level 3">Can reach the highest on the Rocket</option>
+                                        <option value="Level 2">Can reach up to 2nd level on Rocket</option>
+                                        <option value="Level 1"> Can only do lowest level everything </option>
+                                        <option value="Cargo"> Can only do Cargo </option>
+                                        <option value="Hatch"> Can only do Hatch </option>
+                                        <option value="Defense"> Can't hold any game pieces </option>
                                     </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Rate Driver Skill
+                                </td>
+                                <td>
+                                    <input type="range" name="driver">
                                 </td>
                             </tr>
                         </table>

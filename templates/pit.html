@@ -1,15 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Pit Scouting Fail-Safe</title>
-</head>
-<body>
-    <input name="test" type="range">
-    <script>
-        while(true) {
-            document.write(document.getElementById('test').value)
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title> 1261 Scouting App </title>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/robocon.ico') }}">
+
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/submitData.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/incrementNumericLabel.js')}}"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
+
+    <style>
+        body {
+            background-color: #00229e;
+            background-image: url(https://prhsrobotics.com/wp-content/uploads/2014/04/bg2.png);
+            background-position: left top;
+            background-size: auto;
+            background-repeat: repeat;
+            background-attachment: scroll;
         }
-    </script>
+
+        ul li {
+            display: list-item;
+            list-style-type:circle;
+        }
+
+        h2, td, b{
+            color: #FFFFFF;
+        }
+
+        button, input, select, option {
+            color: #000000;
+        }
+    </style>
+
+</head>
+
+<body class="home blog custom-background">
+
+<h1 align="center" style="color:#FFFFFF;"> 1261 Scouting App </h1>
+<hr>
+
+<section id="descripton" class="section descripton">
+    <div style="width: 100%; display: table;">
+        <div style="display: table-row">
+            <div style="width: 800px; display: table-cell;">
+                <div class="col-md-10 col-md-offset-1">
+                    <h2 style="color:#FFFFFF">Pit Scouting</h2>
+
+                    <div id='main'>
+
+                        <form action="{{ url_for('submitData') }}" method="post">
+
+                            <table border=1>
+                                <tr>
+                                    <td>
+                                        Team Number
+                                    </td>
+                                    <td>
+                                        <input type='number' name='team_number'>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Autonomous
+                                    </td>
+                                    <td>
+                                        <select name="auto">
+                                            <option value="Human Controller"> Human Controlled </option>
+                                            <option value="1 Cargo"> 1 Cargo </option>
+                                            <option value="2+ Cargo"> 2 or More Cargo </option>
+                                            <option value="1 Hatch"> 1 Hatch </option>
+                                            <option value="2+ Hatches"> 2 or More Hatches </option>
+                                            <option value="combination"> Both Cargo and Hatches loaded </option>
+                                            <option value="Auto Line only"> Only crossed Auto Line </option>
+                                            <option value="Nothing"> None of the above/Stayed motionless</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Cargo
+                                    </td>
+                                    <td>
+                                        <input type="number" name="cargo">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Hatches
+                                    </td>
+                                    <td>
+                                        <input type="number" name="hatches">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Habitat
+                                    </td>
+                                    <td>
+                                        <select name="habitat">
+                                            <option value="Carry"> Carries robots to platforms </option>
+                                            <option value="Highest"> Climbs to Highest platform </option>
+                                            <option value="Lowest">Climbs to Lower platform </option>
+                                            <option value="Cannot">Did not go to any platforms</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Type of Robot
+                                    </td>
+                                    <td>
+                                        <select name="type">
+                                            <option value="Elevator With Wheel Intake">Elevator with Wheel Intake</option>
+                                            <option value="Arm Based With Wheel Intake">Arm with Wheel Intake</option>
+                                            <option value="Elevator With Clampers">Elevator with Clampers</option>
+                                            <option value="Arm With Clampers">Arm with Clampers</option>
+                                            <option value="Shooter">Shooter Bot (Shoots cubes in air)</option>
+                                            <option value="Other">Other Type</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <h3>
+                                <b>
+                                    Notes
+                                </b>
+                            </h3>
+                            <textarea name="notes" rows=5></textarea>
+                            <br>
+
+                            <input type="submit">
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>

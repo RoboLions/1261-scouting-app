@@ -3,9 +3,8 @@ import database as db
 class RankingAlgorithm:
     def __init__(self):
         self.weights = {
-            'scale': 0.13,
-            'switch': 0.07,
-            'vault': 0.1,
+            'cargo': 0.15,
+            'hatch': 0.15,
             'driver_skill': 0.05,
             'total_score': 0.03,
             'average_score': 0.03,
@@ -69,5 +68,5 @@ class RankingAlgorithm:
 
         }
 
-#alg = RankingAlgorithm()
-#print(alg.checkWeights())
+alg = RankingAlgorithm()
+print(alg.checkWeights())
