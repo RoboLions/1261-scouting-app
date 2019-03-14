@@ -46,7 +46,7 @@
 <h1 align="center" style="color:#FFFFFF;"> 1261 Robo Lions Scouting App </h1>
 <hr>
 <div class="col-md-10 col-md-offset-1 text-center">
-    <h4 align="center" style="color:#FFFFFF"> Welcome to the Peachtree Ridge HS Robo Lions Scouting App! This site is now in a secure Alpha mode.</h4>
+    <h4 align="center" style="color:#FFFFFF"> Welcome to the Peachtree Ridge HS Robo Lions Scouting App! This site is now in a secure Final Version.</h4>
     <h4 align="center" style="color:#FFFFFF"> If you experience any errors during competition, immediately notify Tejas. Have fun!</h4>
 </div>
 
@@ -72,16 +72,31 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Autonomous
+                                    Match Number
+                                </td>
+                                <td>
+                                    <input type='number' name='match'>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Disabled/AFK
+                                </td>
+                                <td>
+                                    <input type="checkbox" name='disabled'>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Sandstorm
                                 </td>
                                 <td>
                                     <select name="auto">
-                                        <option value="Human Controller"> Human Controlled </option>
                                         <option value="1 Cargo"> 1 Cargo </option>
                                         <option value="2+ Cargo"> 2 or More Cargo </option>
                                         <option value="1 Hatch"> 1 Hatch </option>
                                         <option value="2+ Hatches"> 2 or More Hatches </option>
-                                        <option value="combination"> Both Cargo and Hatches loaded </option>
+                                        <option value="Combination"> Both Cargo and Hatches loaded </option>
                                         <option value="Auto Line only"> Only crossed Auto Line </option>
                                         <option value="Nothing"> None of the above/Stayed motionless</option>
                                     </select>
@@ -89,7 +104,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Cargo
+                                    Teleop Cargo
                                 </td>
                                 <td>
                                     <input type="number" name="cargo">
@@ -97,7 +112,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Hatches
+                                    Teleop Hatches
                                 </td>
                                 <td>
                                     <input type="number" name="hatches">
@@ -137,7 +152,11 @@
                                     Rate Driver Skill
                                 </td>
                                 <td>
-                                    <input type="range" name="driver">
+                                    <div style="position: relative">
+                                    <p style="float: left; color:#FFFFFF;">Bad</p>
+                                    <p style="float: right; color:#FFFFFF;">Good</p>
+                                    <input style="float: left" type="range" name="driver">
+                                    </div>
                                 </td>
                             </tr>
                         </table>

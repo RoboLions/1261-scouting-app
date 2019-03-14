@@ -12,6 +12,11 @@ def main():
 @app.route('/submitdata', methods=['POST']) # ONLY the post responses will be filtered here and dealt with here
 def submitData():
     formdata = dict(request.form)
+    global match
+    try:
+        match = int(formdata['match'][0])
+    except:
+        match = 0
     global num  # this process must be done with each integer that is collected
     try:
         num = int(formdata['team_number'][0])
@@ -32,8 +37,16 @@ def submitData():
         driver = int(formdata['driver'][0])
     except:
         driver = 0
+    global disabled
+    try:
+        throwaway_var = formdata['disabled']
+        disabled = False
+    except:
+        disabled = True
     data = {  # to clear things up, this data is the data of a single match
         'team_number': num,
+        'match': match,
+        'disabled': disabled,
         'auto': str(formdata['auto'][0]),
         'cargo': cargo,
         'hatches': hatch,
@@ -45,6 +58,8 @@ def submitData():
     db.setData(data)
     return render_template('confirm.html',
                            number=data['team_number'],
+                           match=data['match'],
+                           disabled=data['disabled'],
                            auto=data['auto'],
                            cargo=data['cargo'],
                            hatches=data['hatches'],
@@ -65,6 +80,8 @@ def getTeamData():
     try:
         return render_template('team_data.html',
                                number=team_number,
+                               match=[match['match'] for match in matches],
+                               disabled=[match['disabled'] for match in matches],
                                auto=[match['auto'] for match in matches],
                                cargo=[match['cargo'] for match in matches],
                                hatches=[match['hatches'] for match in matches],
@@ -100,6 +117,12 @@ def getRankingData():
         data = db.getHatchRankings()
     elif config == "driver":
         data = db.getDriverRankings()
+    elif config == "auto":
+        data = db.getAutoRankings()
+    elif config == "reach":
+        data = db.getReachRankings()
+    elif config == "climb":
+        data = db.getClimbRankings()
     else:
         data = db.getAlgorithmicRankings()  # algorithmic rankings are default
     return render_template("rankings.html",

@@ -10,6 +10,8 @@
     <h4> Just to review and confirm: </h4>
     <ul>
         <li> Team Number: {{ number }} </li>
+        <li> Matches: {{ match }}</li>
+        <li> Disabled/AFK: {{ disabled }}</li>
         <li> Autonomous: {{ auto }} </li>
         <li> Cargo: {{ cargo }} </li>
         <li> Hatches: {{ hatches }}</li>
@@ -21,6 +23,10 @@
     <h4> If you found an error in here, don't panic! Make sure to keep note of it and tell one </h4>
     <h4> of the technical leads (Webmaster, Communications lead, etc.) so they can know. </h4>
     <h4> Now get back to scouting! </h4>
+
+    <h2> You've been a good scout... enjoy a meme...</h2>
+    <script src="https://contejas.github.io/js/robomeme.js"></script>
+
     <h1> <a href="{{ url_for("main") }}"> Click here to get back to main page </a></h1>
 </body>
 </html>
