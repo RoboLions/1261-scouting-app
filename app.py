@@ -40,9 +40,9 @@ def submitData():
     global disabled
     try:
         throwaway_var = formdata['disabled']
-        disabled = False
-    except:
         disabled = True
+    except:
+        disabled = False
     data = {  # to clear things up, this data is the data of a single match
         'team_number': num,
         'match': match,
@@ -129,9 +129,26 @@ def getRankingData():
                            name=str(config).capitalize(),
                            data=data)
 
-@app.route('/pit')
-def pitScouting():
-    return render_template('pit.html')
+
+@app.route('/match', methods=['POST'])
+def getMatchData():
+    allData = db.getAllTeamData()
+    if matches is None or matches == []:  # if there is no match data in the list 'matches'
+        return """ This team has not been scouted yet! Get on that! """
+    try:
+        return render_template('match.html',
+                               number=team_number,
+                               match=[match['match'] for match in matches],
+                               disabled=[match['disabled'] for match in matches],
+                               auto=[match['auto'] for match in matches],
+                               cargo=[match['cargo'] for match in matches],
+                               hatches=[match['hatches'] for match in matches],
+                               habitat=[match['habitat'] for match in matches],
+                               type=[match['type'] for match in matches],
+                               driver=[match['driver'] for match in matches],
+                               notes=[match['notes'] for match in matches])
+    except KeyError:
+        return """ This team has not been scouted yet! Get on that! """
 
 if __name__ == '__main__':
     app.run()

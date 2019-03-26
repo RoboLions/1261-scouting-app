@@ -4,7 +4,7 @@ from secrets import MONGO_DB_URI
 import webbrowser
 
 client = MongoClient(MONGO_DB_URI)
-db = client.get_database().robolions
+db = client.get_database().forsyth
 
 # To clear all data (a process that should be done after every event),
 # go to mlab, sign in with webmaster@prhsrobotics.com, and go to the robolions collection
