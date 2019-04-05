@@ -4,7 +4,7 @@ from secrets import MONGO_DB_URI
 import webbrowser
 
 client = MongoClient(MONGO_DB_URI)
-db = client.get_database().forsyth
+db = client.get_database().robolions
 
 # To clear all data (a process that should be done after every event),
 # go to mlab, sign in with webmaster@prhsrobotics.com, and go to the robolions collection
@@ -93,7 +93,8 @@ def setData(data_dict):
                 "habitat": data_dict['habitat'],
                 "type":data_dict['type'],
                 "driver":data_dict['driver'],
-                "notes": data_dict['notes']
+                "notes": data_dict['notes'],
+                "scout_name": data_dict['scout_name']
                 }
             }
         }

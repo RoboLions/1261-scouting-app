@@ -43,6 +43,8 @@ def submitData():
         disabled = True
     except:
         disabled = False
+    scout_name = str(formdata['scout_name'][0])
+
     data = {  # to clear things up, this data is the data of a single match
         'team_number': num,
         'match': match,
@@ -53,7 +55,8 @@ def submitData():
         'habitat': str(formdata['habitat'][0]),
         'type': str(formdata['type'][0]),
         'driver': driver,
-        'notes': str(formdata['notes'][0])
+        'notes': str(formdata['notes'][0]),
+        'scout_name': scout_name
     }
     db.setData(data)
     return render_template('confirm.html',
@@ -133,6 +136,7 @@ def getRankingData():
 @app.route('/match', methods=['POST'])
 def getMatchData():
     allData = db.getAllTeamData()
+    '''
     if matches is None or matches == []:  # if there is no match data in the list 'matches'
         return """ This team has not been scouted yet! Get on that! """
     try:
@@ -149,6 +153,7 @@ def getMatchData():
                                notes=[match['notes'] for match in matches])
     except KeyError:
         return """ This team has not been scouted yet! Get on that! """
+    '''
 
 if __name__ == '__main__':
     app.run()

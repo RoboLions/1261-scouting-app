@@ -59,7 +59,17 @@
 
                     <div id='main'>
 
-                        <form action="{{ url_for('submitData') }}" method="post">
+                        <script>
+                            function checkForm() {
+                                var team = parseInt(document.scoutform.team_number.value);
+                                var teams = [832, 1002, 1102, 1261, 1311, 1414, 1648, 1683, 1746, 1771, 2415, 2974, 3329, 3581, 3635, 3998, 4026, 4112, 4188, 4459, 4468, 4701, 4749, 4910, 4941, 5109, 5293, 5332, 5632, 5651, 5840, 5900, 6340, 6705, 6829, 6887, 6919, 7315, 7427, 7449, 7451, 7470, 7499, 7514, 7883];
+                                if(!teams.contains(team)) {
+                                    alert("That wasn't very yee-haw of you");
+                                }
+                            }
+                        </script>
+
+                        <form name="scoutform" action="{{ url_for('submitData') }}" method="post">
 
                         <table border=1>
                             <tr>
@@ -161,15 +171,20 @@
                             </tr>
                         </table>
                         <br>
-                        <h3>
-                            <b>
-                                Notes
-                            </b>
-                        </h3>
-                        <textarea name="notes" rows=5></textarea>
+                            <h3>
+                                <b>
+                                    Notes
+                                </b>
+                            </h3>
+                            <textarea name="notes" rows=5></textarea>
                         <br>
-
-                        <input type="submit">
+                        <br>
+                            <p style="color:#FFFFFF;">Your Name</p>
+                            <textarea name="scout_name" rows=1"></textarea>
+                        <br>
+                        <br>
+                        <br>
+                            <input type="submit">
 
                         </form>
 
