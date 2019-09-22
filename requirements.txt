@@ -3,7 +3,7 @@ flask==1.0.2
 itsdangerous==1.0.0
 jinja2>=2.10.1
 markupSafe==1.0
-werkzeug==0.14.1
+werkzeug>=0.15.3
 boto==2.49.0
 certifi==2018.10.15
 chardet==3.0.4
