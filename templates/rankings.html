@@ -14,12 +14,12 @@
 <form action="{{ url_for('getRankingData') }}" method="post">
     <select name="config">
         <option value="default"> Algorithmic Ranking System </option>
-        <option value="cargo"> Rank by Cargo </option>
-        <option value="hatch"> Rank by Hatch </option>
+        <option value="low"> Rank by Low Port Scoring </option>
+        <option value="high"> Rank by High Port Scoring </option>
         <option value="driver"> Rank by Driver Skill </option>
         <option value="auto"> Rank by Sandstorm </option>
         <option value="reach"> Rank by Robot's Reach </option>
-        <option value="climb"> Rank by Habitat Climb </option>
+        <option value="climb"> Rank by Climb </option>
     </select>
     <input type="submit">
 </form>

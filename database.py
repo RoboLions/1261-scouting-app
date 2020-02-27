@@ -23,16 +23,16 @@ def getData(team_number):
     return matchlist
 
 
-def getMostCommonHabitat(team_number):
+def getMostCommonClimb(team_number):
     data = getData(team_number)
     climbs = {}
     maximum = 0
     most_common = ""
     for match in data:
         try:
-            climbs[match['habitat']] += 1
+            climbs[match['climb']] += 1
         except KeyError:
-            climbs[match['habitat']] = 1
+            climbs[match['climb']] = 1
     for climb in climbs:
         if climbs[climb] > maximum:
             most_common = climb
@@ -88,9 +88,10 @@ def setData(data_dict):
                 "disabled": data_dict['disabled'],
                 "match": data_dict['match'],
                 "auto": data_dict['auto'],
-                "cargo": data_dict['cargo'],
-                "hatches": data_dict['hatches'],
-                "habitat": data_dict['habitat'],
+                "lower": data_dict['lower'],
+                "outer": data_dict['outer'],
+                "inner": data_dict['inner'],
+                "climb": data_dict['climb'],
                 "type":data_dict['type'],
                 "driver":data_dict['driver'],
                 "notes": data_dict['notes'],
@@ -116,13 +117,13 @@ def getAllTeamData():
 # AHH YES the big one
 def getAlgorithmicRankings():
     ranks = {}
-    cargo = getCargoRankings()
-    hatch = getHatchRankings()
+    low = getLowRankings()
+    high = getHighRankings()
     driver = getDriverRankings()
     climb = getClimbRankings()
     auto = getAutoRankings()
     reach = getReachRankings()
-    categories = [cargo, hatch, driver, climb, auto, reach]
+    categories = [low, high, driver, climb, auto, reach]
     for cat in categories:
         for team in cat:
             try:
@@ -134,42 +135,45 @@ def getAlgorithmicRankings():
     return final
 
 
-def getCargoRankings():
+def getLowRankings():
     data = []
     for team in getAllTeamData():
         for match in team['matches']:
-            data.append(int(match['cargo']))
+            data.append(int(match['lower']))
         average = sum(data) / len(data)
         db.update_one(
             {"team_number":team['team_number']},
             {'$set':
-                 {"cargo_avg": average}
+                 {"low_avg": average}
             }
         )
         data = []
     rankings = {}
     for team in getAllTeamData():
-        rankings[int(team['team_number'])] = team['cargo_avg']
+        rankings[int(team['team_number'])] = team['low_avg']
     final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
 
-def getHatchRankings():
+def getHighRankings():
     data = []
     for team in getAllTeamData():
         for match in team['matches']:
-            data.append(int(match['hatches']))
+            outer = int(match['outer'])
+            inner = int(match['inner'])
+            score = inner*2+outer
+            data.append(score)
         average = sum(data) / len(data)
         db.update_one(
             {"team_number":team['team_number']},
             {'$set':
-                 {"hatch_avg": average}
+                 {"high_avg": average}
             }
         )
         data = []
     rankings = {}
     for team in getAllTeamData():
-        rankings[int(team['team_number'])] = team['hatch_avg']
+        rankings[int(team['team_number'])] = team['high_avg']
     final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
@@ -199,15 +203,13 @@ def getAutoRankings():
     for team in getAllTeamData():
         score = 0
         most_common_auto = getMostCommonAuto(team)
-        if most_common_auto == "Combination":
-            score = 6
-        elif most_common_auto == "2+ Hatches":
+        if most_common_auto == "4+ Balls High":
             score = 5
-        elif most_common_auto == "2+ Cargo":
+        elif most_common_auto == "3 Balls High":
             score = 4
-        elif most_common_auto == "1 Hatch":
+        elif most_common_auto == "4+ Balls Low":
             score = 3
-        elif most_common_auto == "1 Cargo":
+        elif most_common_auto == "3 Balls Low":
             score = 2
         elif most_common_auto == "Auto Line only":
             score = 1
@@ -222,12 +224,10 @@ def getClimbRankings():
     rankings = {}
     for team in getAllTeamData():
         score = 0
-        most_common_climb = getMostCommonHabitat(team)
-        if most_common_climb == "Carry":
-            score = 4
-        elif most_common_climb == "Highest":
+        most_common_climb = getMostCommonClimb(team)
+        if most_common_climb == "Balance":
             score = 3
-        elif most_common_climb == "Lowest":
+        elif most_common_climb == "Climb":
             score = 2
         elif most_common_climb == "Park":
             score = 1
@@ -243,15 +243,9 @@ def getReachRankings():
     for team in getAllTeamData():
         score = 0
         most_common_reach = getMostCommonReach(team)
-        if most_common_reach == "Level 3":
-            score = 5
-        elif most_common_reach == "Level 2":
-            score = 4
-        elif most_common_reach == "Level 1":
-            score = 3
-        elif most_common_reach == "Cargo":
+        if most_common_reach == "High":
             score = 2
-        elif most_common_reach == "Hatch":
+        elif most_common_reach == "Low":
             score = 1
         elif most_common_reach == "Defense":
             score = 0

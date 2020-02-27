@@ -22,16 +22,21 @@ def submitData():
         num = int(formdata['team_number'][0])
     except:
         num = 0
-    global cargo
+    global lower
     try:
-        cargo = int(formdata['cargo'][0])
+        lower = int(formdata['lower'][0])
     except:
-        cargo = 0
-    global hatch
+        lower = 0
+    global outer
     try:
-        hatch = int(formdata['hatches'][0])
+        outer = int(formdata['outer'][0])
     except:
-        hatch = 0
+        outer = 0
+    global inner
+    try:
+        inner = int(formdata['outer'][0])
+    except:
+        inner = 0
     global driver
     try:
         driver = int(formdata['driver'][0])
@@ -50,9 +55,10 @@ def submitData():
         'match': match,
         'disabled': disabled,
         'auto': str(formdata['auto'][0]),
-        'cargo': cargo,
-        'hatches': hatch,
-        'habitat': str(formdata['habitat'][0]),
+        'lower': lower,
+        'outer': outer,
+        'inner': inner,
+        'climb': str(formdata['climb'][0]),
         'type': str(formdata['type'][0]),
         'driver': driver,
         'notes': str(formdata['notes'][0]),
@@ -64,9 +70,10 @@ def submitData():
                            match=data['match'],
                            disabled=data['disabled'],
                            auto=data['auto'],
-                           cargo=data['cargo'],
-                           hatches=data['hatches'],
-                           habitat=data['habitat'],
+                           lower=data['lower'],
+                           outer=data['outer'],
+                           inner=data['inner'],
+                           climb=data['climb'],
                            type=data['type'],
                            driver=data['driver'],
                            notes=data['notes'])
@@ -86,9 +93,10 @@ def getTeamData():
                                match=[match['match'] for match in matches],
                                disabled=[match['disabled'] for match in matches],
                                auto=[match['auto'] for match in matches],
-                               cargo=[match['cargo'] for match in matches],
-                               hatches=[match['hatches'] for match in matches],
-                               habitat=[match['habitat'] for match in matches],
+                               lower=[match['lower'] for match in matches],
+                               outer=[match['outer'] for match in matches],
+                               inner=[match['inner'] for match in matches],
+                               climb=[match['climb'] for match in matches],
                                type=[match['type'] for match in matches],
                                driver=[match['driver'] for match in matches],
                                notes=[match['notes'] for match in matches])
@@ -114,10 +122,10 @@ def getRankingData():
     if config == "default":
         data = db.getAlgorithmicRankings()
         config = "algorithm"
-    elif config == "cargo":
-        data = db.getCargoRankings()
-    elif config == "hatch":
-        data = db.getHatchRankings()
+    elif config == "low":
+        data = db.getLowRankings()
+    elif config == "high":
+        data = db.getHighRankings()
     elif config == "driver":
         data = db.getDriverRankings()
     elif config == "auto":
