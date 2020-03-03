@@ -118,7 +118,7 @@ def toRankings():
 
 @app.route('/getrankings', methods=['POST'])
 def getRankingData():
-    config = dict(request.form)['config'][0]
+    config = dict(request.form)['config']
     if config == "default":
         data = db.getAlgorithmicRankings()
         config = "algorithm"

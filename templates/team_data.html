@@ -4,11 +4,50 @@
     <meta charset="UTF-8">
     <title> Team {{ number }} Data</title>
     <link rel="shortcut icon" href="{{ url_for('static',filename='images/robocon.ico') }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/submitData.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/incrementNumericLabel.js')}}"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
+
+
+    <style>
+        body {
+            background-color: #00229e;
+            background-image: url(https://prhsrobotics.com/wp-content/uploads/2014/04/bg2.png);
+            background-position: left top;
+            background-size: auto;
+            background-repeat: repeat;
+            background-attachment: scroll;
+        }
+
+        ul li {
+            display: list-item;
+            list-style-type:circle;
+        }
+
+        p, h1, h3, h4, td, b{
+            color: #FFFFFF;
+        }
+
+        button, input, select, option {
+            color: black;
+        }
+
+        #text {
+            color: #FFFFFF
+        }
+    </style>
 </head>
 <body>
 
     <h1> Team {{ number }} Data </h1>
-    <ul>
+    <ul style="color:white">
         <li> Team Number: {{ number }} </li>
         <li> Matches: {{ match }}</li>
         <li> Disabled/AFK: {{ disabled }}</li>

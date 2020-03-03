@@ -2,6 +2,7 @@ import pymongo
 from pymongo import MongoClient
 from secrets import MONGO_DB_URI
 import webbrowser
+from ranking_alg import RankingAlgorithm
 
 client = MongoClient(MONGO_DB_URI)
 db = client.get_database().robolions
@@ -9,10 +10,6 @@ db = client.get_database().robolions
 # To clear all data (a process that should be done after every event),
 # go to mlab, sign in with webmaster@prhsrobotics.com, and go to the robolions collection
 # and delete all documents in the robolions collection. Savvy?
-
-
-def getTeamLikabilityIndex(team_number):
-    pass  # TODO CONNECT GOOGLE SHEETS TO PYTHON
 
 
 def getData(team_number):
@@ -114,6 +111,10 @@ def getAllTeamData():
     return teams
 
 
+def getNumberOfTeams():
+    return db.count()
+
+
 # AHH YES the big one
 def getAlgorithmicRankings():
     ranks = {}
@@ -123,15 +124,17 @@ def getAlgorithmicRankings():
     climb = getClimbRankings()
     auto = getAutoRankings()
     reach = getReachRankings()
-    categories = [low, high, driver, climb, auto, reach]
-    for cat in categories:
-        for team in cat:
-            try:
-                ranks[team] += cat.index(team)
-            except:
-                ranks[team] = 0
-                ranks[team] += cat.index(team)
-    final = list(sorted(ranks.keys(), key=lambda team_number: ranks[team_number], reverse=False))
+    for team in getAllTeamData():
+        num = team['team_number']
+        t_low = low.index(int(num))
+        t_high = high.index(int(num))
+        t_driver = driver.index(int(num))
+        t_climb = climb.index(int(num))
+        t_auto = auto.index(int(num))
+        t_reach = reach.index(int(num))
+        algorithm = RankingAlgorithm(low=t_low, high=t_high, driver=t_driver, climb=t_climb, auto=t_auto, reach=t_reach, total_teams=getNumberOfTeams())
+        ranks[num] = algorithm.getScore()
+    final = list(sorted(ranks.keys(), key=lambda team_number: ranks[team_number], reverse=True))
     return final
 
 
@@ -198,58 +201,94 @@ def getDriverRankings():
     return final
 
 
-def getAutoRankings():
+def getClimbRankings():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            score = 0
+            most_common_climb = str(match['climb']).lower()
+            if most_common_climb == "balance":
+                score = 3
+            elif most_common_climb == "climb":
+                score = 2
+            elif most_common_climb == "park":
+                score = 1
+            elif most_common_climb == "cannot":
+                score = 0
+            data.append(score)
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"climb_avg": average}
+            }
+        )
+        data = []
     rankings = {}
     for team in getAllTeamData():
-        score = 0
-        most_common_auto = getMostCommonAuto(team)
-        if most_common_auto == "4+ Balls High":
-            score = 5
-        elif most_common_auto == "3 Balls High":
-            score = 4
-        elif most_common_auto == "4+ Balls Low":
-            score = 3
-        elif most_common_auto == "3 Balls Low":
-            score = 2
-        elif most_common_auto == "Auto Line only":
-            score = 1
-        elif most_common_auto == "Nothing":
-            score = 0
-        rankings[int(team['team_number'])] = score
+        rankings[int(team['team_number'])] = team['climb_avg']
     final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
 
-def getClimbRankings():
+def getAutoRankings():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            score = 0
+            most_common_auto = str(match['auto']).lower()
+            if most_common_auto == "4+ balls high":
+                score = 5
+            elif most_common_auto == "3 balls high":
+                score = 4
+            elif most_common_auto == "4+ balls low":
+                score = 3
+            elif most_common_auto == "3 balls low":
+                score = 2
+            elif most_common_auto == "auto line only":
+                score = 1
+            elif most_common_auto == "nothing":
+                score = 0
+            data.append(score)
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"auto_avg": average}
+            }
+        )
+        data = []
     rankings = {}
     for team in getAllTeamData():
-        score = 0
-        most_common_climb = getMostCommonClimb(team)
-        if most_common_climb == "Balance":
-            score = 3
-        elif most_common_climb == "Climb":
-            score = 2
-        elif most_common_climb == "Park":
-            score = 1
-        elif most_common_climb == "Cannot":
-            score = 0
-        rankings[int(team['team_number'])] = score
+        rankings[int(team['team_number'])] = team['auto_avg']
     final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
 
 def getReachRankings():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            score = 0
+            most_common_reach = str(match['type']).lower()
+            if most_common_reach == "high":
+                score = 2
+            elif most_common_reach == "low":
+                score = 1
+            elif most_common_reach == "defense":
+                score = 0
+            data.append(score)
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"type_avg": average}
+            }
+        )
+        data = []
     rankings = {}
     for team in getAllTeamData():
-        score = 0
-        most_common_reach = getMostCommonReach(team)
-        if most_common_reach == "High":
-            score = 2
-        elif most_common_reach == "Low":
-            score = 1
-        elif most_common_reach == "Defense":
-            score = 0
-        rankings[int(team['team_number'])] = score
+        rankings[int(team['team_number'])] = team['type_avg']
     final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
