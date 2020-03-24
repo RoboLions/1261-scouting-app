@@ -71,8 +71,8 @@
     let teamslist = {{ data }};
     let rank = 1;
     for (team in teamslist) {
-        document.writeln("<p> <input type='checkbox'>");
-        var line = "<a href=https://scouting-app-1261.com/getdata?team=" + String(teamslist[team] + ">");
+        document.writeln("<p style='color: white'> <input type='checkbox'>");
+        var line = "<a href=https://scouting-app-1261.herokuapp.com/getdata?team=" + String(teamslist[team] + ">");
         document.writeln(line);
         document.writeln(rank + ": " + teamslist[team] + "</a></p>");
         rank++;
