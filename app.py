@@ -19,27 +19,27 @@ def submitData():
         match = 0
     global num  # this process must be done with each integer that is collected
     try:
-        num = int(formdata['team_number'][0])
+        num = int(formdata['team_number'])
     except:
         num = 0
     global lower
     try:
-        lower = int(formdata['lower'][0])
+        lower = int(formdata['lower'])
     except:
         lower = 0
     global outer
     try:
-        outer = int(formdata['outer'][0])
+        outer = int(formdata['outer'])
     except:
         outer = 0
     global inner
     try:
-        inner = int(formdata['outer'][0])
+        inner = int(formdata['outer'])
     except:
         inner = 0
     global driver
     try:
-        driver = int(formdata['driver'][0])
+        driver = int(formdata['driver'])
     except:
         driver = 0
     global disabled
@@ -48,20 +48,20 @@ def submitData():
         disabled = True
     except:
         disabled = False
-    scout_name = str(formdata['scout_name'][0])
+    scout_name = str(formdata['scout_name'])
 
     data = {  # to clear things up, this data is the data of a single match
         'team_number': num,
         'match': match,
         'disabled': disabled,
-        'auto': str(formdata['auto'][0]),
+        'auto': str(formdata['auto']),
         'lower': lower,
         'outer': outer,
         'inner': inner,
-        'climb': str(formdata['climb'][0]),
-        'type': str(formdata['type'][0]),
+        'climb': str(formdata['climb']),
+        'type': str(formdata['type']),
         'driver': driver,
-        'notes': str(formdata['notes'][0]),
+        'notes': str(formdata['notes']),
         'scout_name': scout_name
     }
     db.setData(data)
@@ -118,7 +118,7 @@ def toRankings():
 
 @app.route('/getrankings', methods=['POST'])
 def getRankingData():
-    config = dict(request.form)['config'][0]
+    config = dict(request.form)['config']
     if config == "default":
         data = db.getAlgorithmicRankings()
         config = "algorithm"
