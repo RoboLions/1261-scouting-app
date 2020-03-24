@@ -19,27 +19,27 @@ def submitData():
         match = 0
     global num  # this process must be done with each integer that is collected
     try:
-        num = int(formdata['team_number'])
+        num = int(formdata['team_number'][0])
     except:
         num = 0
     global lower
     try:
-        lower = int(formdata['lower'])
+        lower = int(formdata['lower'][0])
     except:
         lower = 0
     global outer
     try:
-        outer = int(formdata['outer'])
+        outer = int(formdata['outer'][0])
     except:
         outer = 0
     global inner
     try:
-        inner = int(formdata['outer'])
+        inner = int(formdata['outer'][0])
     except:
         inner = 0
     global driver
     try:
-        driver = int(formdata['driver'])
+        driver = int(formdata['driver'][0])
     except:
         driver = 0
     global disabled
@@ -48,20 +48,20 @@ def submitData():
         disabled = True
     except:
         disabled = False
-    scout_name = str(formdata['scout_name'])
+    scout_name = str(formdata['scout_name'][0])
 
     data = {  # to clear things up, this data is the data of a single match
         'team_number': num,
         'match': match,
         'disabled': disabled,
-        'auto': str(formdata['auto']),
+        'auto': str(formdata['auto'][0]),
         'lower': lower,
         'outer': outer,
         'inner': inner,
-        'climb': str(formdata['climb']),
-        'type': str(formdata['type']),
+        'climb': str(formdata['climb'][0]),
+        'type': str(formdata['type'][0]),
         'driver': driver,
-        'notes': str(formdata['notes']),
+        'notes': str(formdata['notes'][0]),
         'scout_name': scout_name
     }
     db.setData(data)

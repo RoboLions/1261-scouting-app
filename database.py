@@ -239,11 +239,11 @@ def getAutoRankings():
             most_common_auto = str(match['auto']).lower()
             if most_common_auto == "4+ balls high":
                 score = 5
-            elif most_common_auto == "3 balls high":
+            elif most_common_auto == "1-3 balls high":
                 score = 4
             elif most_common_auto == "4+ balls low":
                 score = 3
-            elif most_common_auto == "3 balls low":
+            elif most_common_auto == "1-3 balls low":
                 score = 2
             elif most_common_auto == "auto line only":
                 score = 1
