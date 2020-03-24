@@ -72,7 +72,9 @@
     let rank = 1;
     for (team in teamslist) {
         document.writeln("<p> <input type='checkbox'>");
-        document.writeln(rank + ": " + teamslist[team] + "</p>");
+        var line = "<a href=https://scouting-app-1261.com/getdata?team=" + String(teamslist[team] + ">");
+        document.writeln(line);
+        document.writeln(rank + ": " + teamslist[team] + "</a></p>");
         rank++;
     }
 
