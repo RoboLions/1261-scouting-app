@@ -34,7 +34,7 @@ def submitData():
         outer = 0
     global inner
     try:
-        inner = int(formdata['outer'][0])
+        inner = int(formdata['inner'][0])
     except:
         inner = 0
     global driver
