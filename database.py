@@ -294,4 +294,4 @@ def getReachRankings():
 
 
 def printDataInBrowser(data_dict):
-    webbrowser.open_new_tab('https://www.google.com/?q=' + str(data_dict))
+    webbrowser.open_new_tab('https://www.google.com/?q=' + str(data_dict))  # yes
