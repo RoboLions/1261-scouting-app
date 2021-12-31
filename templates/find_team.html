@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find A Team</title>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/robocon.ico') }}">
+</head>
+<body>
+    <h1> Find a Team's Data by Number:</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        Enter a Team Number: {{ form.team_number() }}
+        {{ form.submit() }}
+    </form>
+</body>
+</html>

@@ -1,68 +1,42 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 import database as db
+from forms import InfiniteRechargeForm, FindTeamForm
+import os
 
 app = Flask(__name__)
 
+SECRET_KEY = os.urandom(32)
+app.config['SECRET_KEY'] = SECRET_KEY
 
 @app.route('/')
 def main():
-    return render_template('index.html')  # the main page
+    form = InfiniteRechargeForm()
+    return render_template('index.html', form=form)  # the main page
 
 
 @app.route('/submitdata', methods=['POST']) # ONLY the post responses will be filtered here and dealt with here
 def submitData():
-    formdata = dict(request.form)
-    global match
+    data = dict(request.form)
+    team = int(data["team_number"])
+    disabled = None
     try:
-        match = int(formdata['match'][0])
-    except:
-        match = 0
-    global num  # this process must be done with each integer that is collected
-    try:
-        num = int(formdata['team_number'][0])
-    except:
-        num = 0
-    global lower
-    try:
-        lower = int(formdata['lower'][0])
-    except:
-        lower = 0
-    global outer
-    try:
-        outer = int(formdata['outer'][0])
-    except:
-        outer = 0
-    global inner
-    try:
-        inner = int(formdata['inner'][0])
-    except:
-        inner = 0
-    global driver
-    try:
-        driver = int(formdata['driver'][0])
-    except:
-        driver = 0
-    global disabled
-    try:
-        throwaway_var = formdata['disabled']
+        throwaway_var = data["disabled"]
         disabled = True
-    except:
+    except KeyError:
         disabled = False
-    scout_name = str(formdata['scout_name'][0])
 
     data = {  # to clear things up, this data is the data of a single match
-        'team_number': num,
-        'match': match,
-        'disabled': disabled,
-        'auto': str(formdata['auto'][0]),
-        'lower': lower,
-        'outer': outer,
-        'inner': inner,
-        'climb': str(formdata['climb'][0]),
-        'type': str(formdata['type'][0]),
-        'driver': driver,
-        'notes': str(formdata['notes'][0]),
-        'scout_name': scout_name
+        "team_number": team,
+        "match": int(data["match"]),
+        "disabled": disabled,
+        "auto": int(data["auto"]),
+        "lower": int(data["lower"]),
+        "outer": int(data["outer"]),
+        "inner": int(data["inner"]),
+        "climb": int(data["climb"]),
+        "type": int(data["type"]),
+        "driver": int(data["driver"]),
+        "notes": data["notes"],
     }
     db.setData(data)
     return render_template('confirm.html',
@@ -103,12 +77,6 @@ def getTeamData():
     except KeyError:
         return """ This team has not been scouted yet! Get on that! """
 
-
-@app.route('/exportdata', methods=["POST"])
-def exportDataAsCSV():
-    return ''' Ah yes '''
-
-
 @app.route('/rankings')
 def toRankings():
     return render_template('rankings.html',
@@ -118,7 +86,7 @@ def toRankings():
 
 @app.route('/getrankings', methods=['POST'])
 def getRankingData():
-    config = dict(request.form)['config'][0]
+    config = dict(request.form)['config']
     if config == "default":
         data = db.getAlgorithmicRankings()
         config = "algorithm"
@@ -140,28 +108,13 @@ def getRankingData():
                            name=str(config).capitalize(),
                            data=data)
 
-
-@app.route('/match', methods=['POST'])
-def getMatchData():
-    allData = db.getAllTeamData()
-    '''
-    if matches is None or matches == []:  # if there is no match data in the list 'matches'
-        return """ This team has not been scouted yet! Get on that! """
-    try:
-        return render_template('match.html',
-                               number=team_number,
-                               match=[match['match'] for match in matches],
-                               disabled=[match['disabled'] for match in matches],
-                               auto=[match['auto'] for match in matches],
-                               cargo=[match['cargo'] for match in matches],
-                               hatches=[match['hatches'] for match in matches],
-                               habitat=[match['habitat'] for match in matches],
-                               type=[match['type'] for match in matches],
-                               driver=[match['driver'] for match in matches],
-                               notes=[match['notes'] for match in matches])
-    except KeyError:
-        return """ This team has not been scouted yet! Get on that! """
-    '''
+@app.route('/findteam', methods=["GET", "POST"])
+def findTeam():
+    form = FindTeamForm()
+    if form.is_submitted():
+        data = dict(request.form)
+        return redirect(url_for("getTeamData", team=int(data["team_number"])))
+    return render_template("find_team.html", form=form)
 
 if __name__ == '__main__':
     app.run()

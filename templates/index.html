@@ -43,11 +43,18 @@
 
 <body class="home blog custom-background">
 
+<ul style="display: inline-block; width:100%">
+    <li class="robonav"><a href="{{ url_for('main') }}">Home</a></li>
+    <li class="robonav"><a href="{{ url_for('toRankings') }}">Rankings</a></li>
+    <li class="robonav"><a href="{{ url_for('findTeam') }}">Find Team's Data</a></li>
+</ul>
+
+<hr>
 <h1 align="center" style="color:#FFFFFF;"> 1261 Robo Lions Scouting App </h1>
 <hr>
 <div class="col-md-10 col-md-offset-1 text-center">
-    <h4 align="center" style="color:#FFFFFF"> Welcome to the Peachtree Ridge HS Robo Lions Scouting App! This site is now in a secure Final Version.</h4>
-    <h4 align="center" style="color:#FFFFFF"> If you experience any errors during competition, immediately notify Tejas. Have fun!</h4>
+    <h4 align="center" style="color:#FFFFFF"> Welcome to the Peachtree Ridge HS Robo Lions Scouting App!</h4>
+    <h4 align="center" style="color:#FFFFFF"> If you experience any errors during competition, immediately notify a lead. Have fun!</h4>
 </div>
 
 <section id="descripton" class="section descripton">
@@ -64,127 +71,101 @@
                             }
                         </script>
 
-                        <form name="scoutform" action="{{ url_for('submitData') }}" method="post">
-
-                        <table border=1>
-                            <tr>
-                                <td>
-                                    Team Number
-                                </td>
-                                <td>
-                                    <input type='number' name='team_number'>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Match Number
-                                </td>
-                                <td>
-                                    <input type='number' name='match'>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Disabled/AFK
-                                </td>
-                                <td>
-                                    <input type="checkbox" name='disabled'>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Autonomous
-                                </td>
-                                <td>
-                                    <select name="auto">
-                                        <option value="1-3 Balls Low"> 1-3 Balls in Lower Port </option>
-                                        <option value="4+ Balls Low"> 4+ Balls in Lower Port </option>
-                                        <option value="1-3 Balls High"> 1-3 Balls in High Port </option>
-                                        <option value="4+ Balls High"> 4+ Balls in High Port </option>
-                                        <option value="Auto Line only"> Only crossed Auto Line </option>
-                                        <option value="Nothing"> None of the above/Stayed motionless</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Lower Port
-                                </td>
-                                <td>
-                                    <input type="number" name="lower">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Outer Port
-                                </td>
-                                <td>
-                                    <input type="number" name="outer">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Inner Port
-                                </td>
-                                <td>
-                                    <input type="number" name="inner">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Climb
-                                </td>
-                                <td>
-                                    <select name="climb">
-                                        <option value="Balance"> Is Climbed and Balanced </option>
-                                        <option value="Climb"> Climbs but doesn't balance </option>
-                                        <option value="Park">Drives to inside Rendezvous Point</option>
-                                        <option value="Cannot">Did not go to any platforms</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Robot's Reach
-                                </td>
-                                <td>
-                                    <select name="type">
-                                        <option value="High">Uses shooter to shoot balls high</option>
-                                        <option value="Low">Can dump balls low only</option>
-                                        <option value="Defense"> Can't hold any game pieces </option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Rate Driver Skill
-                                </td>
-                                <td>
-                                    <div style="position: relative">
-                                    <p style="float: left; color:#FFFFFF;">Bad</p>
-                                    <p style="float: right; color:#FFFFFF;">Good</p>
-                                    <input style="float: left" type="range" name="driver">
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                        <br>
-                            <h3>
-                                <b>
-                                    Notes
-                                </b>
-                            </h3>
-                            <textarea name="notes" rows=5></textarea>
-                        <br>
-                        <br>
-                            <p style="color:#FFFFFF;">Your Name</p>
-                            <textarea name="scout_name" rows=1"></textarea>
-                        <br>
-                        <br>
-                        <br>
-                            <input type="submit">
-
-                        </form>
+                        <form action="{{ url_for('submitData') }}" method="post">
+        {{ form.hidden_tag() }}
+				<table>
+					<tr>
+						<td>
+							Team Number
+						</td>
+						<td>
+							{{ form.team_number() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Match Number
+						</td>
+						<td>
+							{{ form.match() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Disabled/AFK
+						</td>
+						<td>
+							{{ form.disabled() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Autonomous
+						</td>
+						<td>
+							{{ form.auto() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Lower Port
+						</td>
+						<td>
+							{{ form.lower() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Outer Port
+						</td>
+						<td>
+							{{ form.outer() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Inner Port
+						</td>
+						<td>
+							{{ form.inner() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Climb
+						</td>
+						<td>
+							{{ form.climb() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Robot's Reach
+						</td>
+						<td>
+							{{ form.type() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Rate Driver Skill
+						</td>
+						<td>
+							{{ form.driver() }}
+						</td>
+					</tr>
+				</table>
+				<br>
+            <h3>
+                <b>
+                    Notes
+                </b>
+            </h3>
+            {{ form.notes(rows=5) }}
+        <br>
+        <br>
+            {{ form.submit() }}
+        </form>
 
                     </div>
 

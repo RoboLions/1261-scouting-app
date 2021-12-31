@@ -1,8 +1,9 @@
 import pymongo
 from pymongo import MongoClient
-from secrets import MONGO_DB_URI
 import webbrowser
 from ranking_alg import RankingAlgorithm
+
+MONGO_DB_URI = "mongodb+srv://scoutingapp:robo1261Lions@robolions.k3nbx.mongodb.net/robolions?retryWrites=true&w=majority"
 
 client = MongoClient(MONGO_DB_URI)
 db = client.get_database().robolions
@@ -92,7 +93,6 @@ def setData(data_dict):
                 "type":data_dict['type'],
                 "driver":data_dict['driver'],
                 "notes": data_dict['notes'],
-                "scout_name": data_dict['scout_name']
                 }
             }
         }
@@ -112,7 +112,7 @@ def getAllTeamData():
 
 
 def getNumberOfTeams():
-    return db.count()
+    return db.count_documents({})
 
 
 # AHH YES the big one

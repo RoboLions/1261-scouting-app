@@ -42,10 +42,23 @@
         #text {
             color: #FFFFFF
         }
+
+        .robonav {
+            display: inline-block;
+            color: white;
+            text-decoration: underline;
+            margin-right: 20px;
+        }
     </style>
 </head>
 <body>
+    <ul style="display: inline-block; width:100%">
+    <li class="robonav"><a href="{{ url_for('main') }}">Home</a></li>
+    <li class="robonav"><a href="{{ url_for('toRankings') }}">Rankings</a></li>
+    <li class="robonav"><a href="{{ url_for('findTeam') }}">Find Team's Data</a></li>
+</ul>
 
+<hr>
     <h1> Team {{ number }} Data </h1>
     <ul style="color:white">
         <li> Team Number: {{ number }} </li>

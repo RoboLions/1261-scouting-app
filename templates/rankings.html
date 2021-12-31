@@ -41,11 +41,26 @@
         #text {
             color: #FFFFFF
         }
+
+        .robonav {
+            display: inline-block;
+            color: white;
+            text-decoration: underline;
+            margin-right: 20px;
+        }
     </style>
 
 </head>
 
 <body>
+<ul style="display: inline-block; width:100%">
+    <li class="robonav"><a href="{{ url_for('main') }}">Home</a></li>
+    <li class="robonav"><a href="{{ url_for('toRankings') }}">Rankings</a></li>
+    <li class="robonav"><a href="{{ url_for('findTeam') }}">Find Team's Data</a></li>
+</ul>
+
+<hr>
+
 <h1> Rankings </h1>
 <h4> Based on an algorithm that is tweaked every year, this page will list the rankings of which teams
  we should pick. Alternatively, you can rank teams based on any of the numerical data types </h4>
@@ -72,7 +87,7 @@
     let rank = 1;
     for (team in teamslist) {
         document.writeln("<p style='color: white'> <input type='checkbox'>");
-        var line = "<a style='color: white' href=https://scouting-app-1261.herokuapp.com/getdata?team=" + String(teamslist[team] + ">");
+        var line = "<a style='color: white' href=https://roarscout.herokuapp.com/getdata?team=" + String(teamslist[team] + ">");
         document.writeln(line);
         document.writeln(rank + ": " + teamslist[team] + "</a></p>");
         rank++;
