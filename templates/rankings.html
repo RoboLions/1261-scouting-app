@@ -69,10 +69,11 @@
 <form action="{{ url_for('getRankingData') }}" method="post">
     <select name="config">
         <option value="default"> Algorithmic Ranking System </option>
-        <option value="low"> Rank by Low Port Scoring </option>
-        <option value="high"> Rank by High Port Scoring </option>
+        <option value="auto_upper"> Rank by Auto Upper Ball Scoring </option>
+        <option value="auto_lower"> Rank by Auto Lower Ball Scoring </option>
+        <option value="teleop_upper"> Rank by Teleop Upper Ball Scoring </option>
+        <option value="teleop_lower"> Rank by Teleop Lower Ball Scoring </option>
         <option value="driver"> Rank by Driver Skill </option>
-        <option value="auto"> Rank by Autonomous </option>
         <option value="reach"> Rank by Robot's Reach </option>
         <option value="climb"> Rank by Climb </option>
     </select>

@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect
 import database as db
-from forms import InfiniteRechargeForm, FindTeamForm
+from forms import RapidReactForm, FindTeamForm
 import os
 
 app = Flask(__name__)
@@ -8,9 +8,10 @@ app = Flask(__name__)
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
 
+
 @app.route('/')
 def main():
-    form = InfiniteRechargeForm()
+    form = RapidReactForm()
     return render_template('index.html', form=form)  # the main page
 
 
@@ -24,17 +25,23 @@ def submitData():
         disabled = True
     except KeyError:
         disabled = False
-
+    crossed_tarmac = None
+    try:
+        throwaway_var2 = data["crossed_tarmac"]
+        crossed_tarmac = True
+    except KeyError:
+        crossed_tarmac = False
     data = {  # to clear things up, this data is the data of a single match
         "team_number": team,
         "match": int(data["match"]),
         "disabled": disabled,
-        "auto": int(data["auto"]),
-        "lower": int(data["lower"]),
-        "outer": int(data["outer"]),
-        "inner": int(data["inner"]),
-        "climb": int(data["climb"]),
-        "type": int(data["type"]),
+        "crossed_tarmac": crossed_tarmac,
+        "auto_upper": int(data["auto_upper"]),
+        "auto_lower": int(data["auto_lower"]),
+        "teleop_upper": int(data["teleop_upper"]),
+        "teleop_lower": int(data["teleop_lower"]),
+        "climb": data["climb"],
+        "type": data["type"],
         "driver": int(data["driver"]),
         "notes": data["notes"],
     }
@@ -43,10 +50,11 @@ def submitData():
                            number=data['team_number'],
                            match=data['match'],
                            disabled=data['disabled'],
-                           auto=data['auto'],
-                           lower=data['lower'],
-                           outer=data['outer'],
-                           inner=data['inner'],
+                           crossed_tarmac=data['crossed_tarmac'],
+                           auto_upper=data['auto_upper'],
+                           auto_lower=data['auto_lower'],
+                           teleop_upper=data['teleop_upper'],
+                           teleop_lower=data['teleop_lower'],
                            climb=data['climb'],
                            type=data['type'],
                            driver=data['driver'],
@@ -66,10 +74,11 @@ def getTeamData():
                                number=team_number,
                                match=[match['match'] for match in matches],
                                disabled=[match['disabled'] for match in matches],
-                               auto=[match['auto'] for match in matches],
-                               lower=[match['lower'] for match in matches],
-                               outer=[match['outer'] for match in matches],
-                               inner=[match['inner'] for match in matches],
+                               crossed_tarmac=[match['crossed_tarmac'] for match in matches],
+                               auto_upper=[match['auto_upper'] for match in matches],
+                               auto_lower=[match['auto_lower'] for match in matches],
+                               teleop_upper=[match['teleop_upper'] for match in matches],
+                               teleop_lower=[match['teleop_lower'] for match in matches],
                                climb=[match['climb'] for match in matches],
                                type=[match['type'] for match in matches],
                                driver=[match['driver'] for match in matches],
@@ -80,7 +89,7 @@ def getTeamData():
 @app.route('/rankings')
 def toRankings():
     return render_template('rankings.html',
-                           name="algorithm",
+                           name="Algorithm",
                            data=db.getAlgorithmicRankings())
 
 
@@ -90,14 +99,16 @@ def getRankingData():
     if config == "default":
         data = db.getAlgorithmicRankings()
         config = "algorithm"
-    elif config == "low":
-        data = db.getLowRankings()
-    elif config == "high":
-        data = db.getHighRankings()
+    elif config == "auto_upper":
+        data = db.getAutoUpperRankings()
+    elif config == "auto_lower":
+        data = db.getAutoLowerRankings()
+    elif config == "teleop_upper":
+        data = db.getTeleopUpperRankings()
+    elif config == "teleop_lower":
+        data = db.getTeleopLowerRankings()
     elif config == "driver":
         data = db.getDriverRankings()
-    elif config == "auto":
-        data = db.getAutoRankings()
     elif config == "reach":
         data = db.getReachRankings()
     elif config == "climb":
