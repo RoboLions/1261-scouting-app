@@ -9,13 +9,13 @@ class RankingAlgorithm:
         self.climb = climb
         self.reach = reach
         self.weights = {
-            'au': 0.15,
-            'al': 0.01,
-            'tu': 0.05,
-            'tl': 0.05,
-            'driver': 0.05,
-            'climb': 0.2,
-            'reach': 0.1
+            'au': 0.12,
+            'al': 0.07,
+            'tu': 0.18,
+            'tl': 0.13,
+            'driver': 0.04,
+            'climb': 0.40,
+            'reach': 0.06
         }
 
     def getScore(self):
