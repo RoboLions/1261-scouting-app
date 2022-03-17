@@ -53,7 +53,7 @@ class RapidReactForm(FlaskForm):
     ])
     type = SelectField("Robot's Reach", choices=[
         ("shoots high from launchpad", "Can shoot balls into upper hub from launch pad"),
-        ("shoots high and low", "Can shoot balls into both the upper and lower hub"),
+        ("shoots high and low", "Can shoot balls into either the upper or lower hub"),
         ("shoots high", "Can shoot balls into upper hub only"),
         ("shoots low", "Can shoot balls into lower hub only"),
         ("cannot shoot", "Cannot hold game pieces")
