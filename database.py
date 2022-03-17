@@ -278,6 +278,8 @@ def getReachRankings():
             score = 0
             most_common_reach = str(match['type']).lower()
             if most_common_reach == "shoots high from launchpad":
+                score = 4
+            elif most_common_reach == "shoots high and low":
                 score = 3
             elif most_common_reach == "shoots high":
                 score = 2
