@@ -45,18 +45,18 @@ class RapidReactForm(FlaskForm):
     teleop_upper = IntegerField("Teleop - Upper", validators=[DataRequired()])
     teleop_lower = IntegerField("Teleop - Lower", validators=[DataRequired()])
     climb = SelectField("Climb", choices=[
-        ("traverse", "Traverse Rung"),
-        ("high", "High Rung"),
-        ("mid", "Mid Rung"),
+        ("cannot", "Did not Climb"),
         ("low", "Low Rung"),
-        ("cannot", "Did not Climb")
+        ("mid", "Mid Rung"),
+        ("high", "High Rung"),
+        ("traverse", "Traverse Rung")
     ])
     type = SelectField("Robot's Reach", choices=[
-        ("shoots high from launchpad", "Can shoot balls into upper hub from launch pad"),
-        ("shoots high and low", "Can shoot balls into either the upper or lower hub"),
-        ("shoots high", "Can shoot balls into upper hub only"),
+        ("cannot shoot", "Cannot hold game pieces"),
         ("shoots low", "Can shoot balls into lower hub only"),
-        ("cannot shoot", "Cannot hold game pieces")
+        ("shoots high", "Can shoot balls into upper hub only"),
+        ("shoots high and low", "Can shoot balls into either the upper or lower hub"),
+        ("shoots high from launchpad", "Can shoot balls into upper hub from launch pad")
     ])
     driver = SelectField("Rate Driver Skill", choices=[
         (5, "Very Good"),
@@ -65,6 +65,7 @@ class RapidReactForm(FlaskForm):
         (2, "Bad"),
         (1, "Very Bad")
     ])
+    defense = BooleanField("Played Defense")
     notes = StringField("Notes", validators=[DataRequired()], widget=TextArea())
     submit = SubmitField("Submit")
 

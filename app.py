@@ -31,6 +31,12 @@ def submitData():
         crossed_tarmac = True
     except KeyError:
         crossed_tarmac = False
+    defense = None
+    try:
+        throwaway_var3 = data["defense"]
+        defense = True
+    except KeyError:
+        defense = False
     data = {  # to clear things up, this data is the data of a single match
         "team_number": team,
         "match": int(data["match"]),
@@ -43,6 +49,7 @@ def submitData():
         "climb": data["climb"],
         "type": data["type"],
         "driver": int(data["driver"]),
+        "defense": defense,
         "notes": data["notes"],
     }
     db.setData(data)
@@ -58,6 +65,7 @@ def submitData():
                            climb=data['climb'],
                            type=data['type'],
                            driver=data['driver'],
+                           defense=data['defense'],
                            notes=data['notes'])
 
 
@@ -82,6 +90,7 @@ def getTeamData():
                                climb=[match['climb'] for match in matches],
                                type=[match['type'] for match in matches],
                                driver=[match['driver'] for match in matches],
+                               defense=[match['defense'] for match in matches],
                                notes=[match['notes'] for match in matches])
     except KeyError:
         return """ This team has not been scouted yet! Get on that! """
