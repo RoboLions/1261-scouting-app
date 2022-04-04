@@ -50,6 +50,10 @@ def submitData():
         "type": data["type"],
         "driver": int(data["driver"]),
         "defense": defense,
+        "position": data["position"],
+        "speed": data["speed"],
+        "height": data["height"],
+        "accuracy": int(data["accuracy"]),
         "notes": data["notes"],
     }
     db.setData(data)
@@ -63,9 +67,13 @@ def submitData():
                            teleop_upper=data['teleop_upper'],
                            teleop_lower=data['teleop_lower'],
                            climb=data['climb'],
-                           type=data['type'],
-                           driver=data['driver'],
                            defense=data['defense'],
+                           type=data['type'],
+                           position=data['position'],
+                           speed=data['speed'],
+                           height=data['height'],
+                           driver=data['driver'],
+                           accuracy=data['accuracy'],
                            notes=data['notes'])
 
 
@@ -91,6 +99,10 @@ def getTeamData():
                                type=[match['type'] for match in matches],
                                driver=[match['driver'] for match in matches],
                                defense=[match['defense'] for match in matches],
+                               position=[match['position'] for match in matches],
+                               speed=[match['speed'] for match in matches],
+                               height=[match['height'] for match in matches],
+                               accuracy=[match['accuracy'] for match in matches],
                                notes=[match['notes'] for match in matches])
     except KeyError:
         return """ This team has not been scouted yet! Get on that! """

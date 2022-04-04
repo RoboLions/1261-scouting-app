@@ -94,6 +94,10 @@ def setData(data_dict):
                     "type":data_dict['type'],
                     "driver":data_dict['driver'],
                     "defense":data_dict['defense'],
+                    "position":data_dict['position'],
+                    "speed":data_dict['speed'],
+                    "height":data_dict['height'],
+                    "accuracy":data_dict['accuracy'],
                     "notes": data_dict['notes'],
                 }
             }

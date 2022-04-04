@@ -51,12 +51,29 @@ class RapidReactForm(FlaskForm):
         ("high", "High Rung"),
         ("traverse", "Traverse Rung")
     ])
-    type = SelectField("Robot's Reach", choices=[
+    defense = BooleanField("Played Defense")
+    type = SelectField("Type of Shooter", choices=[
         ("cannot shoot", "Cannot hold game pieces"),
         ("shoots low", "Can shoot balls into lower hub only"),
         ("shoots high", "Can shoot balls into upper hub only"),
-        ("shoots high and low", "Can shoot balls into either the upper or lower hub"),
-        ("shoots high from launchpad", "Can shoot balls into upper hub from launch pad")
+        ("shoots high and low", "Can shoot balls into either the upper or lower hub")
+    ])
+    position = SelectField("Shooting Position", choices=[
+        ("hub", "Touching the Lower Hub"),
+        ("tarmac", "Inside of the Tarmac"),
+        ("outside tarmac", "Outside of the Tarmac"),
+        ("launch pad", "Touching the Launchpad"),
+        ("anywhere","Anywhere on the Field")
+    ])
+    speed = SelectField("Robot's Speed", choices=[
+        ("very slow", "Drives Very Slow"),
+        ("slow", "Drives Slow"),
+        ("fast", "Drives Fast"),
+        ("very fast", "Drives Very Fast")
+    ])
+    height = SelectField("Robot's Height", choices=[
+       ("short", "Looks short"),
+       ("tall", "Looks tall") 
     ])
     driver = SelectField("Rate Driver Skill", choices=[
         (5, "Very Good"),
@@ -65,7 +82,13 @@ class RapidReactForm(FlaskForm):
         (2, "Bad"),
         (1, "Very Bad")
     ])
-    defense = BooleanField("Played Defense")
+    accuracy = SelectField("Rate Robot Accuracy", choices=[
+        (1, "Always Missed Shots"),
+        (2, "Frequently Missed Shots"),
+        (3, "Sometimes Missed Shots"),
+        (4, "Rarely Missed Shots"),
+        (5, "Never Missed Shots")
+    ])
     notes = StringField("Notes", validators=[DataRequired()], widget=TextArea())
     submit = SubmitField("Submit")
 
