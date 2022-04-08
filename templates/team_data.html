@@ -87,9 +87,9 @@
             <script>
                 let noteslist = {{ notes }};
                 for (notes in noteslist) {
-                    var line = "<a style='color: white' href=https://pumbascout.herokuapp.com/getdata?team=" + String(noteslist[notes] + ">");
-                    document.writeln(line);
-                    document.writeln(noteslist[notes] + "</a></p>");
+                    let li = document.createElement("li");
+                    li.innerText = item;
+                    list.appendChild(li);
                 }
             </script>
             </ul>
