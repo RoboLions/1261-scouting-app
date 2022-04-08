@@ -85,11 +85,11 @@
         <li> Notes: </li>
             <ul>
             <script>
-                let noteslist = {{ data }};
+                let noteslist = {{ notes }};
                 for (notes in noteslist) {
-                    var line = "<a style='color: white' href=https://pumbascout.herokuapp.com/getdata?team=" + String(noteslist[matches['notes']] + ">");
+                    var line = "<a style='color: white' href=https://pumbascout.herokuapp.com/getdata?team=" + String(noteslist[notes] + ">");
                     document.writeln(line);
-                    document.writeln(noteslist[matches['notes']] + "</a></p>");
+                    document.writeln(noteslist[notes] + "</a></p>");
                 }
             </script>
             </ul>
