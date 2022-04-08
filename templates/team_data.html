@@ -83,7 +83,7 @@
         <li> Robot Accuracy: {{ accuracy }} / 5</li>
         <!-- <li> Notes: {{ notes }}</li> -->
         <li> Notes: </li>
-            <ul id="notesList"></ul>
+            <ul id="notesList">
             <script>
                 let data = {{ notes }};
                 let list = document.getElementById("notesList");
@@ -93,6 +93,7 @@
                     list.appendChild(li);
                 });
             </script>
+            </ul>
     </ul>
 </body>
 </html>
