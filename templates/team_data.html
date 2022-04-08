@@ -82,11 +82,12 @@
         <li> Driver Skill: {{ driver }} / 5</li>
         <li> Robot Accuracy: {{ accuracy }} / 5</li>
         <li> Notes: </li>
-            <ul>
-                {% for match in matches %} 
-                    <li>{{ match.notes }}</li>
-                {% endfor %}
-            </ul>
+            <script>
+                let noteslist = {{ notes }};
+                for (notes in noteslist) {
+                    document.writeln("<a style='color: white' href=https://pumbascout.herokuapp.com/getdata?team=" + String(teamslist[team] + ">"))
+                }
+            </script>
     </ul>
 </body>
 </html>
