@@ -82,11 +82,11 @@
         <li> Driver Skill: {{ driver }} / 5</li>
         <li> Robot Accuracy: {{ accuracy }} / 5</li>
         <li> Notes: </li>
-        {% for match in matches %} 
             <ul>
-                <li>{{ match.notes }}</li>
+                {% for match in matches %} 
+                    <li>{{ match.notes }}</li>
+                {% endfor %}
             </ul>
-        {% endfor %}
     </ul>
 </body>
 </html>
