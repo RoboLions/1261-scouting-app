@@ -34,6 +34,7 @@
         li {
             margin-bottom: 10px;
         }
+
         p, h1, h3, h4, td, b{
             color: #FFFFFF;
         }
@@ -80,7 +81,12 @@
         <li> Robot's Height: {{ height }}</li>
         <li> Driver Skill: {{ driver }} / 5</li>
         <li> Robot Accuracy: {{ accuracy }} / 5</li>
-        <li> Notes: {{ notes }} </li>
+        <li> Notes: </li>
+        {% for match in matches %} 
+            <ul>
+                <li>{{ match.notes }}</li>
+            </ul>
+        {% endfor %}
     </ul>
 </body>
 </html>
