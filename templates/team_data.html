@@ -81,7 +81,18 @@
         <li> Robot's Height: {{ height }}</li>
         <li> Driver Skill: {{ driver }} / 5</li>
         <li> Robot Accuracy: {{ accuracy }} / 5</li>
-        <li> Notes: {{ notes }}</li>
+        <!-- <li> Notes: {{ notes }}</li> -->
+        <li> Notes: </li>
+            <ul id="noteslist"></ul>
+            <script>
+                let data = {{ notes }};
+                let list = document.getElementById("notesList");
+                data.forEach((item) => {
+                    let li = document.createElement("li");
+                    li.innerText = item;
+                    list.appendChild(li);
+                });
+            </script>
     </ul>
 </body>
 </html>
