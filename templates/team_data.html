@@ -81,13 +81,7 @@
         <li> Robot's Height: {{ height }}</li>
         <li> Driver Skill: {{ driver }} / 5</li>
         <li> Robot Accuracy: {{ accuracy }} / 5</li>
-        <li> Notes: </li>
-            <script>
-                let noteslist = {{ notes }};
-                for (notes in noteslist) {
-                    document.writeln("<a style='color: white' href=https://pumbascout.herokuapp.com/getdata?team=" + String(noteslist[notes] + ">"))
-                }
-            </script>
+        <li> Notes: {{ notes }}</li>
     </ul>
 </body>
 </html>
