@@ -83,15 +83,14 @@
         <li> Robot Accuracy: {{ accuracy }} / 5</li>
         <!-- <li> Notes: {{ notes }}</li> -->
         <li> Notes: </li>
-            <ul id="notesList">
+            <ul>
             <script>
-                let data = {{ notes }};
-                let list = document.getElementById("notesList");
-                data.forEach((item) => {
-                    let li = document.createElement("li");
-                    li.innerText = item;
-                    list.appendChild(li);
-                });
+                let noteslist = {{ data }};
+                for (notes in noteslist) {
+                    var line = "<a style='color: white' href=https://pumbascout.herokuapp.com/getdata?team=" + String(noteslist[matches['notes']] + ">");
+                    document.writeln(line);
+                    document.writeln(noteslist[matches['notes']] + "</a></p>");
+                }
             </script>
             </ul>
     </ul>
