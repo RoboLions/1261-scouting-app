@@ -6,7 +6,7 @@ from ranking_alg import RankingAlgorithm
 MONGO_DB_URI = "mongodb+srv://scoutingapp:robo1261Lions@robolions.k3nbx.mongodb.net/robolions?retryWrites=true&w=majority"
 
 client = MongoClient(MONGO_DB_URI)
-db = client.get_database().albany
+db = client.get_database().state
 
 # To clear all data (a process that should be done after every event),
 # go to mlab, sign in with webmaster@prhsrobotics.com, and go to the robolions collection
