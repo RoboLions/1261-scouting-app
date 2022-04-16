@@ -63,7 +63,6 @@ class RapidReactForm(FlaskForm):
         ("hub", "Touching the Lower Hub"),
         ("tarmac", "Inside of the Tarmac"),
         ("outside tarmac", "Outside of the Tarmac"),
-        ("launch pad", "Touching the Launchpad"),
         ("anywhere","Anywhere on the Field")
     ])
     speed = SelectField("Robot's Speed", choices=[
