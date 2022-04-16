@@ -47,13 +47,6 @@ class RapidReactForm(FlaskForm):
     auto_lower = IntegerField("Auto - Lower", validators=[DataRequired()])
     teleop_upper = IntegerField("Teleop - Upper", validators=[DataRequired()])
     teleop_lower = IntegerField("Teleop - Lower", validators=[DataRequired()])
-    climb = SelectField("Climb", choices=[
-        ("cannot", "Did not Climb"),
-        ("low", "Low Rung"),
-        ("mid", "Mid Rung"),
-        ("high", "High Rung"),
-        ("traverse", "Traverse Rung")
-    ])
     defense = SelectField("Defense", choices=[
         ("no defense", "No defense"),
         ("bad defense", "Bad defense"),
@@ -91,6 +84,19 @@ class RapidReactForm(FlaskForm):
         (3, "Sometimes Missed Shots"),
         (4, "Rarely Missed Shots"),
         (5, "Never Missed Shots")
+    ])
+    climb = SelectField("Climb", choices=[
+        ("cannot", "Did not Climb"),
+        ("low", "Low Rung"),
+        ("mid", "Mid Rung"),
+        ("high", "High Rung"),
+        ("traverse", "Traverse Rung")
+    ])
+    climb_time = SelectField("Climb Time", choices=[
+        ("less than 10s", "Less than 10 seconds"),
+        ("around 20s", "Around 20 seconds"),
+        ("around 30s", "Around 30 seconds"),
+        ("more than 40s", "More than 40 seconds")
     ])
     notes = StringField("Notes", validators=[DataRequired()], widget=TextArea())
     submit = SubmitField("Submit")

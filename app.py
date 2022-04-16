@@ -55,7 +55,6 @@ def submitData():
         "auto_lower": int(data["auto_lower"]),
         "teleop_upper": int(data["teleop_upper"]),
         "teleop_lower": int(data["teleop_lower"]),
-        "climb": data["climb"],
         "type": data["type"],
         "driver": int(data["driver"]),
         "defense": int(data["defense"]), #defense,
@@ -63,6 +62,7 @@ def submitData():
         "speed": data["speed"],
         # "height": data["height"],
         "accuracy": int(data["accuracy"]),
+        "climb": data["climb"],
         "notes": data["notes"],
     }
     db.setData(data)
@@ -78,7 +78,6 @@ def submitData():
                            auto_lower=data['auto_lower'],
                            teleop_upper=data['teleop_upper'],
                            teleop_lower=data['teleop_lower'],
-                           climb=data['climb'],
                            defense=data['defense'],
                            type=data['type'],
                            position=data['position'],
@@ -86,6 +85,7 @@ def submitData():
                            # height=data['height'],
                            driver=data['driver'],
                            accuracy=data['accuracy'],
+                           climb=data['climb'],
                            notes=data['notes'])
 
 
@@ -110,7 +110,6 @@ def getTeamData():
                                auto_lower=[match['auto_lower'] for match in matches],
                                teleop_upper=[match['teleop_upper'] for match in matches],
                                teleop_lower=[match['teleop_lower'] for match in matches],
-                               climb=[match['climb'] for match in matches],
                                type=[match['type'] for match in matches],
                                driver=[match['driver'] for match in matches],
                                defense=[match['defense'] for match in matches],
@@ -118,6 +117,7 @@ def getTeamData():
                                speed=[match['speed'] for match in matches],
                                # height=[match['height'] for match in matches],
                                accuracy=[match['accuracy'] for match in matches],
+                               climb=[match['climb'] for match in matches],
                                notes=[match['notes'] for match in matches])
     except KeyError:
         return """ This team has not been scouted yet! Get on that! """
