@@ -85,6 +85,8 @@ def setData(data_dict):
             {"matches":         # time this team has played in this specific event
                 {
                     "disabled": data_dict['disabled'],
+                    "disconnected": data_dict['disconnected'],
+                    "disconnected_total_seconds": data_dict['disconnected_total_seconds'],
                     "crossed_tarmac": data_dict['crossed_tarmac'],
                     "match": data_dict['match'],
                     "match_name": data_dict['match_name'],

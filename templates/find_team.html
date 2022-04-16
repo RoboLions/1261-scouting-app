@@ -39,7 +39,7 @@
         }
 
         #text {
-            color: #FFFFFF
+            color: #FFFFFF;
         }
 
         .robonav {
@@ -57,9 +57,9 @@
         <li class="robonav"><a href="{{ url_for('toRankings') }}">Rankings</a></li>
         <li class="robonav"><a href="{{ url_for('findTeam') }}">Find Team's Data</a></li>
     </ul>
-    
+
     <h1> Find a Team's Data by Number:</h1>
-    <form method="POST">
+    <form method="POST" style="color: white;">
         {{ form.hidden_tag() }}
         Enter a Team Number: {{ form.team_number() }}
         {{ form.submit() }}

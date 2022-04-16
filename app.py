@@ -31,6 +31,12 @@ def submitData():
         crossed_tarmac = True
     except KeyError:
         crossed_tarmac = False
+    disconnected = None
+    try:
+        throwaway_var3 = data["disconnected"]
+        disconnected = True
+    except KeyError:
+        disconnected = False
     # defense = None
     # try:
     #     throwaway_var3 = data["defense"]
@@ -42,6 +48,8 @@ def submitData():
         "match": int(data["match"]),
         "match_name": data["match_name"],
         "disabled": disabled,
+        "disconnected": disconnected,
+        "disconnected_total_seconds": int(data["disconnected_total_seconds"]),
         "crossed_tarmac": crossed_tarmac,
         "auto_upper": int(data["auto_upper"]),
         "auto_lower": int(data["auto_lower"]),
@@ -63,6 +71,8 @@ def submitData():
                            match=data['match'],
                            match_name=data['match_name'],
                            disabled=data['disabled'],
+                           disconnected=data['disconnected'],
+                           disconnected_total_seconds=data['disconnected_total_seconds'],
                            crossed_tarmac=data['crossed_tarmac'],
                            auto_upper=data['auto_upper'],
                            auto_lower=data['auto_lower'],
@@ -93,6 +103,8 @@ def getTeamData():
                                match=[match['match'] for match in matches],
                                match_name=[match['match_name'] for match in matches],
                                disabled=[match['disabled'] for match in matches],
+                               disconnected=[match['disconnected'] for match in matches],
+                               disconnected_total_seconds=[match['disconnected_total_seconds'] for match in matches],
                                crossed_tarmac=[match['crossed_tarmac'] for match in matches],
                                auto_upper=[match['auto_upper'] for match in matches],
                                auto_lower=[match['auto_lower'] for match in matches],

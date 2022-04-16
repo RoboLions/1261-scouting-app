@@ -37,6 +37,13 @@
         button, input, select, option {
             color: #000000;
         }
+
+		.robonav {
+            display: inline-block;
+            color: white;
+            text-decoration: underline;
+            margin-right: 20px;
+        }
     </style>
 
 </head>
@@ -104,6 +111,22 @@
 						</td>
 						<td>
 							{{ form.disabled() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Disconnected during the match
+						</td>
+						<td>
+							{{ form.disconnected() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Total seconds disconnected during the match
+						</td>
+						<td>
+							{{ form.disconnected_total_seconds() }}
 						</td>
 					</tr>
                     <tr>

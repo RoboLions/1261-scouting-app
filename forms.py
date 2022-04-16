@@ -40,6 +40,9 @@ class RapidReactForm(FlaskForm):
     match = IntegerField("Match Number", validators=[DataRequired()])
     match_name = StringField("Name of Match", validators=[DataRequired()], widget=TextArea())
     disabled = BooleanField("Disabled/AFK")
+    disconnected = BooleanField("Disconnected during the match")
+    if disconnected == True:
+        disconnected_total_seconds = IntegerField("Total seconds disconnected", validator=[DataRequired()])
     crossed_tarmac = BooleanField("Crossed Tarmac during Auto")
     auto_upper = IntegerField("Auto - Upper", validators=[DataRequired()])
     auto_lower = IntegerField("Auto - Lower", validators=[DataRequired()])
