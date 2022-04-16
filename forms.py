@@ -38,6 +38,7 @@ class InfiniteRechargeForm(FlaskForm):
 class RapidReactForm(FlaskForm):
     team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 20000)])
     match = IntegerField("Match Number", validators=[DataRequired()])
+    match_name = StringField("Name of Match", validators=[DataRequired()], widget=TextArea())
     disabled = BooleanField("Disabled/AFK")
     crossed_tarmac = BooleanField("Crossed Tarmac during Auto")
     auto_upper = IntegerField("Auto - Upper", validators=[DataRequired()])

@@ -40,6 +40,7 @@ def submitData():
     data = {  # to clear things up, this data is the data of a single match
         "team_number": team,
         "match": int(data["match"]),
+        "match_name": data["match_name"],
         "disabled": disabled,
         "crossed_tarmac": crossed_tarmac,
         "auto_upper": int(data["auto_upper"]),
@@ -60,6 +61,7 @@ def submitData():
     return render_template('confirm.html',
                            number=data['team_number'],
                            match=data['match'],
+                           match_name=data['match_name'],
                            disabled=data['disabled'],
                            crossed_tarmac=data['crossed_tarmac'],
                            auto_upper=data['auto_upper'],
@@ -89,6 +91,7 @@ def getTeamData():
         return render_template('team_data.html',
                                number=team_number,
                                match=[match['match'] for match in matches],
+                               match_name=[match['match_name'] for match in matches],
                                disabled=[match['disabled'] for match in matches],
                                crossed_tarmac=[match['crossed_tarmac'] for match in matches],
                                auto_upper=[match['auto_upper'] for match in matches],

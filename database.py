@@ -87,6 +87,7 @@ def setData(data_dict):
                     "disabled": data_dict['disabled'],
                     "crossed_tarmac": data_dict['crossed_tarmac'],
                     "match": data_dict['match'],
+                    "match_name": data_dict['match_name'],
                     "auto_upper": data_dict['auto_upper'],
                     "auto_lower": data_dict['auto_lower'],
                     "teleop_upper": data_dict['teleop_upper'],
