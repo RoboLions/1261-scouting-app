@@ -87,7 +87,8 @@
     let teamslist = {{ data }};
     let rank = 1;
     for (team in teamslist) {
-        document.writeln("<p style='color: white'> <input type='checkbox'>");
+        // document.writeln("<p style='color: white'> <input type='checkbox'>");
+        document.writeln("<p style='color: white'>");
         var line = "<a style='color: white' href=https://pumbascout.herokuapp.com/getdata?team=" + String(teamslist[team] + ">");
         document.writeln(line);
         document.writeln(rank + ": " + teamslist[team] + "</a></p>");
