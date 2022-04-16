@@ -77,11 +77,9 @@ class RapidReactForm(FlaskForm):
        ("tall", "Looks tall") 
     ])
     driver = SelectField("Rate Driver Skill", choices=[
-        (5, "Very Good"),
-        (4, "Good"),
-        (3, "Average"),
-        (2, "Bad"),
-        (1, "Very Bad")
+        (3, "Very Good"),
+        (2, "Average"),
+        (1, "Bad")
     ])
     accuracy = SelectField("Rate Robot Accuracy", choices=[
         (1, "Always Missed Shots"),
