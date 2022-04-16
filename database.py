@@ -100,6 +100,7 @@ def setData(data_dict):
                     "position":data_dict['position'],
                     "speed":data_dict['speed'],
                     # "height":data_dict['height'],
+                    "stability":data_dict['stability'],
                     "climb": data_dict['climb'],
                     "accuracy":data_dict['accuracy'],
                     "notes": data_dict['notes'],

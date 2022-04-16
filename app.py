@@ -83,6 +83,7 @@ def submitData():
                            position=data['position'],
                            speed=data['speed'],
                            # height=data['height'],
+                           stability=data['stability'],
                            driver=data['driver'],
                            accuracy=data['accuracy'],
                            climb=data['climb'],
@@ -116,6 +117,7 @@ def getTeamData():
                                position=[match['position'] for match in matches],
                                speed=[match['speed'] for match in matches],
                                # height=[match['height'] for match in matches],
+                               stability=[match['stability'] for match in matches],
                                accuracy=[match['accuracy'] for match in matches],
                                climb=[match['climb'] for match in matches],
                                notes=[match['notes'] for match in matches])

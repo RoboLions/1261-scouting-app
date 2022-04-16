@@ -98,6 +98,12 @@ class RapidReactForm(FlaskForm):
         ("around 30s", "Around 30 seconds"),
         ("more than 40s", "More than 40 seconds")
     ])
+    stability = SelectField("Robot Stability", choices=[
+        ("very stable", "Very Stable"),
+        ("penguin walk", "Penguin Walk"),
+        ("tilting", "Tilting during matches"),
+        ("flipped over", "Flipped Over")
+    ])
     notes = StringField("Notes", validators=[DataRequired()], widget=TextArea())
     submit = SubmitField("Submit")
 
