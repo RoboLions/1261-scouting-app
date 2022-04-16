@@ -39,15 +39,15 @@
             color: black;
         }
 
-        #text {
-            color: #FFFFFF;
-        }
-
         .robonav {
             display: inline-block;
             color: white;
             text-decoration: underline;
             margin-right: 20px;
+        }
+        
+        .inputNumber {
+            color: white;
         }
     </style>
 </head>
@@ -60,10 +60,9 @@
     </ul>
 
     <h1> Find a Team's Data by Number:</h1>
-    <!-- <form method="POST" style="color: white;"> -->
-    <form method="POST">
+    <form method="POST" class="inputNumber">
         {{ form.hidden_tag() }}
-        <font color="white"> Enter a Team Number: </font> {{ form.team_number() }}
+        Enter a Team Number: {{ form.team_number() }}
         {{ form.submit() }}
     </form>
 </body>
