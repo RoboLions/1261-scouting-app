@@ -52,7 +52,12 @@ class RapidReactForm(FlaskForm):
         ("high", "High Rung"),
         ("traverse", "Traverse Rung")
     ])
-    defense = BooleanField("Played Defense")
+    defense = SelectField("Defense", choices=[
+        ("no defense", "No defense"),
+        ("bad defense", "Bad defense"),
+        ("good defense", "Good defense")
+    ])
+    # defense = BooleanField("Played Defense")
     type = SelectField("Type of Shooter", choices=[
         ("cannot shoot", "Cannot hold game pieces"),
         ("shoots low", "Can shoot balls into lower hub only"),

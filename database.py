@@ -309,6 +309,33 @@ def getReachRankings():
     final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
+def getDefenseRankings():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            score = 0
+            most_common_defense = str(match['type']).lower()
+            if most_common_defense == "good defense":
+                score = 2
+            elif most_common_defense == "bad defense":
+                score = 1
+            elif most_common_defense == "no defense":
+                score = 0
+            data.append(score)
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"type_avg": average}
+            }
+        )
+        data = []
+    rankings = {}
+    for team in getAllTeamData():
+        rankings[int(team['team_number'])] = team['type_avg']
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
+    return final
+
 
 def printDataInBrowser(data_dict):
     webbrowser.open_new_tab('https://www.google.com/?q=' + str(data_dict))  # yes

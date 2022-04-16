@@ -31,12 +31,12 @@ def submitData():
         crossed_tarmac = True
     except KeyError:
         crossed_tarmac = False
-    defense = None
-    try:
-        throwaway_var3 = data["defense"]
-        defense = True
-    except KeyError:
-        defense = False
+    # defense = None
+    # try:
+    #     throwaway_var3 = data["defense"]
+    #     defense = True
+    # except KeyError:
+    #     defense = False
     data = {  # to clear things up, this data is the data of a single match
         "team_number": team,
         "match": int(data["match"]),
@@ -50,7 +50,7 @@ def submitData():
         "climb": data["climb"],
         "type": data["type"],
         "driver": int(data["driver"]),
-        "defense": defense,
+        "defense": int(data["defense"]), #defense,
         "position": data["position"],
         "speed": data["speed"],
         "height": data["height"],
@@ -137,6 +137,8 @@ def getRankingData():
         data = db.getReachRankings()
     elif config == "climb":
         data = db.getClimbRankings()
+    elif config == "defense":
+        data = db.getDefenseRankings()
     else:
         data = db.getAlgorithmicRankings()  # algorithmic rankings are default
     return render_template("rankings.html",
