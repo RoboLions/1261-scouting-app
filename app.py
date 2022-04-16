@@ -61,7 +61,7 @@ def submitData():
         "defense": int(data["defense"]), #defense,
         "position": data["position"],
         "speed": data["speed"],
-        "height": data["height"],
+        # "height": data["height"],
         "accuracy": int(data["accuracy"]),
         "notes": data["notes"],
     }
@@ -83,7 +83,7 @@ def submitData():
                            type=data['type'],
                            position=data['position'],
                            speed=data['speed'],
-                           height=data['height'],
+                           # height=data['height'],
                            driver=data['driver'],
                            accuracy=data['accuracy'],
                            notes=data['notes'])
@@ -116,7 +116,7 @@ def getTeamData():
                                defense=[match['defense'] for match in matches],
                                position=[match['position'] for match in matches],
                                speed=[match['speed'] for match in matches],
-                               height=[match['height'] for match in matches],
+                               # height=[match['height'] for match in matches],
                                accuracy=[match['accuracy'] for match in matches],
                                notes=[match['notes'] for match in matches])
     except KeyError:

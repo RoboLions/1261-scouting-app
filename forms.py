@@ -76,10 +76,10 @@ class RapidReactForm(FlaskForm):
         ("slow", "Drives Slow"),
         ("fast", "Drives Fast")
     ])
-    height = SelectField("Robot's Height", choices=[
-       ("short", "Looks short"),
-       ("tall", "Looks tall") 
-    ])
+    # height = SelectField("Robot's Height", choices=[
+    #    ("short", "Looks short"),
+    #    ("tall", "Looks tall") 
+    # ])
     driver = SelectField("Rate Driver Skill", choices=[
         (3, "Good"),
         (2, "Average"),
