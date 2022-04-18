@@ -37,12 +37,6 @@ def submitData():
         disconnected = True
     except KeyError:
         disconnected = False
-    # defense = None
-    # try:
-    #     throwaway_var3 = data["defense"]
-    #     defense = True
-    # except KeyError:
-    #     defense = False
     data = {  # to clear things up, this data is the data of a single match
         "team_number": team,
         "match": int(data["match"]),
@@ -57,10 +51,10 @@ def submitData():
         "teleop_lower": int(data["teleop_lower"]),
         "type": data["type"],
         "driver": int(data["driver"]),
-        "defense": int(data["defense"]), #defense,
+        "defense": int(data["defense"]),
         "position": data["position"],
         "speed": data["speed"],
-        # "height": data["height"],
+        "stability": data["stability"],
         "accuracy": int(data["accuracy"]),
         "climb": data["climb"],
         "notes": data["notes"],
@@ -82,7 +76,6 @@ def submitData():
                            type=data['type'],
                            position=data['position'],
                            speed=data['speed'],
-                           # height=data['height'],
                            stability=data['stability'],
                            driver=data['driver'],
                            accuracy=data['accuracy'],
@@ -116,7 +109,6 @@ def getTeamData():
                                defense=[match['defense'] for match in matches],
                                position=[match['position'] for match in matches],
                                speed=[match['speed'] for match in matches],
-                               # height=[match['height'] for match in matches],
                                stability=[match['stability'] for match in matches],
                                accuracy=[match['accuracy'] for match in matches],
                                climb=[match['climb'] for match in matches],

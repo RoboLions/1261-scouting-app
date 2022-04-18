@@ -69,10 +69,12 @@ class RapidReactForm(FlaskForm):
         ("slow", "Drives Slow"),
         ("fast", "Drives Fast")
     ])
-    # height = SelectField("Robot's Height", choices=[
-    #    ("short", "Looks short"),
-    #    ("tall", "Looks tall") 
-    # ])
+    stability = SelectField("Robot Stability", choices=[
+        ("very stable", "Very Stable"),
+        ("penguin walk", "Penguin Walk"),
+        ("tilting", "Tilting during matches"),
+        ("flipped over", "Flipped Over")
+    ])
     driver = SelectField("Rate Driver Skill", choices=[
         (3, "Good"),
         (2, "Average"),
@@ -97,12 +99,6 @@ class RapidReactForm(FlaskForm):
         ("around 20s", "Around 20 seconds"),
         ("around 30s", "Around 30 seconds"),
         ("more than 40s", "More than 40 seconds")
-    ])
-    stability = SelectField("Robot Stability", choices=[
-        ("very stable", "Very Stable"),
-        ("penguin walk", "Penguin Walk"),
-        ("tilting", "Tilting during matches"),
-        ("flipped over", "Flipped Over")
     ])
     notes = StringField("Notes", validators=[DataRequired()], widget=TextArea())
     submit = SubmitField("Submit")

@@ -99,7 +99,6 @@ def setData(data_dict):
                     "defense":data_dict['defense'],
                     "position":data_dict['position'],
                     "speed":data_dict['speed'],
-                    # "height":data_dict['height'],
                     "stability":data_dict['stability'],
                     "climb": data_dict['climb'],
                     "accuracy":data_dict['accuracy'],
