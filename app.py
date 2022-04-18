@@ -51,7 +51,7 @@ def submitData():
         "teleop_lower": int(data["teleop_lower"]),
         "type": data["type"],
         "driver": int(data["driver"]),
-        "defense": int(data["defense"]),
+        "defense": data["defense"],
         "position": data["position"],
         "speed": data["speed"],
         "stability": data["stability"],
