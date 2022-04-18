@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField, SelectField, BooleanField
-from wtforms.validators import DataRequired, NumberRange, ValidationError
+from wtforms.validators import Optional, DataRequired, NumberRange, ValidationError
 from wtforms.widgets import TextArea
 
 
@@ -41,7 +41,7 @@ class RapidReactForm(FlaskForm):
     match_name = StringField("Name of Match", validators=[DataRequired()], widget=TextArea())
     disabled = BooleanField("Disabled/AFK")
     disconnected = BooleanField("Disconnected during the match")
-    disconnected_total_seconds = IntegerField("Total seconds disconnected")
+    disconnected_total_seconds = IntegerField("Total seconds disconnected", validators=[Optional()])
     crossed_tarmac = BooleanField("Crossed Tarmac during Auto")
     auto_upper = IntegerField("Auto - Upper", validators=[DataRequired()])
     auto_lower = IntegerField("Auto - Lower", validators=[DataRequired()])
@@ -52,7 +52,6 @@ class RapidReactForm(FlaskForm):
         ("bad defense", "Bad defense"),
         ("good defense", "Good defense")
     ])
-    # defense = BooleanField("Played Defense")
     type = SelectField("Type of Shooter", choices=[
         ("cannot shoot", "Cannot hold game pieces"),
         ("shoots low", "Can shoot balls into lower hub only"),
