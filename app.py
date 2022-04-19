@@ -66,6 +66,7 @@ def submitData():
         "stability": data["stability"],
         "accuracy": int(data["accuracy"]),
         "climb": data["climb"],
+        "climb_seconds": data["climb_seconds"],
         "notes": data["notes"],
     }
     db.setData(data)
@@ -89,6 +90,7 @@ def submitData():
                            driver=data['driver'],
                            accuracy=data['accuracy'],
                            climb=data['climb'],
+                           climb_seconds=data['climb_seconds'],
                            notes=data['notes'])
 
 
@@ -121,6 +123,7 @@ def getTeamData():
                                stability=[match['stability'] for match in matches],
                                accuracy=[match['accuracy'] for match in matches],
                                climb=[match['climb'] for match in matches],
+                               climb_seconds=[match['climb_seconds'] for match in matches],
                                notes=[match['notes'] for match in matches])
     except KeyError:
         return """ This team has not been scouted yet! Get on that! """

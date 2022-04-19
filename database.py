@@ -100,8 +100,9 @@ def setData(data_dict):
                     "position":data_dict['position'],
                     "speed":data_dict['speed'],
                     "stability":data_dict['stability'],
-                    "climb": data_dict['climb'],
                     "accuracy":data_dict['accuracy'],
+                    "climb": data_dict['climb'],
+                    "climb_seconds": data_dict['climb_seconds'],
                     "notes": data_dict['notes'],
                 }
             }
@@ -249,6 +250,7 @@ def getDriverRankings():
 
 
 def getClimbRankings():
+    # based off to what rung they can climb to, doesn't account for time taken to climb
     data = []
     for team in getAllTeamData():
         for match in team['matches']:
