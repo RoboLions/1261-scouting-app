@@ -266,6 +266,10 @@ def getClimbRankings():
                 score = 1
             elif most_common_climb == "cannot":
                 score = 0
+            elif most_common_climb == "did not":
+                score = 0
+            elif most_common_climb == "attempted":
+                score = 0
             data.append(score)
         average = sum(data) / len(data)
         db.update_one(

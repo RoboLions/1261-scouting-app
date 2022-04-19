@@ -87,7 +87,9 @@ class RapidReactForm(FlaskForm):
         (5, "Never Missed Shots")
     ])
     climb = SelectField("Climb", choices=[
-        ("cannot", "Did not Climb"),
+        ("cannot", "Cannot Climb"),
+        ("did not" , "Can climb, but didn't"),
+        ("attempted", "Attempted climb, but failed"),
         ("low", "Low Rung"),
         ("mid", "Mid Rung"),
         ("high", "High Rung"),

@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
 
-
     <style>
         body {
             background-color: #00229e;
@@ -55,12 +54,13 @@
         }
     </style>
 </head>
+
 <body>
     <ul style="display: inline-block; width:100%">
-    <li class="robonav"><a href="{{ url_for('main') }}">Home</a></li>
-    <li class="robonav"><a href="{{ url_for('toRankings') }}">Rankings</a></li>
-    <li class="robonav"><a href="{{ url_for('findTeam') }}">Find Team's Data</a></li>
-</ul>
+        <li class="robonav"><a href="{{ url_for('main') }}">Home</a></li>
+        <li class="robonav"><a href="{{ url_for('toRankings') }}">Rankings</a></li>
+        <li class="robonav"><a href="{{ url_for('findTeam') }}">Find Team's Data</a></li>
+    </ul>
 
 <hr>
     <h1> Team {{ number }} Data </h1>
@@ -70,11 +70,13 @@
         <li> Disabled/AFK: {{ disabled }} </li>
         <li> Disconnected during the match: {{ disconnected }} </li>
         <li> Total seconds disconnected during the match: {{ disconnected_total_seconds }} </li>
+        <br>
         <li> Crossed Tarmac: {{ crossed_tarmac }} </li>
         <li> Auto Upper: {{ auto_upper }} </li>
         <li> Auto Lower: {{ auto_lower }} </li>
         <li> Teleop Upper: {{ teleop_upper }} </li>
         <li> Teleop Lower: {{ teleop_lower }} </li>
+        <br>
         <li> Defense: {{ defense }} </li>
         <li> Type of Shooter: {{ type }} </li>
         <li> Shooting Position: {{ position }} </li>
@@ -82,8 +84,10 @@
         <li> Stability: {{ stability }} </li>
         <li> Driver Skill: {{ driver }} / 3 </li>
         <li> Robot Accuracy: {{ accuracy }} / 5 </li>
+        <br>
         <li> Climb: {{ climb }} </li>
-        <il> Time to climb in seconds: {{climb_seconds}} </il>
+        <li> Time taken to climb in seconds: {{climb_seconds}} </li>
+        <br>
         <li> Notes: {{ notes }} </li>
     </ul>
 </body>

@@ -14,13 +14,52 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
+
+    <style>
+        body {
+            background-color: #00229e;
+            background-image: url(https://prhsrobotics.com/wp-content/uploads/2014/04/bg2.png);
+            background-position: left top;
+            background-size: auto;
+            background-repeat: repeat;
+            background-attachment: scroll;
+        }
+
+        ul li {
+            display: list-item;
+            list-style-type:circle;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        p, h1, h3, h4, td, b{
+            color: #FFFFFF;
+        }
+
+        button, input, select, option {
+            color: black;
+        }
+
+        #text {
+            color: #FFFFFF
+        }
+
+        .robonav {
+            display: inline-block;
+            color: white;
+            text-decoration: underline;
+            margin-right: 20px;
+        }
+    </style>
 </head>
 
 <body>
-    <ul>
-        <li><a href="{{ url_for('main') }}">Home</a></li>
-        <li><a href="{{ url_for('toRankings') }}">Rankings</a></li>
-        <li><a href="{{ url_for('findTeam') }}">Find Team's Data</a></li>
+    <ul style="display: inline-block; width:100%">
+        <li class="robonav"><a href="{{ url_for('main') }}">Home</a></li>
+        <li class="robonav"><a href="{{ url_for('toRankings') }}">Rankings</a></li>
+        <li class="robonav"><a href="{{ url_for('findTeam') }}">Find Team's Data</a></li>
     </ul>
 
     <h1> Find a Team's Data by Number:</h1>
