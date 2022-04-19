@@ -37,13 +37,19 @@ def submitData():
         disconnected = True
     except KeyError:
         disconnected = False
+    disconnected_total_seconds = None
+    try:
+        throwaway_var4 = int(data["disconnected_total_seconds"])
+        disconnected_total_seconds = int(data["disconnected_total_seconds"])
+    except KeyError:
+        disconnected_total_seconds = 0
     data = {  # to clear things up, this data is the data of a single match
         "team_number": team,
         "match": int(data["match"]),
         "match_name": data["match_name"],
         "disabled": disabled,
         "disconnected": disconnected,
-        "disconnected_total_seconds": int(data["disconnected_total_seconds"]),
+        "disconnected_total_seconds": disconnected_total_seconds,
         "crossed_tarmac": crossed_tarmac,
         "auto_upper": int(data["auto_upper"]),
         "auto_lower": int(data["auto_lower"]),
