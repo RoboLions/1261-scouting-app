@@ -93,7 +93,7 @@ class RapidReactForm(FlaskForm):
         ("high", "High Rung"),
         ("traverse", "Traverse Rung")
     ])
-    climb_time = SelectField("Climb Time", choices=[
+    climb_seconds = SelectField("Climb Time", choices=[
         ("less than 10s", "Less than 10 seconds"),
         ("around 20s", "Around 20 seconds"),
         ("around 30s", "Around 30 seconds"),
