@@ -42,7 +42,7 @@ def submitData():
         throwaway_var4 = data["disconnected_total_seconds"]
         disconnected_total_seconds = int(data["disconnected_total_seconds"])
     except KeyError:
-        disconnected_total_seconds = False
+        disconnected_total_seconds = int(False)
     data = {  # to clear things up, this data is the data of a single match
         "team_number": team,
         "match": int(data["match"]),
