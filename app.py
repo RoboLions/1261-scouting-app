@@ -37,7 +37,6 @@ def submitData():
         disconnected = True
     except KeyError:
         disconnected = False
-    """
     disconnected_total_seconds = None
     disconnected_total_seconds_check = None
     try:
@@ -49,7 +48,6 @@ def submitData():
         disconnected_total_seconds = int(data["disconnected_total_seconds"])
     else:
         disconnected_total_seconds = int(0)
-    """
     data = {  # to clear things up, this data is the data of a single match
         "team_number": team,
         "match": int(data["match"]),
