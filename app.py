@@ -39,7 +39,7 @@ def submitData():
         disconnected = False
     disconnected_total_seconds = None
     try:
-        throwaway_var4 = int(data["disconnected_total_seconds"])
+        throwaway_var4 = data["disconnected_total_seconds"]
         disconnected_total_seconds = int(data["disconnected_total_seconds"])
     except KeyError:
         disconnected_total_seconds = 0
