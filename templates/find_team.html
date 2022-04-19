@@ -34,7 +34,7 @@
             margin-bottom: 10px;
         }
 
-        p, h1, h3, h4, td, b{
+        p, h1, h3, h4, td, b, form {
             color: #FFFFFF;
         }
 
@@ -57,9 +57,9 @@
 
 <body>
     <ul style="display: inline-block; width:100%">
-        <li class="robonav"><a href="{{ url_for('main') }}">Home</a></li>
-        <li class="robonav"><a href="{{ url_for('toRankings') }}">Rankings</a></li>
-        <li class="robonav"><a href="{{ url_for('findTeam') }}">Find Team's Data</a></li>
+        <li class="robonav"><a href="{{ url_for('main') }}" style="color: white !important;">Home</a></li>
+        <li class="robonav"><a href="{{ url_for('toRankings') }}" style="color: white !important;">Rankings</a></li>
+        <li class="robonav"><a href="{{ url_for('findTeam') }}" style="color: white !important;">Find Team's Data</a></li>
     </ul>
 
     <h1> Find a Team's Data by Number:</h1>
