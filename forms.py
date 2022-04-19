@@ -1,3 +1,4 @@
+from email.policy import default
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField, SelectField, BooleanField
 from wtforms.validators import Optional, DataRequired, NumberRange, ValidationError
@@ -41,7 +42,8 @@ class RapidReactForm(FlaskForm):
     match_name = StringField("Name of Match", validators=[DataRequired()], widget=TextArea())
     disabled = BooleanField("Disabled/AFK")
     disconnected = BooleanField("Disconnected during the match")
-    disconnected_total_seconds = IntegerField("Total seconds disconnected", validators=[Optional(strip_whitespace=True)])
+    disconnected_total_seconds = IntegerField("Total seconds disconnected", validators=[DataRequired()], default=0)
+    # disconnected_total_seconds = IntegerField("Total seconds disconnected", validators=[Optional(strip_whitespace=True)])
     crossed_tarmac = BooleanField("Crossed Tarmac during Auto")
     auto_upper = IntegerField("Auto - Upper", validators=[DataRequired()])
     auto_lower = IntegerField("Auto - Lower", validators=[DataRequired()])
