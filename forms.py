@@ -39,7 +39,6 @@ class InfiniteRechargeForm(FlaskForm):
 class RapidReactForm(FlaskForm):
     team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 20000)])
     match = IntegerField("Match Number", validators=[DataRequired()])
-    # match_name = StringField("Name of Match", validators=[DataRequired()], widget=TextArea())
     disabled = BooleanField("Disabled/AFK")
     disconnected = BooleanField("Disconnected during the match")
     disconnected_total_seconds = IntegerField("Total seconds disconnected", validators=[DataRequired()], default=0)
