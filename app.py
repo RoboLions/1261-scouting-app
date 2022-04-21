@@ -51,7 +51,6 @@ def submitData():
     data = {  # to clear things up, this data is the data of a single match
         "team_number": team,
         "match": int(data["match"]),
-        # "match_name": data["match_name"],
         "disabled": disabled,
         "disconnected": disconnected,
         "disconnected_total_seconds": int(data["disconnected_total_seconds"]),
@@ -75,7 +74,6 @@ def submitData():
     return render_template('confirm.html',
                            number=data['team_number'],
                            match=data['match'],
-                        #    match_name=data['match_name'],
                            disabled=data['disabled'],
                            disconnected=data['disconnected'],
                            disconnected_total_seconds=data['disconnected_total_seconds'],
@@ -108,7 +106,6 @@ def getTeamData():
         return render_template('team_data.html',
                                number=team_number,
                                match=[match['match'] for match in matches],
-                            #    match_name=[match['match_name'] for match in matches],
                                disabled=[match['disabled'] for match in matches],
                                disconnected=[match['disconnected'] for match in matches],
                                disconnected_total_seconds=[match['disconnected_total_seconds'] for match in matches],
