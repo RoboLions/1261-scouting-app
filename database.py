@@ -88,7 +88,7 @@ def setData(data_dict):
                     "disconnected": data_dict['disconnected'],
                     "disconnected_total_seconds": data_dict['disconnected_total_seconds'],
                     "crossed_tarmac": data_dict['crossed_tarmac'],
-                    "match_name": data_dict['match_name'],
+                    "match": data_dict['match'],
                     "auto_upper": data_dict['auto_upper'],
                     "auto_lower": data_dict['auto_lower'],
                     "teleop_upper": data_dict['teleop_upper'],

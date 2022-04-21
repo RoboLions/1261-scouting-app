@@ -50,7 +50,7 @@ def submitData():
         disconnected_total_seconds = int(0)
     data = {  # to clear things up, this data is the data of a single match
         "team_number": team,
-        "match_name": data["match_name"],
+        "match": data["match"],
         "disabled": disabled,
         "disconnected": disconnected,
         "disconnected_total_seconds": int(data["disconnected_total_seconds"]),
@@ -73,7 +73,7 @@ def submitData():
     db.setData(data)
     return render_template('confirm.html',
                            number=data['team_number'],
-                           match_name=data['match_name'],
+                           match=data['match'],
                            disabled=data['disabled'],
                            disconnected=data['disconnected'],
                            disconnected_total_seconds=data['disconnected_total_seconds'],
@@ -105,7 +105,7 @@ def getTeamData():
     try:
         return render_template('team_data.html',
                                number=team_number,
-                               match_name=[match['match_name'] for match in matches],
+                               match=[match['match'] for match in matches],
                                disabled=[match['disabled'] for match in matches],
                                disconnected=[match['disconnected'] for match in matches],
                                disconnected_total_seconds=[match['disconnected_total_seconds'] for match in matches],
