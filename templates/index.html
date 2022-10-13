@@ -44,8 +44,52 @@
             text-decoration: underline;
             margin-right: 20px;
         }
-    </style>
+		.point_button {
+			border: none;
+			color: black;
+			padding: 15px 15px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 4px;
+			cursor: pointer;
+			background-color: white;
+		}
 
+    </style>
+<script>
+	function increment_auto_upper(){
+		document.getElementById('auto_upper').stepUp();
+	}
+
+	function decrement_auto_upper(){
+		document.getElementById('auto_upper').stepDown();
+	}
+
+	function increment_teleop_upper(){
+		document.getElementById('teleop_upper').stepUp();
+	}
+
+	function decrement_teleop_upper(){
+		document.getElementById('teleop_upper').stepDown();
+	}
+
+	function increment_auto_lower(){
+		document.getElementById('auto_lower').stepUp();
+	}
+
+	function decrement_auto_lower(){
+		document.getElementById('auto_lower').stepDown();
+	}
+	function increment_teleop_lower(){
+		document.getElementById('teleop_lower').stepUp();
+	}
+
+	function decrement_teleop_lower(){
+		document.getElementById('teleop_lower').stepDown();
+	}
+</script>
 </head>
 
 <body class="home blog custom-background">
@@ -134,7 +178,10 @@
 							Auto Balls Scored Upper
 						</td>
 						<td>
+						
 							{{ form.auto_upper() }}
+							<button class="point_button" onclick="increment_auto_upper()">+</button>
+							<button class="point_button" onclick="decrement_auto_upper()">-</button>
 						</td>
 					</tr>
 					<tr>
@@ -143,6 +190,8 @@
 						</td>
 						<td>
 							{{ form.auto_lower() }}
+							<button class="point_button" onclick="increment_auto_lower()">+</button>
+							<button class="point_button" onclick="decrement_auto_lower()">-</button>
 						</td>
 					</tr>
 					<tr>
@@ -151,6 +200,8 @@
 						</td>
 						<td>
 							{{ form.teleop_upper() }}
+							<button class="point_button" onclick="increment_teleop_upper()">+</button>
+							<button class="point_button" onclick="decrement_teleop_upper()">-</button>
 						</td>
 					</tr>
 					<tr>
@@ -159,6 +210,9 @@
 						</td>
 						<td>
 							{{ form.teleop_lower() }}
+							<button class="point_button" onclick="increment_teleop_upper()">+</button>
+							
+							<button class="point_button" onclick="decrement_teleop_upper()">-</button>
 						</td>
 					</tr>
 					<tr>

@@ -105,25 +105,10 @@ def getTeamData():
     try:
         return render_template('team_data.html',
                                number=team_number,
-                               match=[match['match'] for match in matches],
-                               disabled=[match['disabled'] for match in matches],
-                               disconnected=[match['disconnected'] for match in matches],
-                               disconnected_total_seconds=[match['disconnected_total_seconds'] for match in matches],
-                               crossed_tarmac=[match['crossed_tarmac'] for match in matches],
-                               auto_upper=[match['auto_upper'] for match in matches],
-                               auto_lower=[match['auto_lower'] for match in matches],
-                               teleop_upper=[match['teleop_upper'] for match in matches],
-                               teleop_lower=[match['teleop_lower'] for match in matches],
-                               type=[match['type'] for match in matches],
-                               driver=[match['driver'] for match in matches],
-                               defense=[match['defense'] for match in matches],
-                               position=[match['position'] for match in matches],
-                               speed=[match['speed'] for match in matches],
-                               stability=[match['stability'] for match in matches],
-                               accuracy=[match['accuracy'] for match in matches],
-                               climb=[match['climb'] for match in matches],
-                               climb_seconds=[match['climb_seconds'] for match in matches],
-                               notes=[match['notes'] for match in matches])
+                               matches=matches,
+                               matches_len=len(matches)
+                               )
+
     except KeyError:
         return """ This team has not been scouted yet! Get on that! """
 

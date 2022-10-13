@@ -65,30 +65,34 @@
 <hr>
     <h1> Team {{ number }} Data </h1>
     <ul style="color:white">
-        <li> Team Number: {{ number }} </li>
-        <li> Matches: {{ match }} </li>
-        <li> Disabled/AFK: {{ disabled }} </li>
-        <li> Disconnected during the match: {{ disconnected }} </li>
-        <li> Total seconds disconnected: {{ disconnected_total_seconds }} </li>
+        {%for n in range(0, matches_len)%}
         <br>
-        <li> Crossed Tarmac: {{ crossed_tarmac }} </li>
-        <li> Auto Upper: {{ auto_upper }} </li>
-        <li> Auto Lower: {{ auto_lower }} </li>
-        <li> Teleop Upper: {{ teleop_upper }} </li>
-        <li> Teleop Lower: {{ teleop_lower }} </li>
+        <li><h3> Match Number: {{ matches[n]['match'] }} </h3></li>
         <br>
-        <li> Defense: {{ defense }} </li>
-        <li> Type of Shooter: {{ type }} </li>
-        <li> Shooting Position: {{ position }} </li>
-        <li> Robot's Speed: {{ speed }} </li>
-        <li> Stability: {{ stability }} </li>
-        <li> Driver Skill: {{ driver }} / 3 </li>
-        <li> Robot Accuracy: {{ accuracy }} / 5 </li>
+        <li> Disabled/AFK: {{ matches[n]['disabled'] }} </li>
+        <li> Disconnected during the match: {{ matches[n]['disconnected'] }} </li>
+        <li> Total seconds disconnected: {{ matches[n]['disconnected_total_seconds'] }} </li>
+        <li> Crossed Tarmac: {{ matches[n]['crossed_tarmac'] }} </li>
+        <li> Auto Upper: {{ matches[n]['auto_upper'] }} </li>
+        <li> Auto Lower: {{ matches[n]['auto_lower'] }} </li>
         <br>
-        <li> Climb Ability: {{ climb }} </li>
-        <li> Time taken to climb: {{climb_seconds}} </li>
+        <li> Teleop Upper: {{ matches[n]['teleop_upper'] }} </li>
+        <li> Teleop Lower: {{ matches[n]['teleop_lower'] }} </li>
         <br>
-        <li> Notes: {{ notes }} </li>
+        <li> Defense: {{ matches[n]['defense'] }} </li>
+        <li> Type of Shooter: {{ matches[n]['type'] }} </li>
+        <li> Shooting Position: {{ matches[n]['position'] }} </li>
+        <li> Robot's Speed: {{ matches[n]['speed'] }} </li>
+        <li> Stability: {{ matches[n]['stability'] }} </li>
+        <li> Driver Skill: {{ matches[n]['driver'] }} / 3 </li>
+        <li> Robot Accuracy: {{ matches[n]['accuracy'] }} / 5 </li>
+        <li> Climb Ability: {{ matches[n]['climb'] }} </li>
+        <li> Time taken to climb: {{matches[n]['climb_seconds']}} </li>
+        <br>
+        <li> Notes: {{ matches[n]['notes'] }} </li>
+        {%endfor%}
+
+      
     </ul>
 </body>
 </html>
