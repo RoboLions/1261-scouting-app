@@ -81,20 +81,11 @@
     <input type="submit">
 </form>
 
+
 <h3> Rank by {{ name }}</h3>
+{%for n in range(0, teams_len)%}
+<p style='color: white'><a style='color: white' href="{{ url_for('getTeamData') }}?team={{ teams[n] }}">{{ n+1 }}: {{ teams[n] }}</a></p>
+{%endfor%}
 
-<script>
-    let teamslist = {{ data }};
-    let rank = 1;
-    for (team in teamslist) {
-        // document.writeln("<p style='color: white'> <input type='checkbox'>");
-        document.writeln("<p style='color: white'>");
-        var line = "<a style='color: white' href=https://pumbascout.herokuapp.com/getdata?team=" + String(teamslist[team] + ">");
-        document.writeln(line);
-        document.writeln(rank + ": " + teamslist[team] + "</a></p>");
-        rank++;
-    }
-
-</script>
 </body>
 </html>

@@ -134,9 +134,11 @@ def getTeamData():
 
 @app.route('/rankings')
 def toRankings():
+    teams = db.getAlgorithmicRankings()
     return render_template('rankings.html',
                            name="Algorithm",
-                           data=db.getAlgorithmicRankings())
+                           teams_len=len(teams),
+                           teams=db.getAlgorithmicRankings())
 
 
 @app.route('/getrankings', methods=['POST'])
@@ -176,4 +178,4 @@ def findTeam():
     return render_template("find_team.html", form=form)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
