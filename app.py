@@ -68,6 +68,7 @@ def submitData():
         "accuracy": int(data["accuracy"]),
         "climb": data["climb"],
         "climb_seconds": data["climb_seconds"],
+        "name": data["name"],
         "notes": data["notes"],
     }
     db.setData(data)
@@ -91,6 +92,7 @@ def submitData():
                            accuracy=data['accuracy'],
                            climb=data['climb'],
                            climb_seconds=data['climb_seconds'],
+                           name=data['name'],
                            notes=data['notes'])
 
 
@@ -102,12 +104,30 @@ def getTeamData():
     matches = db.getData(int(team_number))
     if matches is None or matches == []:  # if there is no match data in the list 'matches'
         return """ This team has not been scouted yet! Get on that! """
+    auto_upper_tmp = []
+    auto_lower_tmp = []
+    teleop_upper_tmp = []
+    teleop_lower_tmp = []
+    for match in matches:
+        auto_upper_tmp.append(match["auto_upper"])
+        auto_lower_tmp.append(match["auto_lower"])
+        teleop_upper_tmp.append(match["teleop_upper"])
+        teleop_lower_tmp.append(match["teleop_lower"])
+    avg_auto_upper = sum(auto_upper_tmp)/len(auto_upper_tmp)
+    avg_auto_lower = sum(auto_lower_tmp)/len(auto_lower_tmp)
+    avg_teleop_upper = sum(auto_upper_tmp)/len(teleop_upper_tmp)
+    avg_teleop_lower = sum(auto_lower_tmp)/len(teleop_lower_tmp)
     try:
         return render_template('team_data.html',
                                number=team_number,
                                matches=matches,
-                               matches_len=len(matches)
+                               matches_len=len(matches),
+                               avg_auto_upper=avg_auto_upper,
+                               avg_auto_lower=avg_auto_lower,
+                               avg_teleop_upper=avg_teleop_upper,
+                               avg_teleop_lower=avg_teleop_lower
                                )
+    
 
     except KeyError:
         return """ This team has not been scouted yet! Get on that! """

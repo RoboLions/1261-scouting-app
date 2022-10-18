@@ -103,6 +103,8 @@ class RapidReactForm(FlaskForm):
         ("more than 40s", "More than 40 seconds")
     ])
     notes = StringField("Notes", validators=[DataRequired()], widget=TextArea())
+    name = StringField("Name", validators=[DataRequired()])
+
     submit = SubmitField("Submit")
 
 
