@@ -71,6 +71,7 @@
     <p>Average Teleop Lower: {{ avg_teleop_lower}}</p>
     <ul style="color:white">
         {%for n in range(0, matches_len)%}
+        {{ matches[n] }}
         <br>
         <li><h3> Match Number: {{ matches[n]['match'] }} </h3></li>
         <br>

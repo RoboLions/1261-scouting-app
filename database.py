@@ -102,6 +102,7 @@ def setData(data_dict):
                     "accuracy":data_dict['accuracy'],
                     "climb": data_dict['climb'],
                     "climb_seconds": data_dict['climb_seconds'],
+                    "name": data_dict['name'],
                     "notes": data_dict['notes'],
                 }
             }
