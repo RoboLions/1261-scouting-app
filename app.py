@@ -114,9 +114,14 @@ def getTeamData():
         teleop_upper_tmp.append(match["teleop_upper"])
         teleop_lower_tmp.append(match["teleop_lower"])
     avg_auto_upper = sum(auto_upper_tmp)/len(auto_upper_tmp)
+    # avg_auto_upper_round = round(avg_auto_upper, 3)
     avg_auto_lower = sum(auto_lower_tmp)/len(auto_lower_tmp)
-    avg_teleop_upper = sum(auto_upper_tmp)/len(teleop_upper_tmp)
-    avg_teleop_lower = sum(auto_lower_tmp)/len(teleop_lower_tmp)
+    # avg_auto_lower_round = round(avg_auto_lower, 3)
+    avg_teleop_upper = sum(teleop_upper_tmp)/len(teleop_upper_tmp)
+    # avg_teleop_upper_round = round(avg_teleop_upper, 3)
+    avg_teleop_lower = sum(teleop_lower_tmp)/len(teleop_lower_tmp)
+    # avg_teleop_lower_round = round(avg_teleop_lower, 3)
+
     try:
         return render_template('team_data.html',
                                number=team_number,
