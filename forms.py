@@ -107,7 +107,6 @@ class RapidReactForm(FlaskForm):
 
     submit = SubmitField("Submit")
 
-
 class ChargedUpForm(FlaskForm):
     team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 20000)])
     match = IntegerField("Match Number", validators=[DataRequired()])
