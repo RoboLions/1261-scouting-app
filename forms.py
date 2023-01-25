@@ -110,6 +110,10 @@ class RapidReactForm(FlaskForm):
 class ChargedUpForm(FlaskForm):
     team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 20000)])
     match = IntegerField("Match Number", validators=[DataRequired(), NumberRange(1, 100)])
+
+    defense = IntegerField("Defense Percentage", validators=[DataRequired(), NumberRange(0,100)])
+    # 0% means that the team did not play any defense. please dont forgor to add that in the question.
+
     auto_charge = SelectField("Charging Station State Auto", choices=[
         ("N/A", "No Dock nor Engage"),
         ("docked auto", "Docked Points Earned"),
@@ -124,6 +128,8 @@ class ChargedUpForm(FlaskForm):
         ("2engaged teleop", "2Engaged Points Earned")
         ("3engaged teleop", "3Engaged Points Earned")
     ])
+
+
 
 
 class FindTeamForm(FlaskForm):
