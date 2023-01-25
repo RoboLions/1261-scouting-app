@@ -109,9 +109,6 @@ class RapidReactForm(FlaskForm):
 
 class ChargedUpForm(FlaskForm):
     team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 20000)])
-<<<<<<< Updated upstream
-    match = IntegerField("Match Number", validators=[DataRequired()])
-=======
     match = IntegerField("Match Number", validators=[DataRequired(), NumberRange(1, 100)])
 
     defense = IntegerField("Defense Percentage", validators=[DataRequired(), NumberRange(0,100)])
@@ -132,7 +129,6 @@ class ChargedUpForm(FlaskForm):
         ("3engaged teleop", "3Engaged Points Earned")
     ])
 
->>>>>>> Stashed changes
 
 
 
