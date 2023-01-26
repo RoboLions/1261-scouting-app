@@ -109,28 +109,14 @@ class RapidReactForm(FlaskForm):
 
 class ChargedUpForm(FlaskForm):
     team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 20000)])
-    match = IntegerField("Match Number", validators=[DataRequired(), NumberRange(1, 100)])
+    match = IntegerField("Match Number", validators=[DataRequired()])
+    cone_auto_top = IntegerField (default=0) ("Cone Auto - Top", validators=[DataRequired()])
+    cone_auto_middle = IntegerField(default=0) ("Cone Auto - Middle", validators=[DataRequired()])
+    cone_auto_hybrid= IntegerField(default=0) ("Cone Auto - Hybrid", validators=[DataRequired()])
 
-    defense = IntegerField("Defense Percentage", validators=[DataRequired(), NumberRange(0,100)])
-    # 0% means that the team did not play any defense. please dont forgor to add that in the question.
-
-    auto_charge = SelectField("Charging Station State Auto", choices=[
-        ("N/A", "No Dock nor Engage"),
-        ("docked auto", "Docked Points Earned"),
-        ("engaged auto", "Engaged Points Earned")
-    ]) 
-    teleop_charge = SelectField("Charging Station State TeleOp", choices=[
-        ("N/A", "No Dock nor Engage"),
-        ("1docked teleop", "1 Docked Points Earned"),
-        ("2docked teleop", "2 Docked Points Earned"),
-        ("3docked teleop", "3 Docked Points Earned"),
-        ("1engaged teleop", "1Engaged Points Earned")
-        ("2engaged teleop", "2Engaged Points Earned")
-        ("3engaged teleop", "3Engaged Points Earned")
-    ])
-
-
-
+    cube_auto_top = IntegerField (default=0) ("Cube Auto - Top", validators=[DataRequired()])
+    cube_auto_middle = IntegerField(default=0) ("Cube Auto - Middle", validators=[DataRequired()])
+    cube_auto_hybrid= IntegerField(default=0) ("Cube Auto - Hybrid", validators=[DataRequired()])
 
 class FindTeamForm(FlaskForm):
     team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 20000)])
