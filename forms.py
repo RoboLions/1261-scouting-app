@@ -108,8 +108,8 @@ class RapidReactForm(FlaskForm):
     submit = SubmitField("Submit")
 
 class ChargedUpForm(FlaskForm):
-    team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 20000)])
-    match = IntegerField("Match Number", validators=[DataRequired(), NumberRange(1, 100)])
+    team_number = IntegerField("Team Number", default=0, validators=[DataRequired(), NumberRange(1, 20000)])
+    match = IntegerField("Match Number", default=0, validators=[DataRequired(), NumberRange(100, 2000)])
 
     defense = IntegerField("Defense Percentage", validators=[DataRequired(), NumberRange(0,100)])
     # 0% means that the team did not play any defense. please dont forgor to add that in the question.
@@ -124,9 +124,9 @@ class ChargedUpForm(FlaskForm):
         ("1docked teleop", "1 Docked Points Earned"),
         ("2docked teleop", "2 Docked Points Earned"),
         ("3docked teleop", "3 Docked Points Earned"),
-        ("1engaged teleop", "1Engaged Points Earned")
-        ("2engaged teleop", "2Engaged Points Earned")
-        ("3engaged teleop", "3Engaged Points Earned")
+        ("1engaged teleop", "1Engaged Points Earned"),
+        ("2engaged teleop", "2Engaged Points Earned"),
+        ("3engaged teleop", "3Engaged Points Earned"),
     ])
 
 
