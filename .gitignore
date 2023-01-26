@@ -1,8 +1,4 @@
-.idea/misc.xml
-.idea/modules.xml
-.idea/robolions.iml
-.idea/vcs.xml
-.idea/workspace.xml
-__pycache__/app.cpython-37.pyc
-__pycache__/database.cpython-37.pyc
-__pycache__/secrets.cpython-37.pyc
+.idea/*
+__pycache__/*
+**.DS_Store
+# Basically Ignores these files
