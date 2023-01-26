@@ -11,7 +11,8 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 @app.route('/')
 def main():
-    form = RapidReactForm()
+ #   form = RapidReactForm()
+    form = ChargedUpForm()
     return render_template('index.html', form=form)  # the main page
 
 
