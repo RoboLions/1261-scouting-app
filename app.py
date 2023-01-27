@@ -19,7 +19,6 @@ def main():
 def submitData():
     data = dict(request.form)
     team = int(data["team_number"])
-    disabled = None
     data = {  # to clear things up, this data is the data of a single match
         "team_number": team,
         "match": int(data["match"]),
