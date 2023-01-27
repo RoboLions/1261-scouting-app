@@ -59,36 +59,111 @@
 
     </style>
 <script>
-	function increment_auto_upper(){
-		document.getElementById('auto_upper').stepUp();
+	// cubes teleop
+	function decrement_cube_teleop_hybrid(){
+		document.getElementById('cube_teleop_hybrid').stepDown();
 	}
 
-	function decrement_auto_upper(){
-		document.getElementById('auto_upper').stepDown();
+	function increment_cube_teleop_hybrid(){
+		document.getElementById('cube_teleop_hybrid').stepUp();
 	}
 
-	function increment_teleop_upper(){
-		document.getElementById('teleop_upper').stepUp();
+	function decrement_cube_teleop_middle(){
+		document.getElementById('cube_teleop_middle').stepDown();
 	}
 
-	function decrement_teleop_upper(){
-		document.getElementById('teleop_upper').stepDown();
+	function increment_cube_teleop_middle(){
+		document.getElementById('cube_teleop_upper').stepUp();
 	}
 
-	function increment_auto_lower(){
-		document.getElementById('auto_lower').stepUp();
+	function increment_cube_teleop_top(){
+		document.getElementById('cube_teleop_top').stepUp();
 	}
 
-	function decrement_auto_lower(){
-		document.getElementById('auto_lower').stepDown();
-	}
-	function increment_teleop_lower(){
-		document.getElementById('teleop_lower').stepUp();
+	function decrement_cube_teleop_top(){
+		document.getElementById('cube_teleop_top').stepDown();
 	}
 
-	function decrement_teleop_lower(){
-		document.getElementById('teleop_lower').stepDown();
+	// cones teleop 
+
+	function decrement_cone_teleop_hybrid(){
+		document.getElementById('cone_teleop_hybrid').stepDown();
 	}
+
+	function increment_cone_teleop_hybrid(){
+		document.getElementById('cone_teleop_hybrid').stepUp();
+	}
+
+	function decrement_cone_teleop_middle(){
+		document.getElementById('cone_teleop_middle').stepDown();
+	}
+
+	function increment_cone_teleop_middle(){
+		document.getElementById('cone_teleop_upper').stepUp();
+	}
+
+	function increment_cone_teleop_top(){
+		document.getElementById('cone_teleop_top').stepUp();
+	}
+
+	function decrement_cone_teleop_top(){
+		document.getElementById('cone_teleop_top').stepDown();
+	}
+
+	// auto here 
+
+	// cubes auto 
+
+	function decrement_cubes_auto_hybrid(){
+		document.getElementById('cube_auto_hybrid').stepDown();
+	}
+
+	function increment_cubes_auto_hybrid(){
+		document.getElementById('cube_auto_hybrid').stepUp();
+	}
+
+	function decrement_cubes_auto_middle(){
+		document.getElementById('cube_auto_middle').stepDown();
+	}
+
+	function increment_cubes_auto_middle(){
+		document.getElementById('cube_auto_upper').stepUp();
+	}
+
+	function increment_cubes_auto_top(){
+		document.getElementById('cube_auto_top').stepUp();
+	}
+
+	function decrement_cubes_auto_top(){
+		document.getElementById('cube_auto_top').stepDown();
+	}
+
+	// cones auto 
+
+	function decrement_ccone_auto_hybrid(){
+		document.getElementById('cone_auto_hybrid').stepDown();
+	}
+
+	function increment_ccone_auto_hybrid(){
+		document.getElementById('cone_auto_hybrid').stepUp();
+	}
+
+	function decrement_ccone_auto_middle(){
+		document.getElementById('cone_auto_middle').stepDown();
+	}
+
+	function increment_ccone_auto_middle(){
+		document.getElementById('cone_auto_upper').stepUp();
+	}
+
+	function increment_ccone_auto_top(){
+		document.getElementById('cone_auto_top').stepUp();
+	}
+
+	function decrement_ccone_auto_top(){
+		document.getElementById('cone_auto_top').stepDown();
+	}
+
 </script>
 </head>
 
@@ -181,48 +256,146 @@
 							{{ form.crossed_tarmac() }}
 						</td>
 					</tr>
+					<!-- CUBES AUTO  -->
 					<tr>
 						<td>
-							Auto Balls Scored Upper
+							Auto Cubes Scored Top
 						</td>
 						<td>
 						
 							{{ form.auto_upper() }}
-							<button type="button" class="point_button" onclick="increment_auto_upper()">+</button>
-							<button type="button" class="point_button" onclick="decrement_auto_upper()">-</button>
+							<button type="button" class="point_button" onclick="increment_cube_auto_top()">+</button>
+							<button type="button" class="point_button" onclick="decrement_cube_auto_top()">-</button>
 						</td>
+						<hr>
 					</tr>
 					<tr>
 						<td>
-							Auto Balls Scored Lower
+							Auto Cubes Scored Middle
 						</td>
 						<td>
 							{{ form.auto_lower() }}
-							<button type="button" class="point_button" onclick="increment_auto_lower()">+</button>
-							<button type="button" class="point_button" onclick="decrement_auto_lower()">-</button>
+							<button type="button" class="point_button" onclick="increment_cube_auto_middle()">+</button>
+							<button type="button" class="point_button" onclick="decrement_cube_auto_middle()">-</button>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							Teleop Balls Scored Upper
+							Auto Cubes Scored Hybrid 
 						</td>
 						<td>
 							{{ form.teleop_upper() }}
-							<button type="button" class="point_button" onclick="increment_teleop_upper()">+</button>
-							<button type="button" class="point_button" onclick="decrement_teleop_upper()">-</button>
+							<button type="button" class="point_button" onclick="increment_cube_auto_hybrid()">+</button>
+							<button type="button" class="point_button" onclick="decrement_cube_auto_hybrid()">-</button>
+						</td>
+					</tr>
+					<!-- CUBES TELEOP -->
+					<tr>
+						<td>
+							Teleop Cubes Scored Top
+						</td>
+						<td>
+						
+							{{ form.teleop_upper() }}
+							<button type="button" class="point_button" onclick="increment_cube_teleop_top()">+</button>
+							<button type="button" class="point_button" onclick="decrement_cube_teleop_top()">-</button>
+						</td>
+						<hr>
+					</tr>
+					<tr>
+						<td>
+							Teleop Cubes Scored Middle
+						</td>
+						<td>
+							{{ form.auto_lower() }}
+							<button type="button" class="point_button" onclick="increment_cube_teleop_middle()">+</button>
+							<button type="button" class="point_button" onclick="decrement_cube_teleop_middle()">-</button>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							Teleop Balls Scored Lower
+							Teleop Cubes Scored Hybrid 
 						</td>
 						<td>
-							{{ form.teleop_lower() }}
-							<button type="button" class="point_button" onclick="increment_teleop_lower()">+</button>
-							
-							<button type="button" class="point_button" onclick="decrement_teleop_lower()">-</button>
+							{{ form.teleop_upper() }}
+							<button type="button" class="point_button" onclick="increment_cube_teleop_hybrid()">+</button>
+							<button type="button" class="point_button" onclick="decrement_cube_teleop_hybrid()">-</button>
 						</td>
 					</tr>
+					<!-- CONES AUTO  -->
+					<tr>
+						<td>
+							Auto Cones Scored Top
+						</td>
+						<td>
+						
+							{{ form.auto_upper() }}
+							<button type="button" class="point_button" onclick="increment_cone_auto_top()">+</button>
+							<button type="button" class="point_button" onclick="decrement_cone_auto_top()">-</button>
+						</td>
+						<hr>
+					</tr>
+					<tr>
+						<td>
+							Auto Cones Scored Middle
+						</td>
+						<td>
+							{{ form.auto_lower() }}
+							<button type="button" class="point_button" onclick="increment_cone_auto_middle()">+</button>
+							<button type="button" class="point_button" onclick="decrement_cone_auto_middle()">-</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Auto Cones Scored Hybrid 
+						</td>
+						<td>
+							{{ form.teleop_upper() }}
+							<button type="button" class="point_button" onclick="increment_cone_auto_hybrid()">+</button>
+							<button type="button" class="point_button" onclick="decrement_cone_auto_hybrid()">-</button>
+						</td>
+					</tr>
+					<!-- CONES TELEOP -->
+					<tr>
+						<td>
+							Teleop Cubes Scored Top
+						</td>
+						<td>
+						
+							{{ form.teleop_upper() }}
+							<button type="button" class="point_button" onclick="increment_cone_teleop_top()">+</button>
+							<button type="button" class="point_button" onclick="decrement_cone_teleop_top()">-</button>
+						</td>
+						<hr>
+					</tr>
+					<tr>
+						<td>
+							Teleop Cubes Scored Middle
+						</td>
+						<td>
+							{{ form.auto_lower() }}
+							<button type="button" class="point_button" onclick="increment_cone_teleop_middle()">+</button>
+							<button type="button" class="point_button" onclick="decrement_cone_teleop_middle()">-</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Teleop Cubes Scored Hybrid 
+						</td>
+						<td>
+							{{ form.teleop_upper() }}
+							<button type="button" class="point_button" onclick="increment_cone_teleop_hybrid()">+</button>
+							<button type="button" class="point_button" onclick="decrement_cone_teleop_hybrid()">-</button>
+						</td>
+					</tr>
+					 <tr>
+						<td>
+						</td>
+						<td>
+							
+						</td>
+					</tr>
+					</tr>  
 					<tr>
 						<td>
 							Defense
