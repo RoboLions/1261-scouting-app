@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect
 import database as db
-from forms import RapidReactForm, FindTeamForm
+from forms import ChargedUpForm, FindTeamForm
 import os
 
 app = Flask(__name__)
@@ -11,7 +11,8 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 @app.route('/')
 def main():
-    form = RapidReactForm()
+ #   form = RapidReactForm()
+    form = ChargedUpForm()
     return render_template('index.html', form=form)  # the main page
 
 
