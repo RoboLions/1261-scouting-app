@@ -78,22 +78,16 @@ def submitData():
                            disabled=data['disabled'],
                            disconnected=data['disconnected'],
                            disconnected_total_seconds=data['disconnected_total_seconds'],
-                           crossed_tarmac=data['crossed_tarmac'],
-                           auto_upper=data['auto_upper'],
-                           auto_lower=data['auto_lower'],
-                           teleop_upper=data['teleop_upper'],
-                           teleop_lower=data['teleop_lower'],
+                           auto_charge = data ['auto_charge'],
+                           teleop_charge = data ['teleop_charge'],
                            defense=data['defense'],
                            type=data['type'],
-                           position=data['position'],
                            speed=data['speed'],
                            stability=data['stability'],
                            driver=data['driver'],
-                           accuracy=data['accuracy'],
-                           climb=data['climb'],
-                           climb_seconds=data['climb_seconds'],
                            name=data['name'],
                            notes=data['notes'])
+                           
 
 
 @app.route('/getdata')
