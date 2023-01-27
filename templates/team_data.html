@@ -65,37 +65,31 @@
 <hr>
     <h1> Team {{ number }} Data </h1>
     <br>
-    <p>Average Auto Upper: {{ avg_auto_upper }}</p>
-    <p>Average Auto Lower: {{ avg_auto_lower }} </p>
-    <p>Average Teleop Upper: {{ avg_teleop_upper }}</p>
-    <p>Average Teleop Lower: {{ avg_teleop_lower }}</p>
     <ul style="color:white">
         {%for n in range(0, matches_len)%}
         <br>
         <li><h3> Match Number: {{ matches[n]['match'] }} </h3></li>
         <br>
-        <li> Disabled/AFK: {{ matches[n]['disabled'] }} </li>
-        <li> Disconnected during the match: {{ matches[n]['disconnected'] }} </li>
-        <li> Total seconds disconnected: {{ matches[n]['disconnected_total_seconds'] }} </li>
-        <li> Crossed Tarmac: {{ matches[n]['crossed_tarmac'] }} </li>
-        <li> Auto Upper: {{ matches[n]['auto_upper'] }} </li>
-        <li> Auto Lower: {{ matches[n]['auto_lower'] }} </li>
+        <li> Auto Top Cone: {{ matches[n]['cone_auto_top'] }} </li>
+        <li> Auto Middle Cone: {{ matches[n]['cone_auto_middle'] }} </li>
+        <li> Auto Hybrid Cone: {{ matches[n]['cone_auto_hybrid'] }} </li>
         <br>
-        <li> Teleop Upper: {{ matches[n]['teleop_upper'] }} </li>
-        <li> Teleop Lower: {{ matches[n]['teleop_lower'] }} </li>
+        <li> Auto Top Cube: {{ matches[n]['cube_auto_top'] }} </li>
+        <li> Auto Middle Cube: {{ matches[n]['cube_auto_middle'] }} </li>
+        <li> Auto Hybrid Cube: {{ matches[n]['cube_auto_hybrid'] }} </li>
         <br>
-        <li> Defense: {{ matches[n]['defense'] }} </li>
-        <li> Type of Shooter: {{ matches[n]['type'] }} </li>
-        <li> Shooting Position: {{ matches[n]['position'] }} </li>
-        <li> Robot's Speed: {{ matches[n]['speed'] }} </li>
-        <li> Stability: {{ matches[n]['stability'] }} </li>
-        <li> Driver Skill: {{ matches[n]['driver'] }} / 3 </li>
-        <li> Robot Accuracy: {{ matches[n]['accuracy'] }} / 5 </li>
-        <li> Climb Ability: {{ matches[n]['climb'] }} </li>
-        <li> Time taken to climb: {{matches[n]['climb_seconds']}} </li>
+        <li> Teleop Top Cone: {{ matches[n]['cone_teleop_top'] }} </li>
+        <li> Teleop Middle Cone: {{ matches[n]['cone_teleop_middle'] }} </li>
+        <li> Teleop Hybrid Cone: {{ matches[n]['cone_teleop_hybrid'] }} </li>
         <br>
-        <li> Notes: {{ matches[n]['notes'] }} </li>
-        <li> Name: {{ matches[n]['name'] }} </li>
+        <li> Teleop Top Cube: {{ matches[n]['cube_teleop_top'] }} </li>
+        <li> Teleop Middle Cube: {{ matches[n]['cube_teleop_middle'] }} </li>
+        <li> Teleop Hybrid Cube: {{ matches[n]['cube_teleop_hybrid'] }} </li>
+        <br>
+        <li> Defense Percentage: {{ matches[n]['defense'] }} </li>
+        <br>
+        <li> Auto Charging Station: {{ matches[n]['auto_charge'] }} </li>
+        <li> Teleop Charging Station: {{ matches[n]['teleop_charge'] }} </li>
         {%endfor%}
 
       
