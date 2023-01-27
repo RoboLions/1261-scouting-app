@@ -20,57 +20,13 @@ def main():
 def submitData():
     data = dict(request.form)
     team = int(data["team_number"])
-    disabled = None
-    try:
-        throwaway_var = data["disabled"]
-        disabled = True
-    except KeyError:
-        disabled = False
-    crossed_tarmac = None
-    try:
-        throwaway_var2 = data["crossed_tarmac"]
-        crossed_tarmac = True
-    except KeyError:
-        crossed_tarmac = False
-    disconnected = None
-    try:
-        throwaway_var3 = data["disconnected"]
-        disconnected = True
-    except KeyError:
-        disconnected = False
-    disconnected_total_seconds = None
-    disconnected_total_seconds_check = None
-    try:
-        throwaway_var4 = data["disconnected_total_seconds"]
-        disconnected_total_seconds_check = True
-    except KeyError:
-        disconnected_total_seconds_check = False
-    if disconnected_total_seconds_check == True:
-        disconnected_total_seconds = int(data["disconnected_total_seconds"])
-    else:
-        disconnected_total_seconds = int(0)
     data = {  # to clear things up, this data is the data of a single match
         "team_number": team,
         "match": int(data["match"]),
-        "disabled": disabled,
-        "disconnected": disconnected,
-        "disconnected_total_seconds": int(data["disconnected_total_seconds"]),
-        "crossed_tarmac": crossed_tarmac,
-        "auto_upper": int(data["auto_upper"]),
-        "auto_lower": int(data["auto_lower"]),
-        "teleop_upper": int(data["teleop_upper"]),
-        "teleop_lower": int(data["teleop_lower"]),
-        "type": data["type"],
-        "driver": int(data["driver"]),
         "defense": data["defense"],
-        "position": data["position"],
-        "speed": data["speed"],
-        "stability": data["stability"],
-        "accuracy": int(data["accuracy"]),
-        "climb": data["climb"],
-        "climb_seconds": data["climb_seconds"],
+        "auto_charge": data['auto_charge'],
+        "teleop_charge": data['teleop_charge'],
         "name": data["name"],
-        "notes": data["notes"],
     }
     db.setData(data)
     return render_template('confirm.html',
