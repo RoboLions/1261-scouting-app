@@ -125,6 +125,23 @@ class ChargedUpForm(FlaskForm):
     cube_teleop_top = IntegerField (default=0) ("Cube Teleop - Top", validators=[DataRequired()])
     cube_teleop_middle = IntegerField(default=0) ("Cube Teleop - Middle", validators=[DataRequired()])
     cube_teleop_hybrid= IntegerField(default=0) ("Cube Teleop - Hybrid", validators=[DataRequired()])
+    defense = IntegerField("Defense Percentage", validators=[DataRequired(), NumberRange(0,100)])
+    # 0% means that the team did not play any defense. please dont forgor to add that in the question.
+    auto_charge = SelectField("Charging Station State Auto", choices=[
+        ("N/A", "No Dock nor Engage"),
+        ("docked auto", "Docked Points Earned"),
+        ("engaged auto", "Engaged Points Earned")
+    ]) 
+    teleop_charge = SelectField("Charging Station State TeleOp", choices=[
+        ("N/A", "No Dock nor Engage"),
+        ("1docked teleop", "1 Docked Points Earned"),
+        ("2docked teleop", "2 Docked Points Earned"),
+        ("3docked teleop", "3 Docked Points Earned"),
+        ("1engaged teleop", "1Engaged Points Earned"),
+        ("2engaged teleop", "2Engaged Points Earned"),
+        ("3engaged teleop", "3Engaged Points Earned"),
+    ])
+    
 
 
 class FindTeamForm(FlaskForm):
