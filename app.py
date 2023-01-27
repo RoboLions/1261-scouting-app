@@ -27,19 +27,6 @@ def submitData():
         "auto_charge": data['auto_charge'],
         "teleop_charge": data['teleop_charge'],
         "name": data["name"],
-        "cone_auto_top": int(data["cone_auto_top"])
-        "cone_auto_middle": int(data["cone_auto_middle"])
-        "cone_auto_hybrid": int(data["cone_auto_hybrid"])
-        "cone_teleop_upper": int(data["cone_teleop_upper"])
-        "cone_teleop_upper": int(data["cone_teleop_upper"])
-        "cone_teleop_hybrid": int(data["cone_teleop_hybrid"])
-        "cube_auto_top": int(data["cube_auto_top"])
-        "cube_auto_middle": int(data["cube_auto_middle"])
-        "cube_auto_hybrid": int(data["cube_auto_hybrid"])
-        "cube_teleop_upper": int(data["cube_teleop_upper"])
-        "cube_teleop_upper": int(data["cube_teleop_upper"])
-        "cube_teleop_hybrid": int(data["cube_teleop_hybrid"])
-        
     }
     db.setData(data)
     return render_template('confirm.html',
