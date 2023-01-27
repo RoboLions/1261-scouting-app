@@ -110,21 +110,21 @@ class RapidReactForm(FlaskForm):
 class ChargedUpForm(FlaskForm):
     team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 20000)])
     match = IntegerField("Match Number", validators=[DataRequired()])
-    cone_auto_top = IntegerField (default=0) ("Cone Auto - Top", validators=[DataRequired()])
-    cone_auto_middle = IntegerField(default=0) ("Cone Auto - Middle", validators=[DataRequired()])
-    cone_auto_hybrid= IntegerField(default=0) ("Cone Auto - Hybrid", validators=[DataRequired()])
+    cone_auto_top = IntegerField (default=0, "Cone Auto - Top", validators=[DataRequired()])
+    cone_auto_middle = IntegerField(default=0, "Cone Auto - Middle", validators=[DataRequired()])
+    cone_auto_hybrid= IntegerField(default=0, "Cone Auto - Hybrid", validators=[DataRequired()])
 
-    cube_auto_top = IntegerField (default=0) ("Cube Auto - Top", validators=[DataRequired()])
-    cube_auto_middle = IntegerField(default=0) ("Cube Auto - Middle", validators=[DataRequired()])
-    cube_auto_hybrid= IntegerField(default=0) ("Cube Auto - Hybrid", validators=[DataRequired()])
+    cube_auto_top = IntegerField (default=0, "Cube Auto - Top", validators=[DataRequired()])
+    cube_auto_middle = IntegerField(default=0, "Cube Auto - Middle", validators=[DataRequired()])
+    cube_auto_hybrid= IntegerField(default=0, "Cube Auto - Hybrid", validators=[DataRequired()])
 
-    cone_teleop_top = IntegerField (default=0) ("Cone Teleop - Top", validators=[DataRequired()])
-    cone_teleop_middle = IntegerField(default=0) ("Cone Teleop - Middle", validators=[DataRequired()])
-    cone_teleop_hybrid= IntegerField(default=0) ("Cone Teleop - Hybrid", validators=[DataRequired()])
+    cone_teleop_top = IntegerField (default=0, "Cone Teleop - Top", validators=[DataRequired()])
+    cone_teleop_middle = IntegerField(default=0, "Cone Teleop - Middle", validators=[DataRequired()])
+    cone_teleop_hybrid= IntegerField(default=0, "Cone Teleop - Hybrid", validators=[DataRequired()])
 
-    cube_teleop_top = IntegerField (default=0) ("Cube Teleop - Top", validators=[DataRequired()])
-    cube_teleop_middle = IntegerField(default=0) ("Cube Teleop - Middle", validators=[DataRequired()])
-    cube_teleop_hybrid= IntegerField(default=0) ("Cube Teleop - Hybrid", validators=[DataRequired()])
+    cube_teleop_top = IntegerField (default=0, "Cube Teleop - Top", validators=[DataRequired()])
+    cube_teleop_middle = IntegerField(default=0, "Cube Teleop - Middle", validators=[DataRequired()])
+    cube_teleop_hybrid= IntegerField(default=0, "Cube Teleop - Hybrid", validators=[DataRequired()])
     defense = IntegerField("Defense Percentage", validators=[DataRequired(), NumberRange(0,100)])
     # 0% means that the team did not play any defense. please dont forgor to add that in the question.
     auto_charge = SelectField("Charging Station State Auto", choices=[
