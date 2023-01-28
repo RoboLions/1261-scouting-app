@@ -46,7 +46,80 @@
     <h4> If you found an error in here, don't panic! Make sure to keep note of it and tell one </h4>
     <h4> of the technical leads (Webmaster, Communications lead, etc.) so they can know. </h4>
     <!--This one bellow feels kinda mean we should change it to "please :D"  -->
-    <h4> Now get back to scouting! </h4>
+<html>
+
+<head>
+  <style>
+    body {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<script>
+  function displayRandomImages() {
+    //array of images with image location, height, and width
+    var imageArray = [
+      {
+        //address URL of the image
+        src: "https://assets.bonappetit.com/photos/5ca534485e96521ff23b382b/4:3/w_3600,h_2700,c_limit/chocolate-chip-cookie.jpg",
+        //size for the image to be display on webpage
+        width: "280",
+        height: "200"
+      },
+      {
+        src: "https://media.tenor.com/iXMdmrCRvBQAAAAM/cookie-monster.gif",
+        width: "320",
+        height: "195"
+      },
+      {
+        src: "https://www.inkatrinaskitchen.com/wp-content/uploads/2011/04/Cookie-Monster-Cookies.jpg",
+        width: "320",
+        height: "195"
+      },
+      {
+        src: "https://simplelivingrecipes.com/wp-content/uploads/2022/03/fudgy-chocolate-cookies-with-cocoa-powder-s.jpg",
+        width: "350",
+        height: "250"
+      }];
+
+    //find the length of the array of images
+    var arrayLength = imageArray.length;
+    var newArray = [];
+    for (var i = 0; i < arrayLength; i++) {
+      newArray[i] = new Image();
+      newArray[i].src = imageArray[i].src;
+      newArray[i].width = imageArray[i].width;
+      newArray[i].height = imageArray[i].height;
+    }
+
+    // create random image number
+    function getRandomNum(min, max) {
+      // generate and return a random number for the image to be displayed 
+      imgNo = Math.floor(Math.random() * (max - min + 1)) + min;
+      return newArray[imgNo];
+    }
+
+    // 0 is first image and (preBuffer.length - 1) is last image of the array
+    var newImage = getRandomNum(0, newArray.length - 1);
+
+    // remove the previous images
+    var images = document.getElementsByTagName('img');
+    var l = images.length;
+    for (var p = 0; p < l; p++) {
+      images[0].parentNode.removeChild(images[0]);
+    }
+    // display the new random image  
+    document.body.appendChild(newImage);
+  }
+</script>
+
+<body>
+  <div>
+    <center>
+      <h2>Thanks For Scouting</h2>
+      <button onclick="displayRandomImages();"> Heres A Cookie </button>
+    </center>
+  </div>
 
     <h1> <a href="{{ url_for("main") }}"> Click here to get back to main page </a></h1>
 </body>
