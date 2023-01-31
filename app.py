@@ -24,6 +24,8 @@ def submitData():
         "team_number": team,
         "match": int(data["match"]),
         "defense": data["defense"],
+        "starting_pos": data["starting_pos"],
+        "mobility": data["mobility"],
         "auto_charge": data['auto_charge'],
         "teleop_charge": data['teleop_charge'],
         "name": data["name"],
