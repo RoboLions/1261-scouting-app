@@ -108,6 +108,7 @@ class RapidReactForm(FlaskForm):
     submit = SubmitField("Submit")
 # 2023 
 class ChargedUpForm(FlaskForm):
+    name = StringField("Name", validators=[DataRequired()])
     team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 20000)])
     match = IntegerField("Match Number", validators=[DataRequired()])
     cone_auto_top = IntegerField ("Cone Auto - Top", default = 0, validators=[DataRequired()])
