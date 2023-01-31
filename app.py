@@ -23,6 +23,8 @@ def submitData():
     data = {  # to clear things up, this data is the data of a single match
         "team_number": team,
         "match": int(data["match"]),
+        "starting_pos": data["starting_pos"],
+        "mobility": data["mobility"],
         "defense": data["defense"],
         "auto_charge": data['auto_charge'],
         "teleop_charge": data['teleop_charge'],
