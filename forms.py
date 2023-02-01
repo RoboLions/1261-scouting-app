@@ -111,6 +111,15 @@ class ChargedUpForm(FlaskForm):
     name = StringField("Name", validators=[DataRequired()])
     team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 20000)])
     match = IntegerField("Match Number", validators=[DataRequired()])
+    starting_pos = SelectField("Starting Position", choice=[
+        ("Left", "Left"),
+        ("Middle", "Middle"),
+        ("Right", "Right")
+    ])
+    mobility = SelectField("Mobility", choices=[
+        ("Yes", "Yes, left community during auto"),
+        ("No", "No, didn't leave community during auto")
+    ])
     cone_auto_top = IntegerField ("Cone Auto - Top", default = 0, validators=[DataRequired()])
     cone_auto_middle = IntegerField("Cone Auto - Middle", default = 0, validators=[DataRequired()])
     cone_auto_hybrid= IntegerField("Cone Auto - Hybrid", default = 0, validators=[DataRequired()])
