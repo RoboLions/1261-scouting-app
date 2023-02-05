@@ -89,19 +89,20 @@ def setData(data_dict):
                     "disconnected_total_seconds": data_dict['disconnected_total_seconds'],
                     "crossed_tarmac": data_dict['crossed_tarmac'],
                     "match": data_dict['match'],
-                    "auto_upper": data_dict['auto_upper'],
-                    "auto_lower": data_dict['auto_lower'],
-                    "teleop_upper": data_dict['teleop_upper'],
-                    "teleop_lower": data_dict['teleop_lower'],
-                    "type":data_dict['type'],
-                    "driver":data_dict['driver'],
+                    "cone_auto_top": data_dict['cone_auto_top'],
+                    "cone_auto_middle": data_dict['cone_auto_middle'],
+                    "cone_auto_hybrid": data_dict['cone_auto_hybrid'],
+                    "cube_teleop_top": data_dict['cube_teleop_top'],
+                    "cube_teleop_middle": data_dict['cube_teleop_middle'],
+                    "cube_teleop_hybrid": data_dict['cube_teleop_hybrid'],
+                    "auto_charge": data_dict['auto_charge'],
+                    "teleop_charge": data_dict['teleop_charge'],
+
+                    "te": data_dict['te'],
+                    "te": data_dict['te'],
                     "defense":data_dict['defense'],
                     "position":data_dict['position'],
                     "speed":data_dict['speed'],
-                    "stability":data_dict['stability'],
-                    "accuracy":data_dict['accuracy'],
-                    "climb": data_dict['climb'],
-                    "climb_seconds": data_dict['climb_seconds'],
                     "name": data_dict['name'],
                     "notes": data_dict['notes'],
                 }
@@ -129,7 +130,7 @@ def getNumberOfTeams():
 # AHH YES the big one
 def getAlgorithmicRankings():
     ranks = {}
-    au = getAutoUpperRankings()
+    auto_top = getConeAutoTop()
     al = getAutoLowerRankings()
     tu = getTeleopUpperRankings()
     tl = getTeleopLowerRankings()
@@ -138,7 +139,7 @@ def getAlgorithmicRankings():
     reach = getReachRankings()
     for team in getAllTeamData():
         num = team['team_number']
-        t_au = au.index(int(num))
+        t_au = auto_top.index(int(num))
         t_al = al.index(int(num))
         t_tu = tu.index(int(num))
         t_tl = tl.index(int(num))
@@ -151,140 +152,370 @@ def getAlgorithmicRankings():
     return final
 
 
-def getAutoUpperRankings():
+def getConeAutoTopRankings():
     data = []
     for team in getAllTeamData():
         for match in team['matches']:
-            data.append(int(match['auto_upper']))
+            data.append(int(match['cone_auto_top']))
         average = sum(data) / len(data)
         db.update_one(
             {"team_number":team['team_number']},
             {'$set':
-                 {"au_avg": average}
+                 {"ConeAutoTop_avg": average}
             }
         )
         data = []
     rankings = {}
     for team in getAllTeamData():
-        rankings[int(team['team_number'])] = team['au_avg']
+        rankings[int(team['team_number'])] = team['ConeAutoTop_avg']
     final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
 
-def getAutoLowerRankings():
+def getConeAutoTopRankings():
     data = []
     for team in getAllTeamData():
         for match in team['matches']:
-            data.append(int(match['auto_lower']))
+            data.append(int(match['cone_auto_top']))
         average = sum(data) / len(data)
         db.update_one(
             {"team_number":team['team_number']},
             {'$set':
-                 {"al_avg": average}
+                 {"ConeAutoTop_avg": average}
             }
         )
         data = []
     rankings = {}
     for team in getAllTeamData():
-        rankings[int(team['team_number'])] = team['al_avg']
+        rankings[int(team['team_number'])] = team['ConeAutoTop_avg']
     final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
-def getTeleopUpperRankings():
+
+def getConeAutoMiddleRankings():
     data = []
     for team in getAllTeamData():
         for match in team['matches']:
-            data.append(int(match['teleop_upper']))
+            data.append(int(match['cone_auto_middle']))
         average = sum(data) / len(data)
         db.update_one(
             {"team_number":team['team_number']},
             {'$set':
-                 {"tu_avg": average}
+                 {"ConeAutoMiddle_avg": average}
             }
         )
         data = []
     rankings = {}
     for team in getAllTeamData():
-        rankings[int(team['team_number'])] = team['tu_avg']
+        rankings[int(team['team_number'])] = team['ConeAutoMiddle_avg']
     final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
-
-def getTeleopLowerRankings():
+def getConeAutoHybridRankings():
     data = []
     for team in getAllTeamData():
         for match in team['matches']:
-            data.append(int(match['teleop_lower']))
+            data.append(int(match['cone_auto_middle']))
         average = sum(data) / len(data)
         db.update_one(
             {"team_number":team['team_number']},
             {'$set':
-                 {"tl_avg": average}
+                 {"cone_auto_hybrid_avg": average}
             }
         )
         data = []
     rankings = {}
     for team in getAllTeamData():
-        rankings[int(team['team_number'])] = team['tl_avg']
+        rankings[int(team['team_number'])] = team['cone_auto_hybrid_avg']
     final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
-
-
-def getDriverRankings():
+# _______________________________________________________________________________________________________________________________________________________________________________________________________
+# Cube AUTO
+def getCubeAutoTopRankings():
     data = []
     for team in getAllTeamData():
         for match in team['matches']:
-            data.append(int(match['driver']))
+            data.append(int(match['cube_auto_top']))
         average = sum(data) / len(data)
         db.update_one(
             {"team_number":team['team_number']},
             {'$set':
-                 {"driver_avg": average}
-             }
+                 {"cubeAutoTop_avg": average}
+            }
         )
         data = []
     rankings = {}
     for team in getAllTeamData():
-        rankings[int(team['team_number'])] = team['driver_avg']
+        rankings[int(team['team_number'])] = team['cubeAutoTop_avg']
     final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
 
-def getClimbRankings():
-    # based off to what rung they can climb to, doesn't account for time taken to climb
+def getCubeAutoTopRankings():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            data.append(int(match['cube_auto_top']))
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"CubeAutoTop_avg": average}
+            }
+        )
+        data = []
+    rankings = {}
+    for team in getAllTeamData():
+        rankings[int(team['team_number'])] = team['cubeAutoTop_avg']
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
+    return final
+
+
+def getCubeAutoMiddleRankings():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            data.append(int(match['cube_auto_middle']))
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"cubeAutoMiddle_avg": average}
+            }
+        )
+        data = []
+    rankings = {}
+    for team in getAllTeamData():
+        rankings[int(team['team_number'])] = team['cubeAutoMiddle_avg']
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
+    return final
+def getcubeAutoHybridRankings():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            data.append(int(match['cube_auto_middle']))
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"cube_auto_hybrid_avg": average}
+            }
+        )
+        data = []
+    rankings = {}
+    for team in getAllTeamData():
+        rankings[int(team['team_number'])] = team['cube_auto_hybrid_avg']
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
+    return final
+#_____________________________________________________________________________________________________________________________________________________________________________
+def getConeteleopTopRankings():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            data.append(int(match['cone_teleop_top']))
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"ConeteleopTop_avg": average}
+            }
+        )
+        data = []
+    rankings = {}
+    for team in getAllTeamData():
+        rankings[int(team['team_number'])] = team['ConeteleopTop_avg']
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
+    return final
+
+
+def getConeteleopTopRankings():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            data.append(int(match['cone_teleop_top']))
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"ConeteleopTop_avg": average}
+            }
+        )
+        data = []
+    rankings = {}
+    for team in getAllTeamData():
+        rankings[int(team['team_number'])] = team['ConeteleopTop_avg']
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
+    return final
+
+
+def getConeteleopMiddleRankings():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            data.append(int(match['cone_teleop_middle']))
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"ConeteleopMiddle_avg": average}
+            }
+        )
+        data = []
+    rankings = {}
+    for team in getAllTeamData():
+        rankings[int(team['team_number'])] = team['ConeteleopMiddle_avg']
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
+    return final
+def getConeteleopHybridRankings():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            data.append(int(match['cone_teleop_middle']))
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"cone_teleop_hybrid_avg": average}
+            }
+        )
+        data = []
+    rankings = {}
+    for team in getAllTeamData():
+        rankings[int(team['team_number'])] = team['cone_teleop_hybrid_avg']
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
+    return final
+# _______________________________________________________________________________________________________________________________________________________________________________________________________
+# Cube teleop
+def getCubeteleopTopRankings():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            data.append(int(match['cube_teleop_top']))
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"cubeteleopTop_avg": average}
+            }
+        )
+        data = []
+    rankings = {}
+    for team in getAllTeamData():
+        rankings[int(team['team_number'])] = team['cubeteleopTop_avg']
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
+    return final
+
+
+def getCubeteleopTopRankings():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            data.append(int(match['cube_teleop_top']))
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"CubeteleopTop_avg": average}
+            }
+        )
+        data = []
+    rankings = {}
+    for team in getAllTeamData():
+        rankings[int(team['team_number'])] = team['cubeteleopTop_avg']
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
+    return final
+
+
+def getCubeteleopMiddleRankings():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            data.append(int(match['cube_teleop_middle']))
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"cubeteleopMiddle_avg": average}
+            }
+        )
+        data = []
+    rankings = {}
+    for team in getAllTeamData():
+        rankings[int(team['team_number'])] = team['cubeteleopMiddle_avg']
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
+    return final
+def getcubeteleopHybridRankings():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            data.append(int(match['cube_teleop_middle']))
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"cube_teleop_hybrid_avg": average}
+            }
+        )
+        data = []
+    rankings = {}
+    for team in getAllTeamData():
+        rankings[int(team['team_number'])] = team['cube_teleop_hybrid_avg']
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
+    return final
+# 
+
+def getChargingPortAuto():
     data = []
     for team in getAllTeamData():
         for match in team['matches']:
             score = 0
-            most_common_climb = str(match['climb']).lower()
-            if most_common_climb == "traverse":
-                score = 4
-            elif most_common_climb == "high":
-                score = 3
-            elif most_common_climb == "mid":
+            auto_charge = str(match['auto_charge']).lower()
+            if auto_charge == "engaged auto":
                 score = 2
-            elif most_common_climb == "low":
+            elif auto_charge == "docked auto":
                 score = 1
-            elif most_common_climb == "cannot":
-                score = 0
-            elif most_common_climb == "did not":
-                score = 0
-            elif most_common_climb == "attempted":
+            elif auto_charge == "n/a":
                 score = 0
             data.append(score)
         average = sum(data) / len(data)
         db.update_one(
             {"team_number":team['team_number']},
             {'$set':
-                 {"climb_avg": average}
+                 {"auto_charge_avg": average}
             }
         )
         data = []
     rankings = {}
     for team in getAllTeamData():
-        rankings[int(team['team_number'])] = team['climb_avg']
+        rankings[int(team['team_number'])] = team['auto_charge_avg']
     final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
+def getChargingPortTeleop():
+    data = []
+    for team in getAllTeamData():
+        for match in team['matches']:
+            score = 0
+            teleop_charge = str(match['teleop_charge']).lower()
+            if teleop_charge == "engaged teleop":
+                score = 2
+            elif teleop_charge == "docked teleop":
+                score = 1
+            elif teleop_charge == "n/a":
+                score = 0
+            data.append(score)
+        average = sum(data) / len(data)
+        db.update_one(
+            {"team_number":team['team_number']},
+            {'$set':
+                 {"teleop_charge_avg": average}
+            }
+        )
+        data = []
+    rankings = {}
+    for team in getAllTeamData():
+        rankings[int(team['team_number'])] = team['teleop_charge_avg']
+    final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
+    return final
 
 def getReachRankings():
     data = []
