@@ -70,33 +70,33 @@ def getTeamData():
     matches = db.getData(int(team_number))
     if matches is None or matches == []:  # if there is no match data in the list 'matches'
         return """ This team has not been scouted yet! Get on that! """
-    auto_upper_tmp = []
-    auto_lower_tmp = []
-    teleop_upper_tmp = []
-    teleop_lower_tmp = []
+    auto_cone_tmp = []
+    auto_cube_tmp = []
+    teleop_cone_tmp = []
+    teleop_cube_tmp = []
     for match in matches:
-        auto_upper_tmp.append(match["auto_upper"])
-        auto_lower_tmp.append(match["auto_lower"])
-        teleop_upper_tmp.append(match["teleop_upper"])
-        teleop_lower_tmp.append(match["teleop_lower"])
-    avg_auto_upper = sum(auto_upper_tmp)/len(auto_upper_tmp)
-    avg_auto_upper = round(avg_auto_upper, 3)
-    avg_auto_lower = sum(auto_lower_tmp)/len(auto_lower_tmp)
-    avg_auto_lower = round(avg_auto_lower, 3)
-    avg_teleop_upper = sum(teleop_upper_tmp)/len(teleop_upper_tmp)
-    avg_teleop_upper = round(avg_teleop_upper, 3)
-    avg_teleop_lower = sum(teleop_lower_tmp)/len(teleop_lower_tmp)
-    avg_teleop_lower= round(avg_teleop_lower, 3)
+        auto_cone_tmp.append(match["auto_cone"])
+        auto_cube_tmp.append(match["auto_cube"])
+        teleop_cone_tmp.append(match["teleop_cone"])
+        teleop_cube_tmp.append(match["teleop_cube"])
+    avg_auto_cone = sum(auto_cone_tmp)/len(auto_cone_tmp)
+    avg_auto_cone = round(avg_auto_cone, 3)
+    avg_auto_cube = sum(auto_cube_tmp)/len(auto_cube_tmp)
+    avg_auto_cube = round(avg_auto_cube, 3)
+    avg_teleop_cone = sum(teleop_cone_tmp)/len(teleop_cone_tmp)
+    avg_teleop_cone = round(avg_teleop_cone, 3)
+    avg_teleop_cube = sum(teleop_cube_tmp)/len(teleop_cube_tmp)
+    avg_teleop_cube= round(avg_teleop_cube, 3)
 
     try:
         return render_template('team_data.html',
                                number=team_number,
                                matches=matches,
                                matches_len=len(matches),
-                               avg_auto_upper=avg_auto_upper,
-                               avg_auto_lower=avg_auto_lower,
-                               avg_teleop_upper=avg_teleop_upper,
-                               avg_teleop_lower=avg_teleop_lower,
+                               avg_auto_cone=avg_auto_cone,
+                               avg_auto_cube=avg_auto_cube,
+                               avg_teleop_cone=avg_teleop_cone,
+                               avg_teleop_cube=avg_teleop_cube,
                                )
     
 
