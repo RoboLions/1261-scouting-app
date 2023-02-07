@@ -70,10 +70,27 @@
 <form action="{{ url_for('getRankingData') }}" method="post">
     <select name="config">
         <option value="default"> Algorithmic Ranking System </option>
-        <option value="auto_upper"> Rank by Auto Upper Ball Scoring </option>
-        <option value="auto_lower"> Rank by Auto Lower Ball Scoring </option>
-        <option value="teleop_upper"> Rank by Teleop Upper Ball Scoring </option>
-        <option value="teleop_lower"> Rank by Teleop Lower Ball Scoring </option>
+        <option value="auto_charge"> Rank by Auto Charge Scoring </option>
+        <option value="teleop_charge"> Rank by Teleop Charge Scoring </option>
+        <!-- charge  -->
+        <option value="cone_auto_top"> Rank by Auto Cone Top Scoring </option>
+        <option value="cube_auto_top"> Rank by Auto Cube Top Scoring </option>
+        <!-- auto top  -->
+        <option value="cone_auto_middle"> Rank by Auto Cone Middle Scoring </option>
+        <option value="cube_auto_middle"> Rank by Auto Cube Middle Scoring </option>
+        <!-- auto middle -->
+        <option value="cone_auto_hybrid"> Rank by Auto Cone Lower Scoring </option>
+        <option value="cube_auto_hybrid"> Rank by Auto Cube Lower Scoring </option>
+        <!-- auto hybrid  -->
+        <option value="cone_auto_top"> Rank by Teleop Cone Top Scoring </option>
+        <option value="cube_auto_top"> Rank by Teleop Cube Top Scoring </option>
+        <!-- teleop top  -->
+        <option value="cone_auto_middle"> Rank by Teleop Cone Middle Scoring </option>
+        <option value="cube_auto_middle"> Rank by Teleop Cube Middle Scoring </option>
+        <!-- teleop middle -->
+        <option value="cone_auto_hybrid"> Rank by Teleop Cone Lower Scoring </option>
+        <option value="cube_auto_hybrid"> Rank by Teleop Cube Lower Scoring </option>
+        <!-- teleop hybrid  -->
         <option value="driver"> Rank by Driver Skill </option>
         <option value="reach"> Rank by Robot's Reach </option>
         <option value="climb"> Rank by Climb </option>
