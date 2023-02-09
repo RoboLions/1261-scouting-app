@@ -111,7 +111,7 @@ class ChargedUpForm(FlaskForm):
     name = StringField("Name", validators=[DataRequired()])
     team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 20000)])
     match = IntegerField("Match Number", validators=[DataRequired()])
-    starting_pos = SelectField("Starting Position", choice=[
+    starting_pos = SelectField("Starting Position", choices=[
         ("Left", "Left"),
         ("Middle", "Middle"),
         ("Right", "Right")
