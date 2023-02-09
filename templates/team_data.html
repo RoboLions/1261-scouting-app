@@ -74,8 +74,12 @@
         <br>
         <li><h3> Match Number: {{ matches[n]['match'] }} </h3></li>
         <br>
+        <li> Disabled?: {{ matches[n]['disabled'] }}</li>
+        <li> Total Sec Disabled: {{ matches[n]['disabled_total_seconds'] }}</li>
+        <br> 
         <li> Starting Position: {{ matches[n]['starting_pos'] }}</li>
         <li> Mobility: {{ matches[n]['mobility'] }}</li>
+        <li> Speed: {{ matches[n]['speed'] }}</li>
         <br>
         <li> Auto Top Cone: {{ matches[n]['cone_auto_top'] }} </li>
         <li> Auto Middle Cone: {{ matches[n]['cone_auto_middle'] }} </li>
@@ -97,6 +101,8 @@
         <br>
         <li> Auto Charging Station: {{ matches[n]['auto_charge'] }} </li>
         <li> Teleop Charging Station: {{ matches[n]['teleop_charge'] }} </li>
+        <br>
+        <li> Notes: {{ matches[n]['notes'] }}</li>
         {%endfor%}
 
       
