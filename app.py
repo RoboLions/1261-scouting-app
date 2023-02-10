@@ -64,7 +64,7 @@ def submitData():
                            cube_auto_hybrid = data["cube_auto_hybrid"],
                            cube_teleop_upper = data["cube_teleop_upper"],
                            cube_teleop_upper = data["cube_teleop_upper"],
-                           cube_teleop_hybrid = data["cube_teleop_hybrid"],
+                           cube_teleop_hybrid = data["cube_teleop_hybrid"],)
                            # disabled=data['disabled'],
                            # disconnected=data['disconnected'],
                           # disconnected_total_seconds=data['disconnected_total_seconds'],
