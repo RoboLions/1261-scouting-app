@@ -73,7 +73,7 @@
 	}
 
 	function increment_cube_teleop_middle(){
-		document.getElementById('cube_teleop_upper').stepUp();
+		document.getElementById('cube_teleop_middle').stepUp();
 	}
 
 	function increment_cube_teleop_top(){
@@ -94,12 +94,11 @@
 		document.getElementById('cone_teleop_hybrid').stepUp();
 	}
 
+	function increment_cone_teleop_middle(){
+		document.getElementById('cone_teleop_middle').stepUp();
+	}
 	function decrement_cone_teleop_middle(){
 		document.getElementById('cone_teleop_middle').stepDown();
-	}
-
-	function increment_cone_teleop_middle(){
-		document.getElementById('cone_teleop_upper').stepUp();
 	}
 
 	function increment_cone_teleop_top(){
@@ -114,53 +113,53 @@
 
 	// cubes auto 
 
-	function decrement_cubes_auto_hybrid(){
+	function decrement_cube_auto_hybrid(){
 		document.getElementById('cube_auto_hybrid').stepDown();
 	}
 
-	function increment_cubes_auto_hybrid(){
+	function increment_cube_auto_hybrid(){
 		document.getElementById('cube_auto_hybrid').stepUp();
 	}
 
-	function decrement_cubes_auto_middle(){
+	function decrement_cube_auto_middle(){
 		document.getElementById('cube_auto_middle').stepDown();
 	}
 
-	function increment_cubes_auto_middle(){
-		document.getElementById('cube_auto_upper').stepUp();
+	function increment_cube_auto_middle(){
+		document.getElementById('cube_auto_middle').stepUp();
 	}
 
-	function increment_cubes_auto_top(){
+	function increment_cube_auto_top(){
 		document.getElementById('cube_auto_top').stepUp();
 	}
 
-	function decrement_cubes_auto_top(){
+	function decrement_cube_auto_top(){
 		document.getElementById('cube_auto_top').stepDown();
 	}
 
 	// cones auto 
 
-	function decrement_ccone_auto_hybrid(){
+	function decrement_cone_auto_hybrid(){
 		document.getElementById('cone_auto_hybrid').stepDown();
 	}
 
-	function increment_ccone_auto_hybrid(){
+	function increment_cone_auto_hybrid(){
 		document.getElementById('cone_auto_hybrid').stepUp();
 	}
 
-	function decrement_ccone_auto_middle(){
+	function decrement_cone_auto_middle(){
 		document.getElementById('cone_auto_middle').stepDown();
 	}
 
-	function increment_ccone_auto_middle(){
-		document.getElementById('cone_auto_upper').stepUp();
+	function increment_cone_auto_middle(){
+		document.getElementById('cone_auto_middle').stepUp();
 	}
 
-	function increment_ccone_auto_top(){
+	function increment_cone_auto_top(){
 		document.getElementById('cone_auto_top').stepUp();
 	}
 
-	function decrement_ccone_auto_top(){
+	function decrement_cone_auto_top(){
 		document.getElementById('cone_auto_top').stepDown();
 	}
 
@@ -387,15 +386,6 @@
 							<button type="button" class="point_button" onclick="increment_cone_teleop_hybrid()">+</button>
 							<button type="button" class="point_button" onclick="decrement_cone_teleop_hybrid()">-</button>
 						</td>
-					</tr>
-					 <tr>
-						<td>
-						</td>
-						<td>
-							
-						</td>
-					</tr>
-					</tr>  
 					<tr>
 						<td>
 							Defense
