@@ -19,63 +19,64 @@ def main():
 @app.route('/submitdata', methods=['POST']) # ONLY the post responses will be filtered here and dealt with here
 def submitData():
     data = dict(request.form)
+    if ("disabled" not in data):
+        data["disabled"] = "n"
+    if ("disconnected" not in data):
+        data["disconnected"] = "n"
     team = int(data["team_number"])
     data = {  # to clear things up, this data is the data of a single match
         "team_number": team,
         "match": int(data["match"]),
-        "defense": data["defense"],
         "starting_pos": data["starting_pos"],
         "mobility": data["mobility"],
+        "speed": data['speed'],
+        "disabled": data["disabled"],
+        "disconnected": data["disconnected"],
+        "disconnected_total_seconds": data["disconnected_total_seconds"],
         "auto_charge": data['auto_charge'],
         "teleop_charge": data['teleop_charge'],
         "name": data["name"],
         "cone_auto_top": int(data["cone_auto_top"]),
         "cone_auto_middle": int(data["cone_auto_middle"]),
         "cone_auto_hybrid": int(data["cone_auto_hybrid"]),
-        "cone_teleop_upper": int(data["cone_teleop_upper"]),
-        "cone_teleop_upper": int(data["cone_teleop_upper"]),
+        "cone_teleop_top": int(data["cone_teleop_top"]),
+        "cone_teleop_middle": int(data["cone_teleop_middle"]),
         "cone_teleop_hybrid": int(data["cone_teleop_hybrid"]),
         "cube_auto_top": int(data["cube_auto_top"]),
         "cube_auto_middle": int(data["cube_auto_middle"]),
         "cube_auto_hybrid": int(data["cube_auto_hybrid"]),
-        "cube_teleop_upper": int(data["cube_teleop_upper"]),
-        "cube_teleop_upper": int(data["cube_teleop_upper"]),
+        "cube_teleop_top": int(data["cube_teleop_top"]),
+        "cube_teleop_middle": int(data["cube_teleop_top"]),
         "cube_teleop_hybrid": int(data["cube_teleop_hybrid"]),
+        "notes": data["notes"],
         
     }
     db.setData(data)
     return render_template('confirm.html',
+                           name = data['name'],
                            team_number=data['team_number'],
                            match=data['match'],
-                           defense=data['defense'],
-                           starting_position= data['starting_pos'],
+                           disabled= data['disabled'],
+                           disconnected= data['disconnected'],
+                           disconnected_total_seconds= data['disconnected_total_seconds'],
+                           starting_pos= data['starting_pos'],
                            mobility = data["mobility"],  
-                           auto_charge = data["auto_charge"], 
-                           teleop_charge = data['teleop_charge'], 
-                           name = data['name']
-                           cone_auto_top = data["cone_auto_top"], 
-                           cone_auto_middle = data["cone_auto_middle"],
-                           cone_auto_hybrid = data["cone_auto_hybrid"],
-                           cone_teleop_upper = data["cone_teleop_upper"],
-                           cone_teleop_upper = data["cone_teleop_upper"],
-                           cone_teleop_hybrid = data["cone_teleop_hybrid"],
                            cube_auto_top = data["cube_auto_top"],
                            cube_auto_middle = data["cube_auto_middle"],
                            cube_auto_hybrid = data["cube_auto_hybrid"],
-                           cube_teleop_upper = data["cube_teleop_upper"],
-                           cube_teleop_upper = data["cube_teleop_upper"],
-                           cube_teleop_hybrid = data["cube_teleop_hybrid"],)
-                           # disabled=data['disabled'],
-                           # disconnected=data['disconnected'],
-                          # disconnected_total_seconds=data['disconnected_total_seconds'],
-                        #    auto_charge = data ['auto_charge'],
-                        #    teleop_charge = data ['teleop_charge'],
-                        #    type=data['type'],
-                        #    speed=data['speed'],
-                        #    stability=data['stability'],
-                        #    driver=data['driver'],
-                        #    name=data['name'],
-                        #    notes=data['notes'])
+                           cube_teleop_top = data["cube_teleop_top"],
+                           cube_teleop_middle = data["cube_teleop_middle"],
+                           cube_teleop_hybrid = data["cube_teleop_hybrid"],
+                           cone_auto_top = data["cone_auto_top"], 
+                           cone_auto_middle = data["cone_auto_middle"],
+                           cone_auto_hybrid = data["cone_auto_hybrid"],
+                           cone_teleop_top = data["cone_teleop_top"],
+                           cone_teleop_middle = data["cone_teleop_middle"],
+                           cone_teleop_hybrid = data["cone_teleop_hybrid"],
+                           auto_charge = data["auto_charge"], 
+                           teleop_charge = data['teleop_charge'],
+                           speed = data['speed'],
+                           notes = data['notes'])
                            
 
 

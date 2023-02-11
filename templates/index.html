@@ -76,13 +76,15 @@
 		document.getElementById('cube_teleop_middle').stepUp();
 	}
 
+	function decrement_cube_teleop_top(){
+		document.getElementById('cube_teleop_top').stepDown();
+	}
+
 	function increment_cube_teleop_top(){
 		document.getElementById('cube_teleop_top').stepUp();
 	}
 
-	function decrement_cube_teleop_top(){
-		document.getElementById('cube_teleop_top').stepDown();
-	}
+	
 
 	// cones teleop 
 
@@ -204,7 +206,7 @@
 							Name
 						</td>
 						<td>
-							{{ name() }}
+							{{ form.name() }}
 						</td>
 					</tr>
 					<tr>
@@ -247,12 +249,20 @@
 							{{ form.disconnected_total_seconds() }}
 						</td>
 					</tr>
-                    <tr>
+					<tr>
 						<td>
-							Crossed the Tarmac in Auto
+							Starting Position
 						</td>
 						<td>
-							{{ form.crossed_tarmac() }}
+							{{ form.starting_pos() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Mobility
+						</td>
+						<td>
+							{{ form.mobility() }}
 						</td>
 					</tr>
 					<!-- CUBES AUTO  -->
@@ -262,18 +272,17 @@
 						</td>
 						<td>
 						
-							{{ form.auto_upper() }}
+							{{ form.cube_auto_top() }}
 							<button type="button" class="point_button" onclick="increment_cube_auto_top()">+</button>
 							<button type="button" class="point_button" onclick="decrement_cube_auto_top()">-</button>
 						</td>
-						<hr>
 					</tr>
 					<tr>
 						<td>
 							Auto Cubes Scored Middle
 						</td>
 						<td>
-							{{ form.auto_lower() }}
+							{{ form.cube_auto_middle() }}
 							<button type="button" class="point_button" onclick="increment_cube_auto_middle()">+</button>
 							<button type="button" class="point_button" onclick="decrement_cube_auto_middle()">-</button>
 						</td>
@@ -283,7 +292,7 @@
 							Auto Cubes Scored Hybrid 
 						</td>
 						<td>
-							{{ form.teleop_upper() }}
+							{{ form.cube_auto_hybrid() }}
 							<button type="button" class="point_button" onclick="increment_cube_auto_hybrid()">+</button>
 							<button type="button" class="point_button" onclick="decrement_cube_auto_hybrid()">-</button>
 						</td>
@@ -295,18 +304,17 @@
 						</td>
 						<td>
 						
-							{{ form.teleop_upper() }}
+							{{ form.cube_teleop_top() }}
 							<button type="button" class="point_button" onclick="increment_cube_teleop_top()">+</button>
 							<button type="button" class="point_button" onclick="decrement_cube_teleop_top()">-</button>
 						</td>
-						<hr>
 					</tr>
 					<tr>
 						<td>
 							Teleop Cubes Scored Middle
 						</td>
 						<td>
-							{{ form.auto_lower() }}
+							{{ form.cube_teleop_middle() }}
 							<button type="button" class="point_button" onclick="increment_cube_teleop_middle()">+</button>
 							<button type="button" class="point_button" onclick="decrement_cube_teleop_middle()">-</button>
 						</td>
@@ -316,7 +324,7 @@
 							Teleop Cubes Scored Hybrid 
 						</td>
 						<td>
-							{{ form.teleop_upper() }}
+							{{ form.cube_teleop_hybrid() }}
 							<button type="button" class="point_button" onclick="increment_cube_teleop_hybrid()">+</button>
 							<button type="button" class="point_button" onclick="decrement_cube_teleop_hybrid()">-</button>
 						</td>
@@ -328,18 +336,17 @@
 						</td>
 						<td>
 						
-							{{ form.auto_upper() }}
+							{{ form.cone_auto_top() }}
 							<button type="button" class="point_button" onclick="increment_cone_auto_top()">+</button>
 							<button type="button" class="point_button" onclick="decrement_cone_auto_top()">-</button>
 						</td>
-						<hr>
 					</tr>
 					<tr>
 						<td>
 							Auto Cones Scored Middle
 						</td>
 						<td>
-							{{ form.auto_lower() }}
+							{{ form.cone_auto_middle() }}
 							<button type="button" class="point_button" onclick="increment_cone_auto_middle()">+</button>
 							<button type="button" class="point_button" onclick="decrement_cone_auto_middle()">-</button>
 						</td>
@@ -349,7 +356,7 @@
 							Auto Cones Scored Hybrid 
 						</td>
 						<td>
-							{{ form.teleop_upper() }}
+							{{ form.cone_auto_hybrid() }}
 							<button type="button" class="point_button" onclick="increment_cone_auto_hybrid()">+</button>
 							<button type="button" class="point_button" onclick="decrement_cone_auto_hybrid()">-</button>
 						</td>
@@ -357,57 +364,50 @@
 					<!-- CONES TELEOP -->
 					<tr>
 						<td>
-							Teleop Cubes Scored Top
+							Teleop Cones Scored Top
 						</td>
 						<td>
 						
-							{{ form.teleop_upper() }}
+							{{ form.cone_teleop_top() }}
 							<button type="button" class="point_button" onclick="increment_cone_teleop_top()">+</button>
 							<button type="button" class="point_button" onclick="decrement_cone_teleop_top()">-</button>
 						</td>
-						<hr>
 					</tr>
 					<tr>
 						<td>
-							Teleop Cubes Scored Middle
+							Teleop Cones Scored Middle
 						</td>
 						<td>
-							{{ form.auto_lower() }}
+							{{ form.cone_teleop_middle() }}
 							<button type="button" class="point_button" onclick="increment_cone_teleop_middle()">+</button>
 							<button type="button" class="point_button" onclick="decrement_cone_teleop_middle()">-</button>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							Teleop Cubes Scored Hybrid 
+							Teleop Cones Scored Hybrid 
 						</td>
 						<td>
-							{{ form.teleop_upper() }}
+							{{ form.cone_teleop_hybrid() }}
 							<button type="button" class="point_button" onclick="increment_cone_teleop_hybrid()">+</button>
 							<button type="button" class="point_button" onclick="decrement_cone_teleop_hybrid()">-</button>
 						</td>
+					</tr>
+					<!-- Charging Station -->
 					<tr>
 						<td>
-							Defense
+							Auto Charging Station
 						</td>
 						<td>
-							{{ form.defense() }}
+							{{ form.auto_charge() }}
 						</td>
 					</tr>
 					<tr>
 						<td>
-							Type of Shooter
+							Teleop Charging Station
 						</td>
 						<td>
-							{{ form.type() }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Shooting Position
-						</td>
-						<td>
-							{{ form.position() }}
+							{{ form.teleop_charge() }}
 						</td>
 					</tr>
 					<tr>
@@ -416,46 +416,6 @@
 						</td>
 						<td>
 							{{ form.speed() }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Robot's Stability
-						</td>
-						<td>
-							{{ form.stability() }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Rate Driver Skill
-						</td>
-						<td>
-							{{ form.driver() }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Rate Robot Accuracy
-						</td>
-						<td>
-							{{ form.accuracy() }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Climb Ability
-						</td>
-						<td>
-							{{ form.climb() }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Time taken to climb:
-						</td>
-						<td>
-							{{ form.climb_seconds() }}
 						</td>
 					</tr>
 				</table>

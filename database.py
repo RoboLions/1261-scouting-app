@@ -87,7 +87,6 @@ def setData(data_dict):
                     "disabled": data_dict['disabled'],
                     "disconnected": data_dict['disconnected'],
                     "disconnected_total_seconds": data_dict['disconnected_total_seconds'],
-                    "crossed_tarmac": data_dict['crossed_tarmac'],
                     "match": data_dict['match'],
                     "cone_auto_top": data_dict['cone_auto_top'],
                     "cone_auto_middle": data_dict['cone_auto_middle'],
@@ -97,12 +96,8 @@ def setData(data_dict):
                     "cube_teleop_hybrid": data_dict['cube_teleop_hybrid'],
                     "auto_charge": data_dict['auto_charge'],
                     "teleop_charge": data_dict['teleop_charge'],
-
-                    "te": data_dict['te'],
-                    "te": data_dict['te'],
-                    "defense":data_dict['defense'],
-                    "position":data_dict['position'],
-                    "speed":data_dict['speed'],
+                    "starting_pos": data_dict['starting_pos'],
+                    "speed": data_dict['speed'],
                     "name": data_dict['name'],
                     "notes": data_dict['notes'],
                 }
