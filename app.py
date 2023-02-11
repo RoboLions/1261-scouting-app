@@ -46,7 +46,7 @@ def submitData():
         "cube_auto_middle": int(data["cube_auto_middle"]),
         "cube_auto_hybrid": int(data["cube_auto_hybrid"]),
         "cube_teleop_top": int(data["cube_teleop_top"]),
-        "cube_teleop_middle": int(data["cube_teleop_top"]),
+        "cube_teleop_middle": int(data["cube_teleop_middle"]),
         "cube_teleop_hybrid": int(data["cube_teleop_hybrid"]),
         "notes": data["notes"],
         
@@ -123,37 +123,55 @@ def getTeamData():
 
 @app.route('/rankings')
 def toRankings():
-    teams = db.getAlgorithmicRankings()
+    teams = db.getConeTeleopRankings()
     return render_template('rankings.html',
-                           name="Algorithm",
+                           name="Average Teleop Cone",
                            teams_len=len(teams),
-                           teams=db.getAlgorithmicRankings())
+                           teams=teams)
 
 
 @app.route('/getrankings', methods=['POST'])
 def getRankingData():
     config = dict(request.form)['config']
     if config == "default":
-        data = db.getAlgorithmicRankings()
-        config = "algorithm"
-    elif config == "auto_upper":
-        data = db.getAutoUpperRankings()
-    elif config == "auto_lower":
-        data = db.getAutoLowerRankings()
-    elif config == "teleop_upper":
-        data = db.getTeleopUpperRankings()
-    elif config == "teleop_lower":
-        data = db.getTeleopLowerRankings()
-    elif config == "driver":
-        data = db.getDriverRankings()
-    elif config == "reach":
-        data = db.getReachRankings()
-    elif config == "climb":
-        data = db.getClimbRankings()
-    elif config == "defense":
-        data = db.getDefenseRankings()
+        data = db.getConeTeleopRankings()
+        config = "ConeTeleop_avg"
+    elif config == "ConeAuto_avg":
+        data = db.getConeAutoRankings()
+    elif config == "ConeTeleop_avg":
+        data = db.getConeTeleopRankings()
+    elif config == "CubeAuto_avg":
+        data = db.getCubeAutoRankings()
+    elif config == "CubeTeleop_avg":
+        data = db.getCubeTeleopRankings()
+    elif config == "cone_auto_top":
+        data = db.getConeAutoTopRankings()
+    elif config == "cone_auto_middle":
+        data = db.getConeAutoMiddleRankings()
+    elif config == "cone_auto_hybrid":
+        data = db.getConeAutoHybridRankings()
+    elif config == "cube_auto_top":
+        data = db.getCubeAutoTopRankings()
+    elif config == "cube_auto_middle":
+        data = db.getCubeAutoMiddleRankings()
+    elif config == "cube_auto_hybrid":
+        data = db.getCubeAutoHybridRankings()  
+    elif config == "cone_teleop_top":
+        data = db.getConeTeleopTopRankings()
+    elif config == "cone_teleop_middle":
+        data = db.getConeTeleopMiddleRankings()
+    elif config == "cone_teleop_hybrid":
+        data = db.getConeTeleopHybridRankings()
+    elif config == "cube_teleop_top":
+        data = db.getCubeTeleopTopRankings()
+    elif config == "cube_teleop_middle":
+        data = db.getCubeTeleopMiddleRankings()
+    elif config == "cube_teleop_hybrid":
+        data = db.getCubeTeleopHybridRankings()
+    #elif config == "defense":
+    #    data = db.getDefenseRankings()
     else:
-        data = db.getAlgorithmicRankings()  # algorithmic rankings are default
+        data = db.getConeTeleopRankings()  # algorithmic rankings are default
     return render_template("rankings.html",
                            name=str(config).capitalize(),
                            data=data)

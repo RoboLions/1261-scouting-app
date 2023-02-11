@@ -70,6 +70,12 @@
 <form action="{{ url_for('getRankingData') }}" method="post">
     <select name="config">
         <option value="default"> Algorithmic Ranking System </option>
+        <option value="ConeAuto_avg"> Rank by Average Auto Cones </option>
+        <option value="CubeAuto_avg"> Rank by Average Auto Cubes </option>
+        <!-- auto cube/cones avg -->
+        <option value="ConeTeleop_avg"> Rank by Average Teleop Cones </option>
+        <option value="CubeTeleop_avg"> Rank by Average Teleop Cubes </option>
+        <!-- teleop cube/cones avg -->
         <option value="auto_charge"> Rank by Auto Charge Scoring </option>
         <option value="teleop_charge"> Rank by Teleop Charge Scoring </option>
         <!-- charge  -->
@@ -88,12 +94,9 @@
         <option value="cone_auto_middle"> Rank by Teleop Cone Middle Scoring </option>
         <option value="cube_auto_middle"> Rank by Teleop Cube Middle Scoring </option>
         <!-- teleop middle -->
-        <option value="cone_auto_hybrid"> Rank by Teleop Cone Lower Scoring </option>
-        <option value="cube_auto_hybrid"> Rank by Teleop Cube Lower Scoring </option>
+        <option value="cone_auto_hybrid"> Rank by Teleop Cone Lower/Hybrid Scoring </option>
+        <option value="cube_auto_hybrid"> Rank by Teleop Cube Lower/Hybrid Scoring </option>
         <!-- teleop hybrid  -->
-        <option value="driver"> Rank by Driver Skill </option>
-        <option value="reach"> Rank by Robot's Reach </option>
-        <option value="climb"> Rank by Climb </option>
     </select>
     <input type="submit">
 </form>
