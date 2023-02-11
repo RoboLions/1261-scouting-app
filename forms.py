@@ -5,7 +5,7 @@ from wtforms.validators import Optional, DataRequired, NumberRange, ValidationEr
 from wtforms.widgets import TextArea
 
 
- class InfiniteRechargeForm(FlaskForm):
+class InfiniteRechargeForm(FlaskForm):
     team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1,20000)])
     match = IntegerField("Match Number", validators=[DataRequired()])
     disabled = BooleanField("Disabled/AFK")
@@ -154,7 +154,7 @@ class ChargedUpForm(FlaskForm):
     speed = IntegerField ("speed", default = 0, validators=[DataRequired(), NumberRange (1, 10)]) 
     disabled = BooleanField("Disabled/AFK")
     disconnected = BooleanField("Disconnected")
-    disconnected_total_seconds = StringField("Total Seconds Disconnected")
+    disconnected_total_seconds = StringField("Total Seconds Disconnected", default = 0)
     notes = StringField("Notes", validators=[DataRequired()], widget=TextArea())
     submit = SubmitField("Submit")
 

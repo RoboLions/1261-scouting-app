@@ -12,6 +12,11 @@
         <li> Name: {{ name }} </li>
         <li> Team Number: {{ number }} </li>
         <li> Matches: {{ match }}</li>
+        <li> Disabled?: {{ disabled }}</li>
+        <li> Disconnected?: {{ disconnected }}</li>
+        <li> Total Seconds Disconnected: {{ disconnected_total_seconds}}</li>
+        <li> Starting Position: {{ starting_pos }}</li>
+        <li> Mobility: {{ mobility }}</li>
         <h2> Auto</h2>
         <hr>
     <!--  -->
@@ -35,12 +40,17 @@
         <li> cube_teleop_top: {{cube_teleop_top}}</li>
         <li> cube_teleop_middle: {{cube_teleop_middle}}</li>
         <li> cube_teleop_hybrid: {{cube_teleop_hybrid}}</li>
+        <br>
         <li> teleop_charge: {{teleop_charge}}</li>
     <!---->
         <br>
         <hr>
 
-        <li> Defense: {{defense}}</li>
+        <li> Robot Speed (1-10): {{speed}}</li>
+    <!----->
+        <br>
+        <h2> Notes: </h2>
+        <h4> {{ notes }}</h4>
 <!--  -->
     </ul>
     <h4> If you found an error in here, don't panic! Make sure to keep note of it and tell one </h4>
