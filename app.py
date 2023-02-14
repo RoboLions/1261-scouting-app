@@ -88,33 +88,74 @@ def getTeamData():
     matches = db.getData(int(team_number))
     if matches is None or matches == []:  # if there is no match data in the list 'matches'
         return """ This team has not been scouted yet! Get on that! """
-    auto_cone_tmp = []
-    auto_cube_tmp = []
-    teleop_cone_tmp = []
-    teleop_cube_tmp = []
+    auto_cone_top_tmp = []
+    auto_cone_middle_tmp = []
+    auto_cone_hybrid_tmp = []
+    auto_cube_top_tmp = []
+    auto_cube_middle_tmp = []
+    auto_cube_hybrid_tmp = []
+    teleop_cone_top_tmp = []
+    teleop_cone_middle_tmp = []
+    teleop_cone_hybrid_tmp = []
+    teleop_cube_top_tmp = []
+    teleop_cube_middle_tmp = []
+    teleop_cube_hybrid_tmp = []
     for match in matches:
-        auto_cone_tmp.append(match["auto_cone"])
-        auto_cube_tmp.append(match["auto_cube"])
-        teleop_cone_tmp.append(match["teleop_cone"])
-        teleop_cube_tmp.append(match["teleop_cube"])
-    avg_auto_cone = sum(auto_cone_tmp)/len(auto_cone_tmp)
-    avg_auto_cone = round(avg_auto_cone, 3)
-    avg_auto_cube = sum(auto_cube_tmp)/len(auto_cube_tmp)
-    avg_auto_cube = round(avg_auto_cube, 3)
-    avg_teleop_cone = sum(teleop_cone_tmp)/len(teleop_cone_tmp)
-    avg_teleop_cone = round(avg_teleop_cone, 3)
-    avg_teleop_cube = sum(teleop_cube_tmp)/len(teleop_cube_tmp)
-    avg_teleop_cube= round(avg_teleop_cube, 3)
+        auto_cone_top_tmp.append(match["cone_auto_top"])
+        auto_cone_middle_tmp.append(match["cone_auto_middle"])
+        auto_cone_hybrid_tmp.append(match["cone_auto_hybrid"])
+        auto_cube_top_tmp.append(match["cube_auto_top"])
+        auto_cube_middle_tmp.append(match["cube_auto_middle"])
+        auto_cube_hybrid_tmp.append(match["cube_auto_hybrid"])
+        teleop_cone_top_tmp.append(match["cone_teleop_top"])
+        teleop_cone_middle_tmp.append(match["cone_teleop_middle"])
+        teleop_cone_hybrid_tmp.append(match["cone_teleop_hybrid"])
+        teleop_cube_top_tmp.append(match["cube_teleop_top"])
+        teleop_cube_middle_tmp.append(match["cube_teleop_middle"])
+        teleop_cube_hybrid_tmp.append(match["cube_teleop_hybrid"])
+    avg_auto_cone_top = sum(auto_cone_top_tmp)/len(auto_cone_top_tmp)
+    avg_auto_cone_top = round(avg_auto_cone_top, 3)
+    avg_auto_cone_middle = sum(auto_cone_middle_tmp)/len(auto_cone_middle_tmp)
+    avg_auto_cone_middle = round(avg_auto_cone_middle, 3)
+    avg_auto_cone_hybrid = sum(auto_cone_hybrid_tmp)/len(auto_cone_hybrid_tmp)
+    avg_auto_cone_hybrid = round(avg_auto_cone_hybrid, 3)
+    avg_auto_cube_top = sum(auto_cube_top_tmp)/len(auto_cube_top_tmp)
+    avg_auto_cube_top = round(avg_auto_cube_top, 3)
+    avg_auto_cube_middle = sum(auto_cube_middle_tmp)/len(auto_cube_middle_tmp)
+    avg_auto_cube_middle = round(avg_auto_cube_middle, 3)
+    avg_auto_cube_hybrid = sum(auto_cube_hybrid_tmp)/len(auto_cube_hybrid_tmp)
+    avg_auto_cube_hybrid = round(avg_auto_cube_hybrid, 3)
+    avg_teleop_cone_top = sum(teleop_cone_top_tmp)/len(teleop_cone_top_tmp)
+    avg_teleop_cone_top = round(avg_teleop_cone_top, 3)
+    avg_teleop_cone_middle = sum(teleop_cone_middle_tmp)/len(teleop_cone_middle_tmp)
+    avg_teleop_cone_middle = round(avg_teleop_cone_middle, 3)
+    avg_teleop_cone_hybrid = sum(teleop_cone_hybrid_tmp)/len(teleop_cone_hybrid_tmp)
+    avg_teleop_cone_hybrid = round(avg_teleop_cone_hybrid, 3)
+    avg_teleop_cube_top = sum(teleop_cube_top_tmp)/len(teleop_cube_top_tmp)
+    avg_teleop_cube_top = round(avg_teleop_cube_top, 3)
+    avg_teleop_cube_middle = sum(teleop_cube_middle_tmp)/len(teleop_cube_middle_tmp)
+    avg_teleop_cube_middle = round(avg_teleop_cube_middle, 3)
+    avg_teleop_cube_hybrid = sum(teleop_cube_hybrid_tmp)/len(teleop_cube_hybrid_tmp)
+    avg_teleop_cube_hybrid = round(avg_teleop_cube_hybrid, 3)
+    
 
     try:
         return render_template('team_data.html',
                                number=team_number,
                                matches=matches,
                                matches_len=len(matches),
-                               avg_auto_cone=avg_auto_cone,
-                               avg_auto_cube=avg_auto_cube,
-                               avg_teleop_cone=avg_teleop_cone,
-                               avg_teleop_cube=avg_teleop_cube,
+                               avg_auto_cone_top=avg_auto_cone_top,
+                               avg_auto_cone_middle=avg_auto_cone_middle,
+                               avg_auto_cone_hybrid=avg_auto_cone_hybrid,
+                               avg_auto_cube_top=avg_auto_cube_top,
+                               avg_auto_cube_middle=avg_auto_cube_middle,
+                               avg_auto_cube_hybrid=avg_auto_cube_hybrid,
+                               avg_teleop_cone_top=avg_teleop_cone_top,
+                               avg_teleop_cone_middle=avg_teleop_cone_middle,
+                               avg_teleop_cone_hybrid=avg_teleop_cone_hybrid,
+                               avg_teleop_cube_top=avg_teleop_cube_top,
+                               avg_teleop_cube_middle=avg_teleop_cube_middle,
+                               avg_teleop_cube_hybrid=avg_teleop_cube_hybrid,
                                )
     
 
