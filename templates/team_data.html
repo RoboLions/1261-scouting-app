@@ -55,6 +55,9 @@
         table, th, td {
             border:1px solid black;
         }
+        img {
+            width: 10%;
+        }
     </style>
 </head>
 
@@ -88,21 +91,21 @@
         <table style="width:50%">
             <tr>
                 <th> </th>
-                <th>Cube</th>
-                <th>Cone</th>
+                <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube"></th>
+                <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone"></th>
             </tr>
             <tr>
-                <th>Up</th>
+                <th style="padding-right: 20px">Up</th>
                 <th>{{ matches[n]['cube_auto_top'] }}</th>
                 <th>{{ matches[n]['cone_auto_top'] }}</th>
             </tr>
             <tr>
-                <th>Middle</th>
+                <th style="padding-right: 20px">Middle</th>
                 <th>{{ matches[n]['cube_auto_middle'] }}</th>
                 <th>{{ matches[n]['cone_auto_middle'] }}</th>
             </tr>
             <tr>
-                <th>Hybrid</th>
+                <th style="padding-right: 20px">Hybrid</th>
                 <th>{{ matches[n]['cube_auto_hybrid'] }}</th>
                 <th>{{ matches[n]['cone_auto_hybrid'] }}</th>
             </tr>
@@ -112,21 +115,21 @@
         <table style="width:50%">
             <tr>
                 <th> </th>
-                <th>Cube</th>
-                <th>Cone</th>
+                <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube"></th>
+                <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone"></th>
             </tr>
             <tr>
-                <th>Up</th>
+                <th style="padding-right: 20px">Up</th>
                 <th>{{ matches[n]['cube_teleop_top'] }}</th>
                 <th>{{ matches[n]['cone_teleop_top'] }}</th>
             </tr>
             <tr>
-                <th>Middle</th>
+                <th style="padding-right: 20px">Middle</th>
                 <th>{{ matches[n]['cube_teleop_middle'] }}</th>
                 <th>{{ matches[n]['cone_teleop_middle'] }}</th>
             </tr>
             <tr>
-                <th>Hybrid</th>
+                <th style="padding-right: 20px">Hybrid</th>
                 <th>{{ matches[n]['cube_teleop_hybrid'] }}</th>
                 <th>{{ matches[n]['cone_teleop_hybrid'] }}</th>
             </tr>
