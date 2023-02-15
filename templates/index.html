@@ -56,6 +56,10 @@
 			cursor: pointer;
 			background-color: white;
 		}
+		#pointField { 
+			width: 50%; 
+			font-size: 18px; 
+		}
 
     </style>
 <script>
@@ -191,6 +195,7 @@
                 <div class="col-md-10 col-md-offset-1">
                     <h2 style="color:#FFFFFF">Stand Scouting</h2>
 
+
                     <div id='main'>
 
                         <script>
@@ -268,12 +273,10 @@
 					<!-- CUBES AUTO  -->
 					<tr>
 						<td>
-							Auto Cubes Scored Top
+							Auto Cubes Scored Top 
 						</td>
 						<td>
-						
-							{{ form.cube_auto_top() }}
-							<button type="button" class="point_button" onclick="increment_cube_auto_top()">+</button>
+							{{ form.cube_auto_top() }} <button type="button" class="point_button" onclick="increment_cube_auto_top()">+</button> 
 							<button type="button" class="point_button" onclick="decrement_cube_auto_top()">-</button>
 						</td>
 					</tr>

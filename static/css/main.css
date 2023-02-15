@@ -503,7 +503,10 @@ th, td {
 input, textarea {
 	width: 100%;
 }
-
+div#pointField { 
+	width: 50%;
+	font-size: 18px;
+}
 div#main {
 	margin: auto;
 	padding: 10px;
