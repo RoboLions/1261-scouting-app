@@ -56,11 +56,12 @@
 </head>
 
 <body>
-    <ul style="display: inline-block; width:100%">
-        <li class="robonav"><a href="{{ url_for('main') }}">Home</a></li>
-        <li class="robonav"><a href="{{ url_for('toRankings') }}">Rankings</a></li>
-        <li class="robonav"><a href="{{ url_for('findTeam') }}">Find Team's Data</a></li>
-    </ul>
+    <ul class = ul2>
+        <li class=li2><a href="{{ url_for('main') }}">Home</a></li>
+        <li class=li2><a href="{{ url_for('toRankings') }}">Rankings</a></li>
+        <li class=li2><a href="{{ url_for('findTeam') }}">Search</a></li>
+      </ul>
+    
 
 <hr>
     <h1> Team {{ number }} Data </h1>

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
 
     <style>
         body {
@@ -56,12 +57,13 @@
 </head>
 
 <body>
-    <ul style="display: inline-block; width:100%">
-        <li class="robonav"><a href="{{ url_for('main') }}" style="color: white !important;">Home</a></li>
-        <li class="robonav"><a href="{{ url_for('toRankings') }}" style="color: white !important;">Rankings</a></li>
-        <li class="robonav"><a href="{{ url_for('findTeam') }}" style="color: white !important;">Find Team's Data</a></li>
-    </ul>
-
+    <ul class = ul2>
+        <li class=li2><a href="{{ url_for('main') }}">Home</a></li>
+        <li class=li2><a href="{{ url_for('toRankings') }}">Rankings</a></li>
+        <li class=li2><a href="{{ url_for('findTeam') }}">Search</a></li>
+      </ul>
+    
+<hr>
     <h1> Find a Team's Data by Number:</h1>
 
     <form method="POST">

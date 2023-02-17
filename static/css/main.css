@@ -576,7 +576,7 @@ button, input, select, option {
 }
 tr,td{
 	font-family: 'Titillium Web', sans-serif;
-	width: 100%;
+	width: 90%;
 	border-collapse: collapse;
 	border: 1px solid;
 	border-color: white;
@@ -589,15 +589,17 @@ tr,td{
 	padding: 0;
 	overflow: hidden;
 	background-color: #040fa5
-	;
   }
   
   
   .li2 {
 	float: left;
+	list-style-type: none;
+
   }
   
   .li2 a {
+	list-style-type: none;
 	display: block;
 	color: white;
 	text-align: center;
@@ -606,6 +608,7 @@ tr,td{
   }
   
   .li2 a:hover {
+	list-style-type: none;
 	background-color: #091fea
 
   }
