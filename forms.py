@@ -109,8 +109,8 @@ class RapidReactForm(FlaskForm):
 # 2023 
 class ChargedUpForm(FlaskForm):
     name = StringField("Name", validators=[DataRequired()])
-    team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 20000)])
-    match = IntegerField("Match Number", validators=[DataRequired()])
+    team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 9999)])
+    match = IntegerField("Match Number", validators=[DataRequired(), NumberRange(1, 300)])
     starting_pos = SelectField("Starting Position", choices=[
         ("Left", "Left"),
         ("Middle", "Middle"),
@@ -120,21 +120,37 @@ class ChargedUpForm(FlaskForm):
         ("Yes", "Yes, left community during auto"),
         ("No", "No, didn't leave community during auto")
     ])
-    cone_auto_top = IntegerField ("Cone Auto - Top", default = 0, validators=[DataRequired()])
-    cone_auto_middle = IntegerField("Cone Auto - Middle", default = 0, validators=[DataRequired()])
-    cone_auto_hybrid= IntegerField("Cone Auto - Hybrid", default = 0, validators=[DataRequired()])
+    cone_auto_top = IntegerField ("Cone Auto - Top", id = "pointField", default = 0, validators=[DataRequired()])
+    cone_auto_middle = IntegerField("Cone Auto - Middle", id = "pointField", default = 0, validators=[DataRequired()])
+    cone_auto_hybrid= IntegerField("Cone Auto - Hybrid", id = "pointField", default = 0, validators=[DataRequired()])
 
-    cube_auto_top = IntegerField ("Cube Auto - Top", default = 0, validators=[DataRequired()])
-    cube_auto_middle = IntegerField("Cube Auto - Middle", default = 0, validators=[DataRequired()])
-    cube_auto_hybrid= IntegerField("Cube Auto - Hybrid", default = 0, validators=[DataRequired()])
+    cube_auto_top = IntegerField ("Cube Auto - Top", id = "pointField", default = 0, validators=[DataRequired()])
+    cube_auto_middle = IntegerField("Cube Auto - Middle", id = "pointField", default = 0, validators=[DataRequired()])
+    cube_auto_hybrid= IntegerField("Cube Auto - Hybrid", id = "pointField", default = 0, validators=[DataRequired()])
 
-    cone_teleop_top = IntegerField ("Cone Teleop - Top", default = 0, validators=[DataRequired()])
-    cone_teleop_middle = IntegerField("Cone Teleop - Middle", default = 0, validators=[DataRequired()])
-    cone_teleop_hybrid= IntegerField("Cone Teleop - Hybrid", default = 0, validators=[DataRequired()])
+    cone_teleop_top = IntegerField ("Cone Teleop - Top", id = "pointField", default = 0, validators=[DataRequired()])
+    cone_teleop_middle = IntegerField("Cone Teleop - Middle", id = "pointField", default = 0, validators=[DataRequired()])
+    cone_teleop_hybrid= IntegerField("Cone Teleop - Hybrid", id = "pointField", default = 0, validators=[DataRequired()])
 
-    cube_teleop_top = IntegerField ("Cube Teleop - Top", default = 0, validators=[DataRequired()])
-    cube_teleop_middle = IntegerField("Cube Teleop - Middle", default = 0, validators=[DataRequired()])
-    cube_teleop_hybrid= IntegerField("Cube Teleop - Hybrid", default = 0, validators=[DataRequired()])
+    cube_teleop_top = IntegerField ("Cube Teleop - Top", id = "pointField", default = 0, validators=[DataRequired()])
+    cube_teleop_middle = IntegerField("Cube Teleop - Middle", id = "pointField", default = 0, validators=[DataRequired()])
+    cube_teleop_hybrid= IntegerField("Cube Teleop - Hybrid", id = "pointField", default = 0, validators=[DataRequired()])
+
+    cone_auto_top = IntegerField ("Cone Auto - Top", id = "pointField", default = 0, validators=[DataRequired(), NumberRange(0, 6)])
+    cone_auto_middle = IntegerField("Cone Auto - Middle", id = "pointField", default = 0, validators=[DataRequired(), NumberRange(0, 6)])
+    cone_auto_hybrid= IntegerField("Cone Auto - Hybrid", id = "pointField", default = 0, validators=[DataRequired(), NumberRange(0, 9)])
+
+    cube_auto_top = IntegerField ("Cube Auto - Top", id = "pointField", default = 0, validators=[DataRequired(), NumberRange(0, 3)])
+    cube_auto_middle = IntegerField("Cube Auto - Middle", id = "pointField", default = 0, validators=[DataRequired(), NumberRange(0, 3)])
+    cube_auto_hybrid= IntegerField("Cube Auto - Hybrid", id = "pointField", default = 0, validators=[DataRequired(), NumberRange(0, 9)])
+
+    cone_teleop_top = IntegerField ("Cone Teleop - Top", id = "pointField", default = 0, validators=[DataRequired(), NumberRange(0, 6)])
+    cone_teleop_middle = IntegerField("Cone Teleop - Middle", id = "pointField", default = 0, validators=[DataRequired(), NumberRange(0, 6)])
+    cone_teleop_hybrid= IntegerField("Cone Teleop - Hybrid", id = "pointField", default = 0, validators=[DataRequired(), NumberRange(0, 9)])
+
+    cube_teleop_top = IntegerField ("Cube Teleop - Top", id = "pointField", default = 0, validators=[DataRequired(), NumberRange(0, 3)])
+    cube_teleop_middle = IntegerField("Cube Teleop - Middle", id = "pointField", default = 0, validators=[DataRequired(), NumberRange(0, 3)])
+    cube_teleop_hybrid= IntegerField("Cube Teleop - Hybrid", id = "pointField", default = 0, validators=[DataRequired(), NumberRange(0, 9)])
     defense = IntegerField("Defense Percentage", validators=[DataRequired(), NumberRange(0,100)])
     # 0% means that the team did not play any defense. please dont forgor to add that in the question.
     auto_charge = SelectField("Charging Station State Auto", choices=[
