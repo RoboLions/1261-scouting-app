@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
+<!-- Updated  -->
 
     <style>
         body {
@@ -62,6 +63,8 @@
 		}
 
     </style>
+<!-- master -->
+
 <script>
 	// cubes teleop
 	function decrement_cube_teleop_hybrid(){
@@ -174,15 +177,14 @@
 
 <body class="home blog custom-background">
 
-<ul style="display: inline-block; width:100%">
-    <li class="robonav"><a href="{{ url_for('main') }}">Home</a></li>
-    <li class="robonav"><a href="{{ url_for('toRankings') }}">Rankings</a></li>
-    <li class="robonav"><a href="{{ url_for('findTeam') }}">Find Team's Data</a></li>
-</ul>
 
-<hr>
-<h1 align="center" style="color:#FFFFFF;"> 1261 Robo Lions Scouting App </h1>
-<hr>
+<ul class = ul2>
+    <li class=li2><a href="{{ url_for('main') }}">Home</a></li>
+    <li class=li2><a href="{{ url_for('toRankings') }}">Rankings</a></li>
+    <li class=li2><a href="{{ url_for('findTeam') }}">Search</a></li>
+  </ul>
+
+<h1 align="center" style="color:#FFFFFF" class = "headerheadline"> 1261 Robo Lions Scouting App </h1>
 <div class="col-md-10 col-md-offset-1 text-center">
     <h4 align="center" style="color:#FFFFFF"> Welcome to the Peachtree Ridge HS Robo Lions Scouting App!</h4>
     <h4 align="center" style="color:#FFFFFF"> If you experience any errors during competition, immediately notify a lead. Have fun!</h4>

@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+
     <meta charset="UTF-8">
     <title> Submit Successful </title>
-    <link rel="shortcut icon" href="{{ url_for('static',filename='images/robocon.ico') }}">
 </head>
 <body>
-    <h1> Scouting Data was successfully sent to the database </h1>
-    <h4> Just to review and confirm: </h4>
+  <ul class = ul2>
+    <li class=li2><a href="{{ url_for('main') }}">Home</a></li>
+    <li class=li2><a href="{{ url_for('toRankings') }}">Rankings</a></li>
+    <li class=li2><a href="{{ url_for('findTeam') }}">Search</a></li>
+  </ul>
+
+    <h4> Scouting Data was successfully sent to the database </h4>
+    <h5> Just to review and confirm: </h5>
     <ul>
         <li> Name: {{ name }} </li>
         <li> Team Number: {{ team_number }} </li>
@@ -21,7 +35,17 @@
         <hr>
     <!--  -->
         <br>
-        <li> Auto Cone Top: {{cone_auto_top}}</li>
+
+<li> Cone Auto Top: {{cone_auto_top}}</li>
+        <li> Cone Auto Middle: {{cone_auto_middle}}</li>
+        <li> Cone Auto Hybrid: {{cone_auto_hybrid}}</li>
+        <li> Cube Auto Top: {{cube_auto_top}}</li>
+        <li> Cube Auto Middle: {{cube_auto_middle}}</li>
+        <li> Cube Auto Hybrid: {{cube_auto_hybrid}}</li>
+        <br>
+        <li> Auto Charge: {{auto_charge}}</li>
+
+<li> Auto Cone Top: {{cone_auto_top}}</li>
         <li> Auto Cone Middle: {{cone_auto_middle}}</li>
         <li> Auto Cone Hybrid: {{cone_auto_hybrid}}</li>
         <li> Auto Cube Top: {{cube_auto_top}}</li>
@@ -34,6 +58,14 @@
         <h2> Teleop</h2>
         <hr>
         <br>
+        <li> Cone Teleop Top: {{cone_teleop_top}}</li>
+        <li> Cone Teleop Middle: {{cone_teleop_middle}}</li>
+        <li> Cone Teleop Hybrid: {{cone_teleop_hybrid}}</li>
+        <li> Cube Teleop Top: {{cube_teleop_top}}</li>
+        <li> Cube Teleop Middle: {{cube_teleop_middle}}</li>
+        <li> Cube Teleop Hybrid: {{cube_teleop_hybrid}}</li>
+        <br>
+        <li> Teleop Charge: {{teleop_charge}}</li>
         <li> Teleop Cone Top: {{cone_teleop_top}}</li>
         <li> Teleop Cone Middle: {{cone_teleop_middle}}</li>
         <li> Teleop Cone Hybrid: {{cone_teleop_hybrid}}</li>
@@ -50,11 +82,11 @@
     <!----->
         <br>
         <h2> Notes: </h2>
-        <h4> {{ notes }}</h4>
+        <hr>
+        <li> {{ notes }} </li>
 <!--  -->
     </ul>
-    <h4> If you found an error in here, don't panic! Make sure to keep note of it and tell one </h4>
-    <h4> of the technical leads (Webmaster, Communications lead, etc.) so they can know. </h4>
+    <h5> If you found an error in here, don't panic! Make sure to keep note of it and tell one of the technical leads (Webmaster, Communications lead, etc.) so they can know. </h5>
     <!--This one bellow feels kinda mean we should change it to "please :D"  -->
 <html>
 
@@ -124,6 +156,7 @@
 </script>
 
 <body>
+  <h4> <a href="{{ url_for('main') }}"> Click here to get back to main page </a></h4>
   <div>
     <center>
       <h2>Thanks For Scouting</h2>
@@ -131,6 +164,5 @@
     </center>
   </div>
 
-    <h1> <a href="{{ url_for("main") }}"> Click here to get back to main page </a></h1>
 </body>
 </html>

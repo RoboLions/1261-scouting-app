@@ -7,35 +7,48 @@
 
 @import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700);
 @import url(http://fonts.googleapis.com/css?family=Roboto%20Slab:300,400,500,600,700);
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Titillium+Web&display=swap');
+
 
 p {
 	font-size: 14px;
 	line-height: 22.4px;
 	color: #000000;
-}
+	font-family: 'Roboto', sans-serif;
+	}
 h1 {
 	font-size: 65px;
 	color: #FFFFFF;
+	font-family: 'Roboto', sans-serif;
+
 }
 h2 {
 	font-size: 40px;
 	color: #FFFFFF;
+	font-family: 'Roboto', sans-serif;
+
 }
 h3 {
 	font-size: 28px;
 	color: #FFFFFF;
 	font-weight: 300;
+	font-family: 'Roboto', sans-serif;
+
 }
 h4 {
 	font-size: 22px;
 	color: #FFFFFF;
 	font-weight: 400;
+	font-family: 'Roboto', sans-serif;
+
 }
 h5 {
 	font-size: 14px;
 	color: #FFFFFF;
-	text-transform: uppercase;
 	font-weight: 700;
+	font-family: 'Roboto', sans-serif;
+
 }
 .btn {
   background-color: #3bc492;
@@ -71,7 +84,6 @@ a:hover, a:focus {
 	transition: background-color, color, 0.3s;
 }
 body {
-	font-family: "Roboto", sans-serif;
 	font-weight: 400;
 	color: #6c7279;
 }
@@ -522,3 +534,81 @@ textarea {
 	text-decoration: underline;
 	margin-right: 20px;
 }
+body {
+	background-color: #00229e;
+	background-image: url(https://prhsrobotics.com/wp-content/uploads/2014/04/bg2.png);
+	background-position: left top;
+	background-size: auto;
+	background-repeat: repeat;
+	background-attachment: scroll;
+
+}
+
+ul,li {
+	display: list-item;
+	list-style-type:circle;
+	font-size: 16px;
+	color: white;
+}
+
+h2, td, b{
+	color: #FFFFFF;
+}
+
+button, input, select, option {
+	color: #000000;
+}
+
+.robonav {
+	display: inline-block;
+	color: white;
+	text-decoration: underline;
+	margin-right: 20px;
+}
+.point_button {
+	border: none;
+	color: black;
+	padding: 15px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 4px;
+	cursor: pointer;
+	background-color: white;
+}
+tr,td{
+	font-family: 'Titillium Web', sans-serif;
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid;
+	border-color: white;
+	border-style: solid;
+	font-size: 16px;
+}
+.ul2 {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #040fa5
+	;
+  }
+  
+  
+  .li2 {
+	float: left;
+  }
+  
+  .li2 a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+  }
+  
+  .li2 a:hover {
+	background-color: #091fea
+
+  }
