@@ -615,3 +615,12 @@ tr,td{
 	background-color: #091fea
 
   }
+  
+  .hr2 {
+	position: relative;
+	top: 4px;
+	border: none;
+	height: 5px;
+	background: rgb(255, 255, 255);
+	margin-bottom: 20px;
+}
