@@ -503,7 +503,7 @@ th, td {
 input, textarea {
 	width: 100%;
 }
-div#pointField { 
+.pointField { 
 	width: 50%;
 	font-size: 18px;
 }
