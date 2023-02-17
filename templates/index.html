@@ -14,6 +14,57 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
+<!-- Updated  -->
+
+    <style>
+        body {
+            background-color: #00229e;
+            background-image: url(https://prhsrobotics.com/wp-content/uploads/2014/04/bg2.png);
+            background-position: left top;
+            background-size: auto;
+            background-repeat: repeat;
+            background-attachment: scroll;
+        }
+
+        ul li {
+            display: list-item;
+            list-style-type:circle;
+        }
+
+        h2, td, b{
+            color: #FFFFFF;
+        }
+
+        button, input, select, option {
+            color: #000000;
+        }
+
+		.robonav {
+            display: inline-block;
+            color: white;
+            text-decoration: underline;
+            margin-right: 20px;
+        }
+		.point_button {
+			border: none;
+			color: black;
+			padding: 15px 15px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 4px;
+			cursor: pointer;
+			background-color: white;
+		}
+		#pointField { 
+			width: 50%; 
+			font-size: 18px; 
+		}
+
+    </style>
+<!-- master -->
+
 <script>
 	// cubes teleop
 	function decrement_cube_teleop_hybrid(){
@@ -145,6 +196,7 @@
                 <div class="col-md-10 col-md-offset-1">
                     <h2 style="color:#FFFFFF">Stand Scouting</h2>
 
+
                     <div id='main'>
 
                         <script>
@@ -222,12 +274,10 @@
 					<!-- CUBES AUTO  -->
 					<tr>
 						<td>
-							Auto Cubes Scored Top
+							Auto Cubes Scored Top 
 						</td>
 						<td>
-						
-							{{ form.cube_auto_top() }}
-							<button type="button" class="point_button" onclick="increment_cube_auto_top()">+</button>
+							{{ form.cube_auto_top() }} <button type="button" class="point_button" onclick="increment_cube_auto_top()">+</button> 
 							<button type="button" class="point_button" onclick="decrement_cube_auto_top()">-</button>
 						</td>
 					</tr>

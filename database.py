@@ -403,7 +403,7 @@ def getConeTeleopHybridRankings():
         db.update_one(
             {"team_number":team['team_number']},
             {'$set':
-                 {"coneTeleopHybrid_avg": average}
+                 {"ConeTeleopHybrid_avg": average}
             }
         )
         data = []
