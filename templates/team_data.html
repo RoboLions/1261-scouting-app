@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+
 
     <style>
         body {
@@ -67,15 +69,14 @@
         <li class=li2><a href="{{ url_for('toRankings') }}">Rankings</a></li>
         <li class=li2><a href="{{ url_for('findTeam') }}">Search</a></li>
       </ul>
-    
-
-<hr>
-    <h1> Team {{ number }} Data </h1>
+  <h1 align="center" style="color:#FFFFFF" class = headerheadline> Team {{ number }} Data </h1>
+    <hr class = hr2>
     <br>
     <p>Average Auto Cones: {{ avg_auto_cone }}</p>
     <p>Average Auto Cubes: {{ avg_auto_cube }}</p>
     <p>Average Teleop Cones: {{ avg_teleop_cone }}</p>
     <p>Average Teleop Cones: {{ avg_teleop_cube }}</p>
+    <hr>
     <ul style="color:white">
         {%for n in range(0, matches_len)%}
         <br>
