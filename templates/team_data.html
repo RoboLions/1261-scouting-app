@@ -62,6 +62,17 @@
         img {
             width: 10%;
         }
+        .collapsible {
+        background-color: #040fa5;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+}
     </style>
 </head>
 
@@ -126,7 +137,7 @@
     <ul style="color:white">
         {%for n in range(0, matches_len)%}
         <br>
-        <button type="button" class="collapsible">{{ matches[n]['match'] }}</button>
+        <button type="button" class="collapsible">Match {{ matches[n]['match'] }}</button>
         <div class="content">
         <li> Disabled?: {{ matches[n]['disabled'] }}</li>
         <li> Total Sec Disabled: {{ matches[n]['disabled_total_seconds'] }}</li>
@@ -205,11 +216,9 @@
         <br>
         <li> Notes: {{ matches[n]['notes'] }}</li>
         {%endfor%}
-
-
-      
+        </div>
     </ul>
-    </div>
+
     <script>
         var coll = document.getElementsByClassName("collapsible");
         var i;
