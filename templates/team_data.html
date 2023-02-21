@@ -126,8 +126,8 @@
     <ul style="color:white">
         {%for n in range(0, matches_len)%}
         <br>
-        <li><h3> Match Number: {{ matches[n]['match'] }} </h3></li>
-        <br>
+        <button type="button" class="collapsible">{{ matches[n]['match'] }}</button>
+        <div class="content">
         <li> Disabled?: {{ matches[n]['disabled'] }}</li>
         <li> Total Sec Disabled: {{ matches[n]['disabled_total_seconds'] }}</li>
         <br> 
@@ -206,7 +206,25 @@
         <li> Notes: {{ matches[n]['notes'] }}</li>
         {%endfor%}
 
+
       
     </ul>
+    </div>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+              content.style.display = "none";
+            } else {
+              content.style.display = "block";
+            }
+          });
+        }
+        </script>
 </body>
 </html>
