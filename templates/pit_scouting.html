@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 
-    <title> 1261 Scouting App </title>
+    <title> 1261 Pit Scouting </title>
     <link rel="shortcut icon" href="{{ url_for('static',filename='images/robocon.ico') }}">
 
     <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js')}}"></script>
@@ -184,9 +184,9 @@
     <li class=li2><a href="{{ url_for('findTeam') }}">Search</a></li>
   </ul>
 
-<h1 align="center" style="color:#FFFFFF" class = "headerheadline"> 1261 Robo Lions Scouting App </h1>
+<h1 align="center" style="color:#FFFFFF" class = "headerheadline"> Pit Scouting </h1>
 <div class="col-md-10 col-md-offset-1 text-center">
-    <h4 align="center" style="color:#FFFFFF"> Welcome to the Peachtree Ridge HS Robo Lions Scouting App!</h4>
+    <h4 align="center" style="color:#FFFFFF"> Welcome to the Peachtree Ridge HS Robo Lions Pit Scouting App!</h4>
     <h4 align="center" style="color:#FFFFFF"> If you experience any errors during competition, immediately notify a lead. Have fun!</h4>
 </div>
 
@@ -195,7 +195,7 @@
         <div style="display: table-row">
             <div style="width: 800px; display: table-cell;">
                 <div class="col-md-10 col-md-offset-1">
-                    <h2 style="color:#FFFFFF">Stand Scouting</h2>
+                    <h2 style="color:#FFFFFF">Pit Scouting</h2>
 
 
                     <div id='main'>
@@ -225,19 +225,12 @@
 						</td>
 					</tr>
 					<tr>
-						<td>
-							Match Number
-						</td>
-						<td>
-							{{ form.match() }}
-						</td>
-					</tr>
 					<tr>
 						<td>
-							Disabled/AFK
+							Drive Train Type?
 						</td>
 						<td>
-							{{ form.disabled() }}
+							{{ form.drive_train() }}
 						</td>
 					</tr>
 					<tr>
