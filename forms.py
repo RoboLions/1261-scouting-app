@@ -1,6 +1,6 @@
 from email.policy import default
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SubmitField, SelectField, BooleanField
+from wtforms import StringField, IntegerField, SubmitField, SelectField, BooleanField, FileField
 from wtforms.validators import Optional, DataRequired, NumberRange, ValidationError
 from wtforms.widgets import TextArea
 
