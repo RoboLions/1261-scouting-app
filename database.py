@@ -21,6 +21,12 @@ def getData(team_number):
     matchlist = list(dict(col)['matches'])
     return matchlist
 
+def getData(team_number):
+    if isinstance(team_number, dict):
+        team_number = team_number['team_number']
+    col = db.find_one({"team_number": team_number})
+    matchlist = list(dict(col)['pit_scouting'])
+    return matchlist
 
 def getMostCommonClimb(team_number):
     data = getData(team_number)
@@ -111,6 +117,25 @@ def setData(data_dict):
         }
     )
 
+def setData(data_dict):
+    if db.find_one({"team_number":data_dict['team_number']}) is None:  # creates a document for the given team
+        db.insert_one({"team_number": int(data_dict['team_number'])})      # assuming that it doesn't exist
+        db.update_one(
+            {"team_number":data_dict['team_number']},
+            {'$set':
+                {'pit_scouting': []}  # create an empty list of matches to store individual match data
+            }
+        )
+    db.update_one(
+        {"team_number":data_dict['team_number']},
+        {'$push':               
+            {"pit_scouting":    
+                {
+                    "aa": data_dict['aa'],
+                }
+            }
+        }
+    )
 
 def getCollection():
     return db
