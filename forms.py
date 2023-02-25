@@ -169,18 +169,28 @@ class pit_scouting(FlaskForm):
     team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 9999)]) 
     drivetrain = StringField("Type of Drivetrain", validators=[DataRequired()], widget=TextArea())
     start_preference = StringField("Auto Start Preference", choices = [ 
-        ("Left", "Right", "Center", "None")
+        ("Left", "Left"),
+        ("Right", "Right"),
+        ("Center", "Center"),
+        ("None", "None"),
     ]) 
     auto_piece = StringField("Auto Field Preference", validators= [DataRequired()], widget =TextArea())
     auto_max_points = IntegerField ("Auto Max Points", validators= [DataRequired(), NumberRange(1, 9999)])
     game_pieces_type_scored = StringField("Auto Start Preference", choices = [ 
-        ("Cube", "Cone") 
+        ("Cube", "Cube"),
+        ("Cone", "Cone"),
     ]) 
     where_pieces_scored = StringField ("Where Game Pieces are Scored", choices = [ 
-        ("Top", "Middle", "Hybrid", "Cannot Score")
+        ("Top", "Top"),
+        ("Middle", "Middle"),
+        ("Hybrid", "Hybrid"),
+        ("Cannot", "Cannot Score"),
     ])
-    dock_engage = StringField ("Docked/Engaged Teleop", choices = [
-        ("Docked", "Engaged")
+    dock_engage = StringField ("Can they Dock and Engage?", choices = [
+        ("Neither", "Neither"),
+        ("Park", "Park"),
+        ("Docked", "Docked"),
+        ("Engaged", "Engaged"),
     ])
     weight = StringField ("Weight", validators = [DataRequired()], widget = TextArea())
     height = StringField ("Non-extended height", [DataRequired()], widget = TextArea())
