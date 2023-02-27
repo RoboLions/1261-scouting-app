@@ -21,7 +21,7 @@ def getData(team_number):
     matchlist = list(dict(col)['matches'])
     return matchlist
 
-def getData(team_number):
+def getPitScoutingData(team_number):
     if isinstance(team_number, dict):
         team_number = team_number['team_number']
     col = db.find_one({"team_number": team_number})
@@ -117,7 +117,7 @@ def setData(data_dict):
         }
     )
 
-def setData(data_dict):
+def setPitScoutingData(data_dict):
     if db.find_one({"team_number":data_dict['team_number']}) is None:  # creates a document for the given team
         db.insert_one({"team_number": int(data_dict['team_number'])})      # assuming that it doesn't exist
         db.update_one(
@@ -131,7 +131,19 @@ def setData(data_dict):
         {'$push':               
             {"pit_scouting":    
                 {
-                    "aa": data_dict['aa'],
+                    "name": data_dict['name'],
+                    "team_number": data_dict['team_number'],
+                    "drivetrain": data_dict['drivetrain'],
+                    "start_preference": data_dict['start_preference'],
+                    "auto_piece": data_dict['auto_piece'],
+                    "auto_max_points": data_dict['auto_max_points'],
+                    "game_pieces_type_scored": data_dict['game_pieces_type_scored'],
+                    "where_pieces_scored": data_dict['where_pieces_scored'],
+                    "dock_engage": data_dict['dock_engage'],
+                    "weight": data_dict['weight'],
+                    "height": data_dict['height'],
+                    "image": data_dict['image'],
+                    "notes": data_dict['notes'],
                 }
             }
         }
