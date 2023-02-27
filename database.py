@@ -103,7 +103,6 @@ def setData(data_dict):
                     "auto_charge": data_dict['auto_charge'],
                     "teleop_charge": data_dict['teleop_charge'],
                     "starting_pos": data_dict['starting_pos'],
-                    "speed": data_dict['speed'],
                     "name": data_dict['name'],
                     "notes": data_dict['notes'],
                 }
