@@ -11,79 +11,22 @@
     <script src="{{ url_for('static', filename='js/submitData.js')}}"></script>
     <script src="{{ url_for('static', filename='js/incrementNumericLabel.js')}}"></script>
 
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
 
 
     <style>
-        body {
-            background-color: #00229e;
-            background-image: url(https://prhsrobotics.com/wp-content/uploads/2014/04/bg2.png);
-            background-position: left top;
-            background-size: auto;
-            background-repeat: repeat;
-            background-attachment: scroll;
-        }
-
-        ul li {
-            display: list-item;
-            list-style-type:circle;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        p, h1, h2, h3, h4, td, b{
-            color: #FFFFFF;
-        }
-
-        button, input, select, option {
-            color: black;
-        }
-
-        #text {
-            color: #FFFFFF
-        }
-
-        .robonav {
-            display: inline-block;
-            color: white;
-            text-decoration: underline;
-            margin-right: 20px;
-        }
-        table, th, td {
-            border:1px solid white;
-            color: white;
-        }
-
-        img {
-            width: 10%;
-        }
-        .collapsible {
-        background-color: #040fa5;
-        color: white;
-        cursor: pointer;
-        padding: 18px;
-        width: 100%;
-        border: none;
-        text-align: left;
-        outline: none;
-        font-size: 15px;
-}
     </style>
 </head>
+<ul class="nav">
+    <li class="nav-item"><a href="{{ url_for('main') }}">Home</a></li>
+    <li class="nav-item"><a href="{{ url_for('toRankings') }}">Rankings</a></li>
+    <li class="nav-item"><a href="{{ url_for('findTeam') }}">Search</a></li>
+</ul>
 
 <body>
-    <ul class = ul2>
-        <li class=li2><a href="{{ url_for('main') }}">Home</a></li>
-        <li class=li2><a href="{{ url_for('toRankings') }}">Rankings</a></li>
-        <li class=li2><a href="{{ url_for('findTeam') }}">Search</a></li>
-      </ul>
-  <h1 align="center" style="color:#FFFFFF" class = headerheadline> Team {{ number }} Data </h1>
-    <hr class = hr2>
+    <h1 align="center" style="color:#FFFFFF" class = headerheadline> Team {{ number }} Data </h1>
     <br>
     <h2 align="center">Averages</h2>
     <h3>Auto</h3>
@@ -147,8 +90,8 @@
         <li> Mobility: {{ matches[n]['mobility'] }}</li>
         <li> Speed: {{ matches[n]['speed'] }}</li>
         <hr>
-        <h3> Auto </h3>
-        <table style="width:50%">
+        <h2> Auto </h2>
+        <table>
             <tr>
                 <th> </th>
                 <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube"></th>

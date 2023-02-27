@@ -11,101 +11,62 @@
     <script src="{{ url_for('static', filename='js/submitData.js')}}"></script>
     <script src="{{ url_for('static', filename='js/incrementNumericLabel.js')}}"></script>
 
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
 
     <style>
-        body {
-            background-color: #00229e;
-            background-image: url(https://prhsrobotics.com/wp-content/uploads/2014/04/bg2.png);
-            background-position: left top;
-            background-size: auto;
-            background-repeat: repeat;
-            background-attachment: scroll;
-        }
-
-        ul li {
-            display: list-item;
-            list-style-type:circle;
-        }
-
-        p, h1, h3, h4, td, b{
-            color: #FFFFFF;
-        }
-
-        button, input, select, option {
-            color: black;
-        }
-
-        #text {
-            color: #FFFFFF
-        }
-
-        .robonav {
-            display: inline-block;
-            color: white;
-            text-decoration: underline;
-            margin-right: 20px;
-        }
     </style>
 
 </head>
 
+<ul class="nav">
+    <li class="nav-item"><a href="{{ url_for('main') }}">Home</a></li>
+    <li class="nav-item"><a href="{{ url_for('toRankings') }}">Rankings</a></li>
+    <li class="nav-item"><a href="{{ url_for('findTeam') }}">Search</a></li>
+</ul>
 <body>
-    <ul class = ul2>
-        <li class=li2><a href="{{ url_for('main') }}">Home</a></li>
-        <li class=li2><a href="{{ url_for('toRankings') }}">Rankings</a></li>
-        <li class=li2><a href="{{ url_for('findTeam') }}">Search</a></li>
-      </ul>
-    
-<hr>
+    <h1> Rankings </h1>
+    <h4> Based on an algorithm that is tweaked every year, this page will list the rankings of which teams
+    we should pick. Alternatively, you can rank teams based on any of the numerical data types </h4>
 
-<h1> Rankings </h1>
-<h4> Based on an algorithm that is tweaked every year, this page will list the rankings of which teams
- we should pick. Alternatively, you can rank teams based on any of the numerical data types </h4>
-<hr>
+    <form action="{{ url_for('getRankingData') }}" method="post">
+        <select name="config">
+            <option value="default"> Algorithmic Ranking System </option>
+            <option value="ConeAuto_avg"> Rank by Average Auto Cones </option>
+            <option value="CubeAuto_avg"> Rank by Average Auto Cubes </option>
+            <!-- auto cube/cones avg -->
+            <option value="ConeTeleop_avg"> Rank by Average Teleop Cones </option>
+            <option value="CubeTeleop_avg"> Rank by Average Teleop Cubes </option>
+            <!-- teleop cube/cones avg -->
+            <option value="auto_charge"> Rank by Auto Charge Scoring </option>
+            <option value="teleop_charge"> Rank by Teleop Charge Scoring </option>
+            <!-- charge  -->
+            <option value="cone_auto_top"> Rank by Auto Cone Top Scoring </option>
+            <option value="cube_auto_top"> Rank by Auto Cube Top Scoring </option>
+            <!-- auto top  -->
+            <option value="cone_auto_middle"> Rank by Auto Cone Middle Scoring </option>
+            <option value="cube_auto_middle"> Rank by Auto Cube Middle Scoring </option>
+            <!-- auto middle -->
+            <option value="cone_auto_hybrid"> Rank by Auto Cone Lower Scoring </option>
+            <option value="cube_auto_hybrid"> Rank by Auto Cube Lower Scoring </option>
+            <!-- auto hybrid  -->
+            <option value="cone_auto_top"> Rank by Teleop Cone Top Scoring </option>
+            <option value="cube_auto_top"> Rank by Teleop Cube Top Scoring </option>
+            <!-- teleop top  -->
+            <option value="cone_auto_middle"> Rank by Teleop Cone Middle Scoring </option>
+            <option value="cube_auto_middle"> Rank by Teleop Cube Middle Scoring </option>
+            <!-- teleop middle -->
+            <option value="cone_auto_hybrid"> Rank by Teleop Cone Lower/Hybrid Scoring </option>
+            <option value="cube_auto_hybrid"> Rank by Teleop Cube Lower/Hybrid Scoring </option>
+            <!-- teleop hybrid  -->
+        </select>
+        <input type="submit">
+    </form>
 
-<form action="{{ url_for('getRankingData') }}" method="post">
-    <select name="config">
-        <option value="default"> Algorithmic Ranking System </option>
-        <option value="ConeAuto_avg"> Rank by Average Auto Cones </option>
-        <option value="CubeAuto_avg"> Rank by Average Auto Cubes </option>
-        <!-- auto cube/cones avg -->
-        <option value="ConeTeleop_avg"> Rank by Average Teleop Cones </option>
-        <option value="CubeTeleop_avg"> Rank by Average Teleop Cubes </option>
-        <!-- teleop cube/cones avg -->
-        <option value="auto_charge"> Rank by Auto Charge Scoring </option>
-        <option value="teleop_charge"> Rank by Teleop Charge Scoring </option>
-        <!-- charge  -->
-        <option value="cone_auto_top"> Rank by Auto Cone Top Scoring </option>
-        <option value="cube_auto_top"> Rank by Auto Cube Top Scoring </option>
-        <!-- auto top  -->
-        <option value="cone_auto_middle"> Rank by Auto Cone Middle Scoring </option>
-        <option value="cube_auto_middle"> Rank by Auto Cube Middle Scoring </option>
-        <!-- auto middle -->
-        <option value="cone_auto_hybrid"> Rank by Auto Cone Lower Scoring </option>
-        <option value="cube_auto_hybrid"> Rank by Auto Cube Lower Scoring </option>
-        <!-- auto hybrid  -->
-        <option value="cone_auto_top"> Rank by Teleop Cone Top Scoring </option>
-        <option value="cube_auto_top"> Rank by Teleop Cube Top Scoring </option>
-        <!-- teleop top  -->
-        <option value="cone_auto_middle"> Rank by Teleop Cone Middle Scoring </option>
-        <option value="cube_auto_middle"> Rank by Teleop Cube Middle Scoring </option>
-        <!-- teleop middle -->
-        <option value="cone_auto_hybrid"> Rank by Teleop Cone Lower/Hybrid Scoring </option>
-        <option value="cube_auto_hybrid"> Rank by Teleop Cube Lower/Hybrid Scoring </option>
-        <!-- teleop hybrid  -->
-    </select>
-    <input type="submit">
-</form>
-
-
-<h3> Rank by {{ name }}</h3>
-{%for n in range(0, teams_len)%}
-<p style='color: white'><a style='color: white' href="{{ url_for('getTeamData') }}?team={{ teams[n] }}">{{ n+1 }}: {{ teams[n] }}</a></p>
-{%endfor%}
-
+    <h3> Rank by {{ name }}</h3>
+    {%for n in range(0, teams_len)%}
+    <p style='color: white'><a style='color: white' href="{{ url_for('getTeamData') }}?team={{ teams[n] }}">{{ n+1 }}: {{ teams[n] }}</a></p>
+    {%endfor%}
 </body>
 </html>
