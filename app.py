@@ -29,7 +29,6 @@ def submitData():
         "match": int(data["match"]),
         "starting_pos": data["starting_pos"],
         "mobility": data["mobility"],
-        "speed": data['speed'],
         "disabled": data["disabled"],
         "disconnected": data["disconnected"],
         "disconnected_total_seconds": data["disconnected_total_seconds"],
@@ -75,7 +74,6 @@ def submitData():
                            cone_teleop_hybrid = data["cone_teleop_hybrid"],
                            auto_charge = data["auto_charge"], 
                            teleop_charge = data['teleop_charge'],
-                           speed = data['speed'],
                            notes = data['notes'])
                            
 
