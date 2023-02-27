@@ -11,61 +11,101 @@
     <script src="{{ url_for('static', filename='js/submitData.js')}}"></script>
     <script src="{{ url_for('static', filename='js/incrementNumericLabel.js')}}"></script>
 
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
 <!-- Updated  -->
 
     <style>
-        body {
-            background-color: #00229e;
-            background-image: url(https://prhsrobotics.com/wp-content/uploads/2014/04/bg2.png);
-            background-position: left top;
-            background-size: auto;
-            background-repeat: repeat;
-            background-attachment: scroll;
-        }
-
-        ul li {
-            display: list-item;
-            list-style-type:circle;
-        }
-
-        h2, td, b{
-            color: #FFFFFF;
-        }
-
-        button, input, select, option {
-            color: #000000;
-        }
-
-		.robonav {
-            display: inline-block;
-            color: white;
-            text-decoration: underline;
-            margin-right: 20px;
-        }
-		.point_button {
-			border: none;
-			color: black;
-			padding: 15px 15px;
+		.form-container {
+			margin: 1%;
+			padding: 1%;
+			display: grid;
+			grid-template-columns: 1fr 2fr;
+			gap: 1%;
+			padding: 2%;
+		}
+		.form-label {
+			text-align: right;
+			margin-top: .5%;
+			margin-bottom: .5%;
+			font-size: 1.2em;
+		}
+		.form-container input {
+			font-size: 1.4em;
+		}
+		.form-container select {
+			font-size: 1.4em;
+		}
+		.point-grid {
+			margin: 1%;
+			padding: 1%;
+			display: grid;
+			grid-template-columns: .8fr 1fr 1fr;
+			gap: 1%;
+			padding: 2%;
+		}
+		.cube {
+			width: 25%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.cone {
+			width: 12%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.point-grid-header {
+			text-align: right;
+			margin-right: 10%;
+		}
+		.point-grid-container input {
+			font-size: 1.2em;
 			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 16px;
-			margin: 4px 4px;
-			cursor: pointer;
-			background-color: white;
+			height: 80%;
 		}
-		.pointField { 
-			width: 50%; 
-			font-size: 18px; 
+		.point-grid-label {
+			font-size: 1.4em;
+			text-align: right;
+			margin-top: 0;
+			margin-right: 5%;
 		}
-
+		.point-button {
+			font-size: 1.2em;
+			width: 2em;
+			height: 80%;
+		}
+		/* To disable the arrow buttons on number inputs */
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+		.point-grid select {
+			font-size: 1.2em;
+			height: 75%;
+		}
+		.notes-container {
+			margin: 1%;
+			padding: 1%;
+			display: grid;
+			grid-template-columns: 1fr 2fr;
+			gap: 1%;
+			padding: 2%;
+		}
+		#notes {
+			font-size: 1.4em;
+		}
+		#submit {
+			font-size: 1.4em;
+			float: right;
+			margin-right: 5%;
+			margin-bottom: 5%;
+			width: 20%;
+		}
     </style>
-<!-- master -->
-
 <script>
 	// cubes teleop
 	function decrement_cube_teleop_hybrid(){
@@ -176,271 +216,125 @@
 </script>
 </head>
 
-<body class="home blog custom-background">
 
-<ul class = ul2>
-    <li class=li2><a href="{{ url_for('main') }}">Home</a></li>
-    <li class=li2><a href="{{ url_for('toRankings') }}">Rankings</a></li>
-    <li class=li2><a href="{{ url_for('findTeam') }}">Search</a></li>
-  </ul>
+<ul class="nav">
+    <li class="nav-item"><a href="{{ url_for('main') }}">Home</a></li>
+    <li class="nav-item"><a href="{{ url_for('toRankings') }}">Rankings</a></li>
+    <li class="nav-item"><a href="{{ url_for('findTeam') }}">Search</a></li>
+</ul>
 
-<h1 align="center" style="color:#FFFFFF" class = "headerheadline"> 1261 Robo Lions Scouting App </h1>
-<div class="col-md-10 col-md-offset-1 text-center">
-    <h4 align="center" style="color:#FFFFFF"> Welcome to the Peachtree Ridge HS Robo Lions Scouting App!</h4>
-    <h4 align="center" style="color:#FFFFFF"> If you experience any errors during competition, immediately notify a lead. Have fun!</h4>
-</div>
+<body>
+	<h1 align="center"> 1261 Robo Lions Scouting App </h1>
+	<div>
+		<h4 align="center"> Welcome to the Peachtree Ridge HS Robo Lions Scouting App!</h4>
+		<h4 align="center"> If you experience any errors during competition, immediately notify a lead. Have fun!</h4>
+	</div>
 
-<section id="descripton" class="section descripton">
-    <div style="width: 100%; display: table;">
-        <div style="display: table-row">
-            <div style="width: 800px; display: table-cell;">
-                <div class="col-md-10 col-md-offset-1">
-                    <h2 style="color:#FFFFFF">Stand Scouting</h2>
-
-
-                    <div id='main'>
-
-                        <script>
-                            function checkForm() {
-                            }
-                        </script>
-
-                        <form action="{{ url_for('submitData') }}" method="post">
-        {{ form.hidden_tag() }}
-				<table>
-					<tr>
-						<td>
-							Name
-						</td>
-						<td>
-							{{ form.name() }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Team Number
-						</td>
-						<td>
-							{{ form.team_number() }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Match Number
-						</td>
-						<td>
-							{{ form.match() }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Disabled/AFK
-						</td>
-						<td>
-							{{ form.disabled() }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Disconnected during the match
-						</td>
-						<td>
-							{{ form.disconnected() }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Total seconds disconnected
-						</td>
-						<td>
-							{{ form.disconnected_total_seconds() }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Starting Position
-						</td>
-						<td>
-							{{ form.starting_pos() }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Mobility
-						</td>
-						<td>
-							{{ form.mobility() }}
-						</td>
-					</tr>
-				</table>
-				<br> 
-					<!-- CUBES AUTO  -->
-					<table> 
-						<tr> 
-							<h1> Auto </h1>
-						</tr>
-						<br> 
-						<tr>
-							<th> </th>
-							<th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube" width = 20%, height = 20%></th>
-							<th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone" width = 20%, height = 20%></th>
-						</tr>
-					<tr>
-						<td>
-							Upper  
-						</td>
-						
-						<td style = "width: 500px">
-							{{ form.cube_auto_top() }} <button type="button" class="point_button" onclick="increment_cube_auto_top()">+</button> 
-							<button type="button" class="point_button" onclick="decrement_cube_auto_top()">-</button>
-						</td>
-					
-						<td style = "width: 250px">
-							{{ form.cone_auto_top() }} <button type="button" class="point_button" onclick="increment_cone_auto_top()">+</button>
-							<button type="button" class="point_button" onclick="decrement_cone_auto_top()">-</button>
-						</td>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Middle
-						</td>
-						<td style = "padding-right: 500px">
-							{{ form.cube_auto_middle() }}
-							<button type="button" class="point_button" onclick="increment_cube_auto_middle()">+</button>
-							<button type="button" class="point_button" onclick="decrement_cube_auto_middle()">-</button>
-						</td>
-						<td style = "padding-right: 250px"> 
-							{{ form.cone_auto_middle() }}
-							<button type="button" class="point_button" onclick="increment_cone_auto_middle()">+</button>
-							<button type="button" class="point_button" onclick="decrement_cone_auto_middle()">-</button>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Hybrid 
-						</td>
-						<td style = "padding-right: 500px">
-							{{ form.cube_auto_hybrid() }}
-							<button type="button" class="point_button" onclick="increment_cube_auto_hybrid()">+</button>
-							<button type="button" class="point_button" onclick="decrement_cube_auto_hybrid()">-</button>
-						</td>
-						<td style = "padding-right: 250px"> 
-							{{ form.cone_auto_hybrid() }}
-							<button type="button" class="point_button" onclick="increment_cone_auto_hybrid()">+</button>
-							<button type="button" class="point_button" onclick="decrement_cone_auto_hybrid()">-</button>
-						</td>
-					</tr>
-					<br> 
-					<!--  TELEOP -->
-					<table> 
-						<tr> 
-							<h1> Teleop </h1>
-						</tr>
-						<br>
-						<tr>
-							<th> </th>
-							<th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube" width = 20%, height = 20%></th>
-							<th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone" width = 20%, height = 20%></th>
-						</tr>
-					<tr>
-						<td>
-							Upper 
-						</td>
-						<td style = "padding-right: 500px">
-						
-							{{ form.cube_teleop_top() }}
-							<button type="button" class="point_button" onclick="increment_cube_teleop_top()">+</button>
-							<button type="button" class="point_button" onclick="decrement_cube_teleop_top()">-</button>
-						</td>
-						<td style = "padding-right: 250px">
-						
-							{{ form.cone_teleop_top() }}
-							<button type="button" class="point_button" onclick="increment_cone_teleop_top()">+</button>
-							<button type="button" class="point_button" onclick="decrement_cone_teleop_top()">-</button>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Middle
-						</td>
-						<td style = "padding-right:500px">
-							{{ form.cube_teleop_middle() }}
-							<button type="button" class="point_button" onclick="increment_cube_teleop_middle()">+</button>
-							<button type="button" class="point_button" onclick="decrement_cube_teleop_middle()">-</button>
-						</td>
-						<td style = "padding-right:250px">
-						{{ form.cone_teleop_middle() }}
-							<button type="button" class="point_button" onclick="increment_cone_teleop_middle()">+</button>
-							<button type="button" class="point_button" onclick="decrement_cone_teleop_middle()">-</button>
-						</td>
-					</tr>
-					<tr>
-						<td style>
-							Hybrid 
-						</td>
-						<td style = "padding-right:500px">
-							{{ form.cube_teleop_hybrid() }}
-							<button type="button" class="point_button" onclick="increment_cube_teleop_hybrid()">+</button>
-							<button type="button" class="point_button" onclick="decrement_cube_teleop_hybrid()">-</button>
-						</td>
-					
-						<td style = "padding-right:250px">
-							{{ form.cone_teleop_hybrid() }}
-							<button type="button" class="point_button" onclick="increment_cone_teleop_hybrid()">+</button>
-							<button type="button" class="point_button" onclick="decrement_cone_teleop_hybrid()">-</button>
-						</td>
-					</tr>
-				</table>
-				<br> 
-					<!--cones teleop -->
-				
-					
-					<!-- Charging Station -->
-					<table> 
-					<tr>
-						<td>
-							Auto Charging Station
-						</td>
-						<td>
-							{{ form.auto_charge() }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Teleop Charging Station
-						</td>
-						<td>
-							{{ form.teleop_charge() }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Robot's Speed
-						</td>
-						<td>
-							{{ form.speed() }}
-						</td>
-					</tr>
-				</table>
-				<br>
-            <h3>
-                <strong>
-                    Notes
-                </strong>
-            </h3>
-            {{ form.notes(rows=5) }}
-        <br>
-        <br>
-            {{ form.submit() }}
-        </form>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+	<form action="{{ url_for('submitData') }}" method="post">
+		{{ form.hidden_tag() }}
+		<div class="form-container">
+			<h4 class="form-label">Name:</h4>
+			{{ form.name() }}
+			<h4 class="form-label">Team Number:</h4>
+			{{ form.team_number() }}
+			<h4 class="form-label">Match Number:</h4>
+			{{ form.match() }}
+			<h4 class="form-label">Disabled/AFK:</h4>
+			{{ form.disabled() }}
+			<h4 class="form-label">Disconnected:</h4>
+			{{ form.disconnected() }}
+			<h4 class="form-label">Total seconds disconnected:</h4>
+			{{ form.disconnected_total_seconds() }}
+			<h4 class="form-label">Starting Position:</h4>
+			{{ form.starting_pos() }}
+			<h4 class="form-label">Mobility:</h4>
+			{{ form.mobility() }}
+		</div>
+		<div class="point-grid">
+			<h2 class="point-grid-header">Auto</h2>
+			<img class="cube" src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube">
+			<img class="cone" src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone">
+			<p class="point-grid-label">High</p>
+			<div class="point-grid-container">
+				{{ form.cube_auto_top() }}
+				<button type="button" class="point-button" onclick="increment_cube_auto_top()">+</button>
+				<button type="button" class="point-button" onclick="decrement_cube_auto_top()">-</button>
+			</div>
+			<div class="point-grid-container">
+				{{ form.cone_auto_top() }}
+				<button type="button" class="point-button" onclick="increment_cone_auto_top()">+</button>
+				<button type="button" class="point-button" onclick="decrement_cone_auto_top()">-</button>
+			</div>
+			<p class="point-grid-label">Middle</p>
+			<div class="point-grid-container">
+				{{ form.cube_auto_middle() }}
+				<button type="button" class="point-button" onclick="increment_cube_auto_middle()">+</button>
+				<button type="button" class="point-button" onclick="decrement_cube_auto_middle()">-</button>
+			</div>
+			<div class="point-grid-container">
+				{{ form.cone_auto_middle() }}
+				<button type="button" class="point-button" onclick="increment_cone_auto_middle()">+</button>
+				<button type="button" class="point-button" onclick="decrement_cone_auto_middle()">-</button>
+			</div>
+			<p class="point-grid-label">Hybrid</p>
+			<div class="point-grid-container">
+				{{ form.cube_auto_hybrid() }}
+				<button type="button" class="point-button" onclick="increment_cube_auto_hybrid()">+</button>
+				<button type="button" class="point-button" onclick="decrement_cube_auto_hybrid()">-</button>
+			</div>
+			<div class="point-grid-container">
+				{{ form.cone_auto_hybrid() }}
+				<button type="button" class="point-button" onclick="increment_cone_auto_hybrid()">+</button>
+				<button type="button" class="point-button" onclick="decrement_cone_auto_hybrid()">-</button>
+			</div>
+			<p class="point-grid-label">Charging Pad</p>
+			{{ form.auto_charge() }}
+		</div>
+		<div class="point-grid">
+			<h2 class="point-grid-header">Teleop</h2>
+			<img class="cube" src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube">
+			<img class="cone" src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone">
+			<p class="point-grid-label">High</p>
+			<div class="point-grid-container">
+				{{ form.cube_teleop_top() }}
+				<button type="button" class="point-button" onclick="increment_cube_teleop_top()">+</button>
+				<button type="button" class="point-button" onclick="decrement_cube_teleop_top()">-</button>
+			</div>
+			<div class="point-grid-container">
+				{{ form.cone_teleop_top() }}
+				<button type="button" class="point-button" onclick="increment_cone_teleop_top()">+</button>
+				<button type="button" class="point-button" onclick="decrement_cone_teleop_top()">-</button>
+			</div>
+			<p class="point-grid-label">Middle</p>
+			<div class="point-grid-container">
+				{{ form.cube_teleop_middle() }}
+				<button type="button" class="point-button" onclick="increment_cube_teleop_middle()">+</button>
+				<button type="button" class="point-button" onclick="decrement_cube_teleop_middle()">-</button>
+			</div>
+			<div class="point-grid-container">
+				{{ form.cone_teleop_middle() }}
+				<button type="button" class="point-button" onclick="increment_cone_teleop_middle()">+</button>
+				<button type="button" class="point-button" onclick="decrement_cone_teleop_middle()">-</button>
+			</div>
+			<p class="point-grid-label">Hybrid</p>
+			<div class="point-grid-container">
+				{{ form.cube_teleop_hybrid() }}
+				<button type="button" class="point-button" onclick="increment_cube_teleop_hybrid()">+</button>
+				<button type="button" class="point-button" onclick="decrement_cube_teleop_hybrid()">-</button>
+			</div>
+			<div class="point-grid-container">
+				{{ form.cone_teleop_hybrid() }}
+				<button type="button" class="point-button" onclick="increment_cone_teleop_hybrid()">+</button>
+				<button type="button" class="point-button" onclick="decrement_cone_teleop_hybrid()">-</button>
+			</div>
+			<p class="point-grid-label">Charging Pad</p>
+			{{ form.teleop_charge() }}
+		</div>
+		<div class="notes-container">
+			<h4 class="form-label">Notes:</h4>
+			{{ form.notes(rows=5) }}
+		</div>
+		{{ form.submit() }}
+	</form>
 </body>
 </html>

@@ -11,66 +11,22 @@
     <script src="{{ url_for('static', filename='js/submitData.js')}}"></script>
     <script src="{{ url_for('static', filename='js/incrementNumericLabel.js')}}"></script>
 
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
 
 
     <style>
-        body {
-            background-color: #00229e;
-            background-image: url(https://prhsrobotics.com/wp-content/uploads/2014/04/bg2.png);
-            background-position: left top;
-            background-size: auto;
-            background-repeat: repeat;
-            background-attachment: scroll;
-        }
-
-        ul li {
-            display: list-item;
-            list-style-type:circle;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        p, h1, h2, h3, h4, td, b{
-            color: #FFFFFF;
-        }
-
-        button, input, select, option {
-            color: black;
-        }
-
-        #text {
-            color: #FFFFFF
-        }
-
-        .robonav {
-            display: inline-block;
-            color: white;
-            text-decoration: underline;
-            margin-right: 20px;
-        }
-        table, th, td {
-            border:1px solid black;
-        }
-        img {
-            width: 10%;
-        }
     </style>
 </head>
+<ul class="nav">
+    <li class="nav-item"><a href="{{ url_for('main') }}">Home</a></li>
+    <li class="nav-item"><a href="{{ url_for('toRankings') }}">Rankings</a></li>
+    <li class="nav-item"><a href="{{ url_for('findTeam') }}">Search</a></li>
+</ul>
 
 <body>
-    <ul class = ul2>
-        <li class=li2><a href="{{ url_for('main') }}">Home</a></li>
-        <li class=li2><a href="{{ url_for('toRankings') }}">Rankings</a></li>
-        <li class=li2><a href="{{ url_for('findTeam') }}">Search</a></li>
-      </ul>
-  <h1 align="center" style="color:#FFFFFF" class = headerheadline> Team {{ number }} Data </h1>
-    <hr class = hr2>
+    <h1 align="center" style="color:#FFFFFF" class = headerheadline> Team {{ number }} Data </h1>
     <br>
     <p>Average Auto Cones: {{ avg_auto_cone }}</p>
     <p>Average Auto Cubes: {{ avg_auto_cube }}</p>
