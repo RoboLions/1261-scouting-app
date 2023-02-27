@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+    <title> 1261 Pit Scouting </title>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/robocon.ico') }}">
+
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/submitData.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/incrementNumericLabel.js')}}"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
+<!-- Updated  -->
+
+    <style>
+        body {
+            background-color: #00229e;
+            background-image: url(https://prhsrobotics.com/wp-content/uploads/2014/04/bg2.png);
+            background-position: left top;
+            background-size: auto;
+            background-repeat: repeat;
+            background-attachment: scroll;
+        }
+
+        ul li {
+            display: list-item;
+            list-style-type:circle;
+        }
+
+        h2, td, b{
+            color: #FFFFFF;
+        }
+
+        button, input, select, option {
+            color: #000000;
+        }
+
+		.robonav {
+            display: inline-block;
+            color: white;
+            text-decoration: underline;
+            margin-right: 20px;
+        }
+		.point_button {
+			border: none;
+			color: black;
+			padding: 15px 15px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 4px;
+			cursor: pointer;
+			background-color: white;
+		}
+		.pointField { 
+			width: 50%; 
+			font-size: 18px; 
+		}
+
+    </style>
+<!-- master -->
+
+<script>
+	// cubes teleop
+	function decrement_cube_teleop_hybrid(){
+		document.getElementById('cube_teleop_hybrid').stepDown();
+	}
+
+	function increment_cube_teleop_hybrid(){
+		document.getElementById('cube_teleop_hybrid').stepUp();
+	}
+
+	function decrement_cube_teleop_middle(){
+		document.getElementById('cube_teleop_middle').stepDown();
+	}
+
+	function increment_cube_teleop_middle(){
+		document.getElementById('cube_teleop_middle').stepUp();
+	}
+
+	function decrement_cube_teleop_top(){
+		document.getElementById('cube_teleop_top').stepDown();
+	}
+
+	function increment_cube_teleop_top(){
+		document.getElementById('cube_teleop_top').stepUp();
+	}
+
+	
+
+	// cones teleop 
+
+	function decrement_cone_teleop_hybrid(){
+		document.getElementById('cone_teleop_hybrid').stepDown();
+	}
+
+	function increment_cone_teleop_hybrid(){
+		document.getElementById('cone_teleop_hybrid').stepUp();
+	}
+
+	function increment_cone_teleop_middle(){
+		document.getElementById('cone_teleop_middle').stepUp();
+	}
+	function decrement_cone_teleop_middle(){
+		document.getElementById('cone_teleop_middle').stepDown();
+	}
+
+	function increment_cone_teleop_top(){
+		document.getElementById('cone_teleop_top').stepUp();
+	}
+
+	function decrement_cone_teleop_top(){
+		document.getElementById('cone_teleop_top').stepDown();
+	}
+
+	// auto here 
+
+	// cubes auto 
+
+	function decrement_cube_auto_hybrid(){
+		document.getElementById('cube_auto_hybrid').stepDown();
+	}
+
+	function increment_cube_auto_hybrid(){
+		document.getElementById('cube_auto_hybrid').stepUp();
+	}
+
+	function decrement_cube_auto_middle(){
+		document.getElementById('cube_auto_middle').stepDown();
+	}
+
+	function increment_cube_auto_middle(){
+		document.getElementById('cube_auto_middle').stepUp();
+	}
+
+	function increment_cube_auto_top(){
+		document.getElementById('cube_auto_top').stepUp();
+	}
+
+	function decrement_cube_auto_top(){
+		document.getElementById('cube_auto_top').stepDown();
+	}
+
+	// cones auto 
+
+	function decrement_cone_auto_hybrid(){
+		document.getElementById('cone_auto_hybrid').stepDown();
+	}
+
+	function increment_cone_auto_hybrid(){
+		document.getElementById('cone_auto_hybrid').stepUp();
+	}
+
+	function decrement_cone_auto_middle(){
+		document.getElementById('cone_auto_middle').stepDown();
+	}
+
+	function increment_cone_auto_middle(){
+		document.getElementById('cone_auto_middle').stepUp();
+	}
+
+	function increment_cone_auto_top(){
+		document.getElementById('cone_auto_top').stepUp();
+	}
+
+	function decrement_cone_auto_top(){
+		document.getElementById('cone_auto_top').stepDown();
+	}
+
+</script>
+</head>
+
+<body class="home blog custom-background">
+
+<ul class = ul2>
+    <li class=li2><a href="{{ url_for('main') }}">Home</a></li>
+    <li class=li2><a href="{{ url_for('toRankings') }}">Rankings</a></li>
+    <li class=li2><a href="{{ url_for('findTeam') }}">Search</a></li>
+  </ul>
+
+<h1 align="center" style="color:#FFFFFF" class = "headerheadline"> Pit Scouting </h1>
+<div class="col-md-10 col-md-offset-1 text-center">
+    <h4 align="center" style="color:#FFFFFF"> Welcome to the Peachtree Ridge HS Robo Lions Pit Scouting App!</h4>
+    <h4 align="center" style="color:#FFFFFF"> If you experience any errors during competition, immediately notify a lead. Have fun!</h4>
+</div>
+
+<section id="descripton" class="section descripton">
+    <div style="width: 100%; display: table;">
+        <div style="display: table-row">
+            <div style="width: 800px; display: table-cell;">
+                <div class="col-md-10 col-md-offset-1">
+                    <h2 style="color:#FFFFFF">Pit Scouting</h2>
+
+
+                    <div id='main'>
+
+                        <script>
+                            function checkForm() {
+                            }
+                        </script>
+
+                        <form action="{{ url_for('submitData') }}" method="post">
+        {{ form.hidden_tag() }}
+				<table>
+					<tr>
+						<td>
+							Name
+						</td>
+						<td>
+							{{ form.name() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Team Number
+						</td>
+						<td>
+							{{ form.team_number() }}
+						</td>
+					</tr>
+					<tr>
+					<tr>
+						<td>
+							Drive Train Type?
+						</td>
+						<td>
+							{{ form.drive_train() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Auto Start Postion
+						</td>
+						<td>
+							{{ form.auto_start() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Auto Piece
+						</td>
+						<td>
+							{{ form.auto_piece() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Max Points Auto
+						</td>
+						<td>
+							{{ form.max_points_auto() }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Where Pieces Scored?
+						</td>
+						<td>
+							{{ form.pieces_area() }}
+						</td>
+					</tr>
+					<!-- CUBES AUTO  -->
+					<tr>
+						<td>
+							Dock/Engage 
+						</td>
+						<td>
+							{{form.doc_engage}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Weight(Lbs)
+						</td>
+						<td>
+							{{form.Weight}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Height(Not extended)
+						</td>
+						<td>
+							{{form.Height}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Picture
+						</td>
+						<td>
+							{{form.Picture}}
+						</td>
+					</tr>
+            <h3>
+                <strong>
+                    Notes
+                </strong>
+            </h3>
+            {{ form.notes(rows=5) }}
+        <br>
+        <br>
+            {{ form.submit() }}
+        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

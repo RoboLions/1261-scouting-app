@@ -28,16 +28,60 @@
 <body>
     <h1 align="center" style="color:#FFFFFF" class = headerheadline> Team {{ number }} Data </h1>
     <br>
-    <p>Average Auto Cones: {{ avg_auto_cone }}</p>
-    <p>Average Auto Cubes: {{ avg_auto_cube }}</p>
-    <p>Average Teleop Cones: {{ avg_teleop_cone }}</p>
-    <p>Average Teleop Cones: {{ avg_teleop_cube }}</p>
+    <h2 align="center">Averages</h2>
+    <h3>Auto</h3>
+    <table style="width:50%">
+        <tr>
+            <th> </th>
+            <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube"></th>
+            <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone"></th>
+        </tr>
+        <tr>
+            <th style="padding-right: 20px">Top</th>
+            <th>{{ avg_auto_cube_top }}</th>
+            <th>{{ avg_auto_cone_top }}</th>
+        </tr>
+        <tr>
+            <th style="padding-right: 20px">Middle</th>
+            <th>{{ avg_auto_cube_middle }}</th>
+            <th>{{ avg_auto_cone_middle }}</th>
+        </tr>
+        <tr>
+            <th style="padding-right: 20px">Hybrid</th>
+            <th>{{ avg_auto_cube_hybrid }}</th>
+            <th>{{ avg_auto_cone_hybrid }}</th>
+        </tr>
+    </table>
+    <hr>
+    <h3>Teleop</h3>
+    <table style="width:50%">
+        <tr>
+            <th> </th>
+            <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube"></th>
+            <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone"></th>
+        </tr>
+        <tr>
+            <th style="padding-right: 20px">Top</th>
+            <th>{{ avg_teleop_cube_top }}</th>
+            <th>{{ avg_teleop_cone_top }}</th>
+        </tr>
+        <tr>
+            <th style="padding-right: 20px">Middle</th>
+            <th>{{ avg_teleop_cube_middle }}</th>
+            <th>{{ avg_teleop_cone_middle }}</th>
+        </tr>
+        <tr>
+            <th style="padding-right: 20px">Hybrid</th>
+            <th>{{ avg_teleop_cube_hybrid }}</th>
+            <th>{{ avg_teleop_cone_hybrid }}</th>
+        </tr>
+    </table>
     <hr>
     <ul style="color:white">
         {%for n in range(0, matches_len)%}
         <br>
-        <li><h3> Match Number: {{ matches[n]['match'] }} </h3></li>
-        <br>
+        <button type="button" class="collapsible">Match {{ matches[n]['match'] }}</button>
+        <div class="content">
         <li> Disabled?: {{ matches[n]['disabled'] }}</li>
         <li> Disconnected?: {{ matches[n]['disconnected'] }}</li>
         <li> Total Sec Disconnected: {{ matches[n]['disconnected_total_seconds'] }}</li>
@@ -54,7 +98,7 @@
                 <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone"></th>
             </tr>
             <tr>
-                <th style="padding-right: 20px">Up</th>
+                <th style="padding-right: 20px">Top</th>
                 <th>{{ matches[n]['cube_auto_top'] }}</th>
                 <th>{{ matches[n]['cone_auto_top'] }}</th>
             </tr>
@@ -70,7 +114,7 @@
             </tr>
         </table>
         <hr>
-        <h2> Teleop </h2>
+        <h3> Teleop </h3>
         <table style="width:50%">
             <tr>
                 <th> </th>
@@ -78,7 +122,7 @@
                 <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone"></th>
             </tr>
             <tr>
-                <th style="padding-right: 20px">Up</th>
+                <th style="padding-right: 20px">Top</th>
                 <th>{{ matches[n]['cube_teleop_top'] }}</th>
                 <th>{{ matches[n]['cone_teleop_top'] }}</th>
             </tr>
@@ -116,8 +160,24 @@
         <br>
         <li> Notes: {{ matches[n]['notes'] }}</li>
         {%endfor%}
-
-      
+        </div>
     </ul>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+              content.style.display = "none";
+            } else {
+              content.style.display = "block";
+            }
+          });
+        }
+        </script>
 </body>
 </html>

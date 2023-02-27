@@ -177,45 +177,73 @@ def getRankingData():
     if config == "default":
         data = db.getConeTeleopRankings()
         config = "ConeTeleop_avg"
+        name="Cone Teleop Rankings"
     elif config == "ConeAuto_avg":
         data = db.getConeAutoRankings()
+        name="Cone Auto Rankings"
     elif config == "ConeTeleop_avg":
         data = db.getConeTeleopRankings()
+        name="Cone Teleop Rankings"
     elif config == "CubeAuto_avg":
         data = db.getCubeAutoRankings()
+        name="Cube Auto Rankings"
+
     elif config == "CubeTeleop_avg":
         data = db.getCubeTeleopRankings()
+        name="Cube Teleop Rankings"
+
     elif config == "cone_auto_top":
         data = db.getConeAutoTopRankings()
+        name="Cone Auto Top Rankings"
+
     elif config == "cone_auto_middle":
         data = db.getConeAutoMiddleRankings()
+        name="Cone Auto Middle Rankings"
+
     elif config == "cone_auto_hybrid":
         data = db.getConeAutoHybridRankings()
+        name="Cone Auto Hybrid:"
+
     elif config == "cube_auto_top":
         data = db.getCubeAutoTopRankings()
+        name="Cube Auto Top Rankings:"
     elif config == "cube_auto_middle":
         data = db.getCubeAutoMiddleRankings()
+        name="Cube Auto Middle Rankings:"
     elif config == "cube_auto_hybrid":
         data = db.getCubeAutoHybridRankings()  
+        name="Cube Auto Hybrid Rankings:"
+
     elif config == "cone_teleop_top":
         data = db.getConeTeleopTopRankings()
+        name="Cone Teleop Top Rankings:"
+
     elif config == "cone_teleop_middle":
         data = db.getConeTeleopMiddleRankings()
+        name="Cube Teleop Middle Rankings:"
+
     elif config == "cone_teleop_hybrid":
         data = db.getConeTeleopHybridRankings()
+        name="Cone Teleop Hybrid Rankings:"
     elif config == "cube_teleop_top":
         data = db.getCubeTeleopTopRankings()
+        name="Cube Teleop Top Rankings:"
     elif config == "cube_teleop_middle":
         data = db.getCubeTeleopMiddleRankings()
+        name="Cube Teleop Middle Rankings:"
+
     elif config == "cube_teleop_hybrid":
         data = db.getCubeTeleopHybridRankings()
+        name="Cube Teleop Hybrid Rankings:"
     #elif config == "defense":
     #    data = db.getDefenseRankings()
     else:
         data = db.getConeTeleopRankings()  # algorithmic rankings are default
     return render_template("rankings.html",
-                           name=str(config).capitalize(),
-                           data=data)
+                           name=name,
+                           teams=data,
+                           teams_len= len(data)
+                           )
 
 @app.route('/findteam', methods=["GET", "POST"])
 def findTeam():
