@@ -174,7 +174,11 @@ class pit_scouting(FlaskForm):
         ("Center", "Center"),
         ("None", "None"),
     ]) 
-    auto_piece = StringField("Auto Field Preference", validators= [DataRequired()], widget =TextArea())
+    ato_peice = StringField("Auto Game Piece Preference:", choices = [ 
+        ("Cone", "Cone"),
+        ("Cube", "Cube"),
+        ("Both", "Both"),
+    ]) 
     auto_max_points = IntegerField ("Auto Max Points", validators= [DataRequired(), NumberRange(1, 9999)])
     game_pieces_type_scored = StringField("Auto Start Preference", choices = [ 
         ("Cube", "Cube"),
@@ -185,6 +189,7 @@ class pit_scouting(FlaskForm):
         ("Middle", "Middle"),
         ("Hybrid", "Hybrid"),
         ("Cannot", "Cannot Score"),
+
     ])
     dock_engage = StringField ("Can they Dock and Engage?", choices = [
         ("Neither", "Neither"),
