@@ -67,6 +67,114 @@
     <h1 align="center" style="color:#FFFFFF" class = headerheadline> Team {{ number }} Data </h1>
     
     <h2 align="center">Averages</h2>
+    <h3>Auto</h3>
+    <table style="width:50%">
+        <tr>
+            <th> </th>
+            <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube" width="15%" height="15%"></th>
+            <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone" width="15%" height="15%"></th>
+        </tr>
+        <tr>
+            <th style="padding-right: 20px">Top</th>
+            <th>{{ avg_auto_cube_top }}</th>
+            <th>{{ avg_auto_cone_top }}</th>
+        </tr>
+        <tr>
+            <th style="padding-right: 20px">Middle</th>
+            <th>{{ avg_auto_cube_middle }}</th>
+            <th>{{ avg_auto_cone_middle }}</th>
+        </tr>
+        <tr>
+            <th style="padding-right: 20px">Hybrid</th>
+            <th>{{ avg_auto_cube_hybrid }}</th>
+            <th>{{ avg_auto_cone_hybrid }}</th>
+        </tr>
+    </table>
+    <hr>
+    <h3>Teleop</h3>
+    <table style="width:50%">
+        <tr>
+            <th> </th>
+            <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube" width="15%" height="15%"></th>
+            <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone" width="15%" height="15%"></th>
+        </tr>
+        <tr>
+            <th style="padding-right: 20px">Top</th>
+            <th>{{ avg_teleop_cube_top }}</th>
+            <th>{{ avg_teleop_cone_top }}</th>
+        </tr>
+        <tr>
+            <th style="padding-right: 20px">Middle</th>
+            <th>{{ avg_teleop_cube_middle }}</th>
+            <th>{{ avg_teleop_cone_middle }}</th>
+        </tr>
+        <tr>
+            <th style="padding-right: 20px">Hybrid</th>
+            <th>{{ avg_teleop_cube_hybrid }}</th>
+            <th>{{ avg_teleop_cone_hybrid }}</th>
+        </tr>
+    </table>
+    <hr>
+    <ul style="color:white">
+        {%for n in range(0, matches_len)%}
+        <br>
+        <button type="button" class="collapsible">Match {{ matches[n]['match'] }}</button>
+        <div class="content">
+        <li> Disabled?: {{ matches[n]['disabled'] }}</li>
+        <li> Disconnected?: {{ matches[n]['disconnected'] }}</li>
+        <li> Total Sec Disconnected: {{ matches[n]['disconnected_total_seconds'] }}</li>
+        <br> 
+        <li> Starting Position: {{ matches[n]['starting_pos'] }}</li>
+        <li> Mobility: {{ matches[n]['mobility'] }}</li>
+        <li> Speed: {{ matches[n]['speed'] }}</li>
+        <hr>
+        <h2> Auto </h2>
+        <table style="width:50%">
+            <tr>
+                <th> </th>
+                <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube" width="15%" height="15%"></th>
+                <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone" width="15%" height="15%"></th>
+            </tr>
+            <tr>
+                <th style="padding-right: 20px">Top</th>
+                <th>{{ matches[n]['cube_auto_top'] }}</th>
+                <th>{{ matches[n]['cone_auto_top'] }}</th>
+            </tr>
+            <tr>
+                <th style="padding-right: 20px">Middle</th>
+                <th>{{ matches[n]['cube_auto_middle'] }}</th>
+                <th>{{ matches[n]['cone_auto_middle'] }}</th>
+            </tr>
+            <tr>
+                <th style="padding-right: 20px">Hybrid</th>
+                <th>{{ matches[n]['cube_auto_hybrid'] }}</th>
+                <th>{{ matches[n]['cone_auto_hybrid'] }}</th>
+            </tr>
+        </table>
+        <hr>
+        <h3> Teleop </h3>
+        <table style="width:50%">
+            <tr>
+                <th> </th>
+                <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube" width="15%" height="15%"></th>
+                <th><img src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone" width="15%" height="15%"></th>
+            </tr>
+            <tr>
+                <th style="padding-right: 20px">Top</th>
+                <th>{{ matches[n]['cube_teleop_top'] }}</th>
+                <th>{{ matches[n]['cone_teleop_top'] }}</th>
+            </tr>
+            <tr>
+                <th style="padding-right: 20px">Middle</th>
+                <th>{{ matches[n]['cube_teleop_middle'] }}</th>
+                <th>{{ matches[n]['cone_teleop_middle'] }}</th>
+            </tr>
+            <tr>
+                <th style="padding-right: 20px">Hybrid</th>
+                <th>{{ matches[n]['cube_teleop_hybrid'] }}</th>
+                <th>{{ matches[n]['cone_teleop_hybrid'] }}</th>
+            </tr>
+        </table>
     <div class="averages-container"> 
         <h4 class="averages-label-big">Auto</h4>
         <img class="cube" src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube">
