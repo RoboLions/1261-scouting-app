@@ -164,29 +164,29 @@ class FindTeamForm(FlaskForm):
     team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 20000)])
     submit = SubmitField("Submit")
 
-class pit_scouting(FlaskForm): 
+class PitScoutingForm(FlaskForm): 
     name = StringField("Name", validators=[DataRequired()])
     team_number = IntegerField("Team Number", validators=[DataRequired(), NumberRange(1, 9999)]) 
-    drivetrain = StringField("Type of Drivetrain", validators=[DataRequired()], widget=TextArea())
-    start_preference = StringField("Auto Start Preference", choices = [ 
+    drive_train = StringField("Type of Drivetrain", validators=[DataRequired()], widget=TextArea())
+    auto_start = SelectField("Auto Start Preference", choices = [ 
         ("Left", "Left"),
         ("Right", "Right"),
         ("Center", "Center"),
         ("None", "None"),
     ]) 
     auto_piece = StringField("Auto Field Preference", validators= [DataRequired()], widget =TextArea())
-    auto_max_points = IntegerField ("Auto Max Points", validators= [DataRequired(), NumberRange(1, 9999)])
-    game_pieces_type_scored = StringField("Auto Start Preference", choices = [ 
+    max_points_auto = IntegerField ("Auto Max Points", validators= [DataRequired(), NumberRange(1, 9999)])
+    auto_piece = SelectField("Starting Piece Preference", choices = [ 
         ("Cube", "Cube"),
         ("Cone", "Cone"),
     ]) 
-    where_pieces_scored = StringField ("Where Game Pieces are Scored", choices = [ 
+    where_pieces_scored = SelectField("Where Game Pieces are Scored", choices = [ 
         ("Top", "Top"),
         ("Middle", "Middle"),
         ("Hybrid", "Hybrid"),
         ("Cannot", "Cannot Score"),
     ])
-    dock_engage = StringField ("Can they Dock and Engage?", choices = [
+    dock_engage = SelectField("Can they Dock and Engage?", choices = [
         ("Neither", "Neither"),
         ("Park", "Park"),
         ("Docked", "Docked"),
@@ -196,3 +196,4 @@ class pit_scouting(FlaskForm):
     height = StringField ("Non-extended height", [DataRequired()], widget = TextArea())
     image = FileField ("Image of Robot")
     notes = StringField("Notes", validators=[DataRequired()], widget=TextArea())
+    submit = SubmitField("Submit")
