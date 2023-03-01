@@ -175,8 +175,8 @@ class PitScoutingForm(FlaskForm):
         ("None", "None"),
     ]) 
     auto_piece = StringField("Auto Field Preference", validators= [DataRequired()], widget =TextArea())
-    max_points_auto = IntegerField ("Auto Max Points", validators= [DataRequired(), NumberRange(1, 9999)])
-    auto_piece = SelectField("Starting Piece Preference", choices = [ 
+    auto_max_points = IntegerField ("Auto Max Points", validators= [DataRequired(), NumberRange(0, 60)])
+    game_pieces_type_scored = StringField("Auto Start Preference", choices = [ 
         ("Cube", "Cube"),
         ("Cone", "Cone"),
     ]) 
