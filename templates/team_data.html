@@ -19,41 +19,51 @@
     <style>
         .averages-container{
             display: grid; 
-            grid-template-columns: 0.8fr 1fr 1fr; 
+            grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr; 
+            column-gap: 0rem;
+            row-gap: 0;
         }
-        .cube {
-			width: 20vw;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			margin-top: 2vw;
-            margin-left: 8vw;
-		}
-		.cone {
-			width: 8vw;
-			margin-left: 14vw;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			margin-top: 2vw;
-		}
         .averages-label { 
             text-align: center; 
+            font-size: 3.5vw;
         }
         .averages-data { 
             text-align: center; 
+            font-size: 3.5vw;
         }
         .averages-label-big { 
             text-align: center; 
-            font-size: 3vw;
+            font-size: 4.5vw;
+            margin-top: 0.25; 
+            margin-bottom: 0;  
         }
         .match-container { 
             display: grid; 
-            grid-template-columns: 0.8fr 1fr 1fr; 
+            grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr; 
+            column-gap: 0rem;
         }
         .match-label-big { 
             text-align: center; 
+            font-size: 4vw;
+            margin-top: 0.1; 
+            margin-bottom: 0;
+        }
+        .match-label { 
+            text-align: center;
+            font-size: 3vw; 
+            margin-top: 0; 
+            margin-bottom: 0;  
+        }
+        .match-data { 
+            text-align: center;
+            font-size: 3vw; 
+            margin-top: 0; 
+            margin-bottom: 0; 
+        }
+        .other { 
             font-size: 3vw;
+            margin-top: 0.15; 
+            margin-bottom: 0.15;
         }
     </style>
 </head>
@@ -69,78 +79,92 @@
     <h2 align="center">Averages</h2>
     <div class="averages-container"> 
         <h4 class="averages-label-big">Auto</h4>
-        <img class="cube" src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube">
-		<img class="cone" src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone">
-        <h4 class="averages-label">High</h4>
+        <h4 class ="averages-label-big"> </h4>
+        <h4 class ="averages-label-big"> </h4>
+        <h4 class ="averages-label-big"> </h4>
+        <h4 class="averages-label">Cube Top</h4>
         <h3 class="averages-data">{{ avg_auto_cube_top }}</h3>
+        <h4 class="averages-label">Cone Top</h4>
         <h3 class="averages-data">{{ avg_auto_cone_top }}</h3>
-        <h4 class="averages-label">Middle</h4>
+        <h4 class="averages-label">Cube Middle</h4>
         <h3 class="averages-data">{{ avg_auto_cube_middle }}</h3>
+        <h4 class="averages-label">Cone Middle</h4>
         <h3 class="averages-data">{{ avg_auto_cone_middle }}</h3>
-        <h4 class="averages-label">Hybrid</h4>
+        <h4 class="averages-label">Cube Hybrid</h4>
         <h3 class="averages-data">{{ avg_auto_cube_hybrid }}</h3>
+        <h4 class="averages-label">Cone Hybrid</h4>
         <h3 class="averages-data">{{ avg_auto_cone_hybrid }}</h3>
     </div>
     
     <div class="averages-container"> 
         <h4 class="averages-label-big">Teleop</h4>
-        <img class="cube" src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube">
-		<img class="cone" src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone">
-        <h4 class="averages-label">High</h4>
+        <h4 class ="averages-label-big"> </h4>
+        <h4 class ="averages-label-big"> </h4>
+        <h4 class ="averages-label-big"> </h4>
+        <h4 class="averages-label">Cube Top</h4>
         <h3 class="averages-data">{{ avg_teleop_cube_top }}</h3>
+        <h4 class="averages-label">Cone Top</h4>
         <h3 class="averages-data">{{ avg_teleop_cone_top }}</h3>
-        <h4 class="averages-label">Middle</h4>
+        <h4 class="averages-label">Cube Middle</h4>
         <h3 class="averages-data">{{ avg_teleop_cube_middle }}</h3>
+        <h4 class="averages-label">Cone Middle</h4>
         <h3 class="averages-data">{{ avg_teleop_cone_middle }}</h3>
-        <h4 class="averages-label">Hybrid</h4>
+        <h4 class="averages-label">Cube Hybrid</h4>
         <h3 class="averages-data">{{ avg_teleop_cube_hybrid }}</h3>
+        <h4 class="averages-label">Cone Hybrid</h4>
         <h3 class="averages-data">{{ avg_teleop_cone_hybrid }}</h3>
     </div>
     <hr>
     <h2 align="center">Matches</h2>
     {%for n in range(0, matches_len)%}
     <h4 class="match-label-big">Match {{ matches[n]['match'] }}</h4>
-    <div class="match-container">
+    <div class="match-container"> 
         <h4 class="match-label-big">Auto</h4>
-        <img class="cube" src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube">
-		<img class="cone" src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone">
-        <h4 class="match-label">High</h4>
+        <h4 class ="averages-label-big"> </h4>
+        <h4 class ="averages-label-big"> </h4>
+        <h4 class ="averages-label-big"> </h4>
+        <h4 class="match-label">Cube Top</h4>
         <h3 class="match-data">{{ matches[n]['cube_auto_top'] }}</h3>
+        <h4 class="match-label">Cone Top</h4>
         <h3 class="match-data">{{ matches[n]['cone_auto_top'] }}</h3>
-        <h4 class="match-label">Middle</h4>
+        <h4 class="match-label">Cube Middle</h4>
         <h3 class="match-data">{{ matches[n]['cube_auto_middle'] }}</h3>
+        <h4 class="match-label">Cone Middle</h4>
         <h3 class="match-data">{{ matches[n]['cube_auto_middle'] }}</h3>
-        <h4 class="match-label">Hybrid</h4>
+        <h4 class="match-label">Cube Hybrid</h4>
         <h3 class="match-data">{{ matches[n]['cube_auto_hybrid'] }}</h3>
+        <h4 class="match-label">Cone Hybrid</h4>
         <h3 class="match-data">{{ matches[n]['cone_auto_hybrid'] }}</h3>
     </div>
-    <h4>Charging Station: {{ matches[n]['auto_charge'] }}</h4>
-    <hr>
+    <h4 class="other">Charging Station: {{ matches[n]['auto_charge'] }}</h4>
+    <hr style="width:70%">
     <div class="match-container">
         <h4 class="match-label-big">Teleop</h4>
-        <img class="cube" src="https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/cube_icon_kjijxo.jpg" alt="Cube">
-		<img class="cone" src="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_960,f_auto/cone_x3fn44.jpg" alt="Cone">
-        <h4 class="match-label">High</h4>
+        <h4 class ="averages-label-big"> </h4>
+        <h4 class ="averages-label-big"> </h4>
+        <h4 class ="averages-label-big"> </h4>
+        <h4 class="match-label">Cube Top</h4>
         <h3 class="match-data">{{ matches[n]['cube_teleop_top'] }}</h3>
+        <h4 class="match-label">Cone Top</h4>
         <h3 class="match-data">{{ matches[n]['cone_teleop_top'] }}</h3>
-        <h4 class="match-label">Middle</h4>
+        <h4 class="match-label">Cube Middle</h4>
         <h3 class="match-data">{{ matches[n]['cube_teleop_middle'] }}</h3>
-        <h3 class="match-data">{{ matches[n]['cube_teleop_middle'] }}</h3>
-        <h4 class="match-label">Hybrid</h4>
+        <h4 class="match-label">Cone Middle</h4>
+        <h3 class="match-data">{{ matches[n]['cone_teleop_middle'] }}</h3>
+        <h4 class="match-label">Cube Hybrid</h4>
         <h3 class="match-data">{{ matches[n]['cube_teleop_hybrid'] }}</h3>
+        <h4 class="match-label">Cone Hybrid</h4>
         <h3 class="match-data">{{ matches[n]['cone_teleop_hybrid'] }}</h3>
     </div>
-    <h4>Charging Station: {{ matches[n]['teleop_charge'] }}</h4>
-    <hr> 
-        <hr>
-    <hr> 
-        <hr>
-    <hr> 
-    <h4>Disabled?: {{ matches[n]['disabled'] }} </h4>
-    <h4>Disconnected?: {{ matches[n]['disconnected'] }}</h4>
-    <h4>Total Sec Disconnected: {{ matches[n]['disconnected_total_seconds'] }}</h4>
-    <h4>Starting Position: {{ matches[n]['starting_pos'] }}</h4>
-    <h4>Mobility: {{ matches[n]['mobility'] }}</h4>
+    <h4 class="other">Charging Station: {{ matches[n]['teleop_charge'] }}</h4>
+    <hr style="width:70%"> 
+    <h4 class="other">Name: {{ matches[n] ['name'] }}</h4>
+    <h4 class="other">Disabled?: {{ matches[n]['disabled'] }} </h4>
+    <h4 class="other">Disconnected?: {{ matches[n]['disconnected'] }}</h4>
+    <h4 class="other">Total Sec Disconnected: {{ matches[n]['disconnected_total_seconds'] }}</h4>
+    <h4 class="other">Starting Position: {{ matches[n]['starting_pos'] }}</h4>
+    <h4 class="other">Mobility: {{ matches[n]['mobility'] }}</h4>
+    <h4 class="other">Notes: {{ matches[n] ['notes'] }}</h4>
     <hr>
     {%endfor%}
 
