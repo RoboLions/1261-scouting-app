@@ -68,111 +68,6 @@
 
 <script>
 	// cubes teleop
-	function decrement_cube_teleop_hybrid(){
-		document.getElementById('cube_teleop_hybrid').stepDown();
-	}
-
-	function increment_cube_teleop_hybrid(){
-		document.getElementById('cube_teleop_hybrid').stepUp();
-	}
-
-	function decrement_cube_teleop_middle(){
-		document.getElementById('cube_teleop_middle').stepDown();
-	}
-
-	function increment_cube_teleop_middle(){
-		document.getElementById('cube_teleop_middle').stepUp();
-	}
-
-	function decrement_cube_teleop_top(){
-		document.getElementById('cube_teleop_top').stepDown();
-	}
-
-	function increment_cube_teleop_top(){
-		document.getElementById('cube_teleop_top').stepUp();
-	}
-
-	
-
-	// cones teleop 
-
-	function decrement_cone_teleop_hybrid(){
-		document.getElementById('cone_teleop_hybrid').stepDown();
-	}
-
-	function increment_cone_teleop_hybrid(){
-		document.getElementById('cone_teleop_hybrid').stepUp();
-	}
-
-	function increment_cone_teleop_middle(){
-		document.getElementById('cone_teleop_middle').stepUp();
-	}
-	function decrement_cone_teleop_middle(){
-		document.getElementById('cone_teleop_middle').stepDown();
-	}
-
-	function increment_cone_teleop_top(){
-		document.getElementById('cone_teleop_top').stepUp();
-	}
-
-	function decrement_cone_teleop_top(){
-		document.getElementById('cone_teleop_top').stepDown();
-	}
-
-	// auto here 
-
-	// cubes auto 
-
-	function decrement_cube_auto_hybrid(){
-		document.getElementById('cube_auto_hybrid').stepDown();
-	}
-
-	function increment_cube_auto_hybrid(){
-		document.getElementById('cube_auto_hybrid').stepUp();
-	}
-
-	function decrement_cube_auto_middle(){
-		document.getElementById('cube_auto_middle').stepDown();
-	}
-
-	function increment_cube_auto_middle(){
-		document.getElementById('cube_auto_middle').stepUp();
-	}
-
-	function increment_cube_auto_top(){
-		document.getElementById('cube_auto_top').stepUp();
-	}
-
-	function decrement_cube_auto_top(){
-		document.getElementById('cube_auto_top').stepDown();
-	}
-
-	// cones auto 
-
-	function decrement_cone_auto_hybrid(){
-		document.getElementById('cone_auto_hybrid').stepDown();
-	}
-
-	function increment_cone_auto_hybrid(){
-		document.getElementById('cone_auto_hybrid').stepUp();
-	}
-
-	function decrement_cone_auto_middle(){
-		document.getElementById('cone_auto_middle').stepDown();
-	}
-
-	function increment_cone_auto_middle(){
-		document.getElementById('cone_auto_middle').stepUp();
-	}
-
-	function increment_cone_auto_top(){
-		document.getElementById('cone_auto_top').stepUp();
-	}
-
-	function decrement_cone_auto_top(){
-		document.getElementById('cone_auto_top').stepDown();
-	}
-
 </script>
 </head>
 
@@ -230,15 +125,15 @@
 							Drive Train Type?
 						</td>
 						<td>
-							{{ form.drive_train() }}
+							{{ form.drivetrain() }}
 						</td>
 					</tr>
 					<tr>
 						<td>
-							Auto Start Postion
+							 Start Postion
 						</td>
 						<td>
-							{{ form.auto_start() }}
+							{{ form.start_preference() }}
 						</td>
 					</tr>
 					<tr>
@@ -254,18 +149,25 @@
 							Max Points Auto
 						</td>
 						<td>
-							{{ form.max_points_auto() }}
+							{{ form.auto_max_points() }}
 						</td>
 					</tr>
 					<tr>
 						<td>
-							Where Pieces Scored?
+							What game pieces can they score?
 						</td>
 						<td>
-							{{ form.pieces_area() }}
+							{{ form.game_pieces_type_scored() }}
 						</td>
 					</tr>
-					<!-- CUBES AUTO  -->
+					<tr>
+						<td>
+							Where can they score?
+						</td>
+						<td>
+							{{ form.where_pieces_scored() }}
+						</td>
+					</tr>
 					<tr>
 						<td>
 							Dock/Engage 
@@ -279,7 +181,7 @@
 							Weight(Lbs)
 						</td>
 						<td>
-							{{form.Weight}}
+							{{form.weight}}
 						</td>
 					</tr>
 					<tr>
@@ -287,15 +189,15 @@
 							Height(Not extended)
 						</td>
 						<td>
-							{{form.Height}}
+							{{form.height}}
 						</td>
 					</tr>
 					<tr>
 						<td>
-							Picture
+							Picture of Bot
 						</td>
 						<td>
-							{{form.Picture}}
+							{{form.image}}
 						</td>
 					</tr>
             <h3>
