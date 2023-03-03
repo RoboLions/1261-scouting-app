@@ -7,10 +7,8 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
-SECRET_KEY = os.urandom(32)
-app.config['SECRET_KEY'] = SECRET_KEY
-UPLOAD_FOLDER = "C:\\Users\\kenmi.LAPTOP-H7LP8TG9\\OneDrive\\Desktop\\Robotics\\GitHub\\1261-scouting-app\\images"
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['SECRET_KEY'] = os.urandom(32)
+app.config['UPLOAD_FOLDER'] = os.environ['UPLOAD_FOLDER']
 
 
 @app.route('/')
@@ -265,8 +263,8 @@ def pitScouting():
             return render_template("pit_scouting.html", form=form)
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        storage_client = storage.Client.from_service_account_json("C:\\Users\\kenmi.LAPTOP-H7LP8TG9\\OneDrive\\Desktop\\Robotics\\GitHub\\1261-scouting-app\\auth.json")
-        bucket = storage_client.bucket('1261-pit-scoutiing-images') #remove typo later
+        storage_client = storage.Client.from_service_account_json(os.environ['GCP_AUTH'])
+        bucket = storage_client.bucket('1261-pit-scouting-images')
         blob = bucket.blob(filename)
         if blob.exists():
             flash('File already exists')
