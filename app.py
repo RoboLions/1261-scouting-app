@@ -263,7 +263,7 @@ def pitScouting():
             return render_template("pit_scouting.html", form=form)
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        storage_client = storage.Client.from_service_account_json(os.environ['GCP_AUTH'])
+        storage_client = storage.Client()
         bucket = storage_client.bucket('1261-pit-scouting-images')
         blob = bucket.blob(filename)
         if blob.exists():
