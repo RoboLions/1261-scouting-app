@@ -1,0 +1,42 @@
+name: Deploy to Production from Master
+
+on:
+  pull-request:
+    types: [opened, edited]
+
+env:
+  PROJECT_ID: scouting-1ce7e
+  REGION: us-east1
+
+jobs:
+  deploy:
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: |
+          pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+          echo $pull_number
+      # - name: Checkout
+      #   uses: actions/checkout@v2
+
+      # - id: 'auth'
+      #   name: 'Authenticate to Google Cloud'
+      #   uses: 'google-github-actions/auth@v1'
+      #   with:
+      #     credentials_json: '${{ secrets.gcp_auth }}'
+
+      # - name: Deploy to Cloud Run
+      #   id: deploy
+      #   uses: google-github-actions/deploy-cloudrun@v0
+      #   with:
+      #     service: scouting-pr-${{ env.GITHUB_RUN_ATTEMPT }}
+      #     region: ${{ env.REGION }}
+      #     source: ./
+
+      # - name: Show Output
+      #   run: echo ${{ steps.deploy.outputs.url }}
