@@ -535,7 +535,7 @@ def getChargingPortAuto():
         data = []
     rankings = {}
     for team in getAllTeamData():
-        rankings[int(team['team_number'])] = team['auto_charge_avg']
+        rankings[int(team['team_number'])] = team['AutoCharge_avg']
     final = list(sorted(rankings.keys(), key=lambda team_number: rankings[team_number], reverse=True))
     return final
 
