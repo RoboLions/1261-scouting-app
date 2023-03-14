@@ -241,7 +241,6 @@ def getRankingData():
     elif config == "teleop_charge": 
         data = db.getChargingPortTeleop()
         name="Teleop Charging Station Rankings:"
-    #elif config == "defense":
     else:
         data = db.getConeTeleopRankings()  # algorithmic rankings are default
     return render_template("rankings.html",
