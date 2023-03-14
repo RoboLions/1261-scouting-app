@@ -20,7 +20,7 @@ jobs:
       - name: Set PR number ENV
         run: |
           pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-          echo "PULL_NUMBER=$pull_number" >> GITHUB_ENV
+          echo "PULL_NUMBER=${{env.pull_number}}" >> GITHUB_ENV
       - name: Test
         run: echo "${{env.PULL_NUMBER}}"
       # - name: Checkout
