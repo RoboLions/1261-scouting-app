@@ -59,7 +59,7 @@ def submitData():
                            disconnected= data['disconnected'],
                            disconnected_total_seconds= data['disconnected_total_seconds'],
                            starting_pos= data['starting_pos'],
-                           mobility = data["mobility"],  
+                           mobility = data['mobility'],  
                            cube_auto_top = data["cube_auto_top"],
                            cube_auto_middle = data["cube_auto_middle"],
                            cube_auto_hybrid = data["cube_auto_hybrid"],
