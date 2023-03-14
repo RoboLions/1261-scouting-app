@@ -34,6 +34,8 @@ jobs:
           region: ${{ env.REGION }}
           source: ./
           flags: "--allow-unauthenticated"
+          env_vars: |
+            UPLOAD_FOLDER=/tmp/
 
       - name: Show Output
         run: echo ${{ steps.deploy.outputs.url }}
