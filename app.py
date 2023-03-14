@@ -1,17 +1,18 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, flash
 import database as db
-from forms import ChargedUpForm, FindTeamForm
+from forms import ChargedUpForm, FindTeamForm, PitScoutingForm
 import os
+from google.cloud import storage
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
-SECRET_KEY = os.urandom(32)
-app.config['SECRET_KEY'] = SECRET_KEY
+app.config['SECRET_KEY'] = os.urandom(32)
+app.config['UPLOAD_FOLDER'] = os.environ['UPLOAD_FOLDER']
 
 
 @app.route('/')
 def main():
- #   form = RapidReactForm()
     form = ChargedUpForm()
     return render_template('index.html', form=form)  # the main page
 
@@ -250,6 +251,27 @@ def findTeam():
         data = dict(request.form)
         return redirect(url_for("getTeamData", team=int(data["team_number"])))
     return render_template("find_team.html", form=form)
+
+@app.route('/pit-scouting', methods=["GET", "POST"])
+def pitScouting():
+    form = PitScoutingForm()
+    if request.method=="POST":
+        data = dict(request.form)
+        file = request.files['image']
+        if file.filename.split('.')[-1] not in ['jpg','jpeg','png']:
+            flash('Not a valid extension')
+            return render_template("pit_scouting.html", form=form)
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        storage_client = storage.Client()
+        bucket = storage_client.bucket('1261-pit-scouting-images')
+        blob = bucket.blob(filename)
+        if blob.exists():
+            flash('File already exists')
+            return render_template("pit_scouting.html", form=form)
+        generation_match_precondition = 0
+        blob.upload_from_filename(os.path.join(app.config['UPLOAD_FOLDER'], filename), if_generation_match=generation_match_precondition)
+    return render_template("pit_scouting.html", form=form)
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))

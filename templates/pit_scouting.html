@@ -205,7 +205,7 @@
                             }
                         </script>
 
-                        <form action="{{ url_for('submitData') }}" method="post">
+                        <form action="{{ url_for('pitScouting') }}" method="post" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
 				<table>
 					<tr>
@@ -262,7 +262,7 @@
 							Where Pieces Scored?
 						</td>
 						<td>
-							{{ form.pieces_area() }}
+							{{ form.where_pieces_scored() }}
 						</td>
 					</tr>
 					<!-- CUBES AUTO  -->
@@ -271,7 +271,7 @@
 							Dock/Engage 
 						</td>
 						<td>
-							{{form.doc_engage}}
+							{{ form.dock_engage() }}
 						</td>
 					</tr>
 					<tr>
@@ -279,7 +279,7 @@
 							Weight(Lbs)
 						</td>
 						<td>
-							{{form.Weight}}
+							{{ form.weight() }}
 						</td>
 					</tr>
 					<tr>
@@ -287,7 +287,7 @@
 							Height(Not extended)
 						</td>
 						<td>
-							{{form.Height}}
+							{{ form.height() }}
 						</td>
 					</tr>
 					<tr>
@@ -295,7 +295,7 @@
 							Picture
 						</td>
 						<td>
-							{{form.Picture}}
+							{{ form.image() }}
 						</td>
 					</tr>
             <h3>
