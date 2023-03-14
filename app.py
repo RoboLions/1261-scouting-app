@@ -233,14 +233,21 @@ def getRankingData():
     elif config == "cube_teleop_hybrid":
         data = db.getCubeTeleopHybridRankings()
         name="Cube Teleop Hybrid Rankings:"
+    
+    elif config == "auto_charge": 
+        data = db.getChargingPortAuto()
+        name="Auto Charging Station Rankings:"
+
+    elif config == "teleop_charge": 
+        data = db.getChargingPortTeleop()
+        name="Teleop Charging Station Rankings:"
     #elif config == "defense":
-    #    data = db.getDefenseRankings()
     else:
         data = db.getConeTeleopRankings()  # algorithmic rankings are default
     return render_template("rankings.html",
                            name=name,
                            teams=data,
-                           teams_len= len(data)
+                           teams_len=len(data)
                            )
 
 @app.route('/findteam', methods=["GET", "POST"])
