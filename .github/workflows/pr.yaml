@@ -17,10 +17,12 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-      - name: Test
+      - name: Set PR number ENV
         run: |
           pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-          echo $pull_number
+          echo "PULL_NUMBER=$pull_number" >> GITHUB_ENV
+      - name: Test
+        run: echo "${{env.PULL_NUMBER}}"
       # - name: Checkout
       #   uses: actions/checkout@v2
 
