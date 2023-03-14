@@ -1,0 +1,42 @@
+name: Deploy to Production from Master
+
+on:
+  push:
+    branches: [ "master" ]
+
+env:
+  PROJECT_ID: scouting-1ce7e
+  SERVICE: scouting
+  REGION: us-east1
+
+jobs:
+  deploy:
+    environment:
+      name: production
+      url: https://scouting.prhsrobotics.com
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: '${{ secrets.gcp_auth }}'
+
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v0
+        with:
+          service: ${{ env.SERVICE }}
+          region: ${{ env.REGION }}
+          source: ./
+
+      - name: Show Output
+        run: echo ${{ steps.deploy.outputs.url }}

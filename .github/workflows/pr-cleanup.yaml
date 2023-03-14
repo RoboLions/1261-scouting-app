@@ -9,11 +9,7 @@ env:
   REGION: us-east1
 
 jobs:
-  deploy:
-    environment:
-      name: production
-      url: https://scouting.prhsrobotics.com
-
+  destroy:
     permissions:
       contents: 'read'
       id-token: 'write'
