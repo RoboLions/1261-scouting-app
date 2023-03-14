@@ -1,7 +1,7 @@
 name: Destroy PR build
 
 on:
-  pull-request:
+  pull_request:
     types: [closed]
 
 env:
