@@ -33,6 +33,7 @@ jobs:
           service: scouting-pr-${{ github.event.pull_request.number }}
           region: ${{ env.REGION }}
           source: ./
+          flags: "--allow-unauthenticated"
 
       - name: Show Output
         run: echo ${{ steps.deploy.outputs.url }}
