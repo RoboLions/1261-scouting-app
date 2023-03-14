@@ -94,6 +94,7 @@ def setData(data_dict):
                     "disconnected": data_dict['disconnected'],
                     "disconnected_total_seconds": data_dict['disconnected_total_seconds'],
                     "match": data_dict['match'],
+                    "mobility": data_dict['mobility'],
                     "cone_auto_top": data_dict['cone_auto_top'],
                     "cone_auto_middle": data_dict['cone_auto_middle'],
                     "cone_auto_hybrid": data_dict['cone_auto_hybrid'],
