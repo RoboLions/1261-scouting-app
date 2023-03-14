@@ -17,28 +17,22 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-      - name: Set PR number ENV
-        run: |
-          pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-          echo "PULL_NUMBER=${{env.pull_number}}" >> GITHUB_ENV
-      - name: Test
-        run: echo "${{ github.event.pull_request.number }}"
-      # - name: Checkout
-      #   uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      # - id: 'auth'
-      #   name: 'Authenticate to Google Cloud'
-      #   uses: 'google-github-actions/auth@v1'
-      #   with:
-      #     credentials_json: '${{ secrets.gcp_auth }}'
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: '${{ secrets.gcp_auth }}'
 
-      # - name: Deploy to Cloud Run
-      #   id: deploy
-      #   uses: google-github-actions/deploy-cloudrun@v0
-      #   with:
-      #     service: scouting-pr-${{ env.GITHUB_RUN_ATTEMPT }}
-      #     region: ${{ env.REGION }}
-      #     source: ./
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v0
+        with:
+          service: scouting-pr-${{ github.event.pull_request.number }}
+          region: ${{ env.REGION }}
+          source: ./
 
-      # - name: Show Output
-      #   run: echo ${{ steps.deploy.outputs.url }}
+      - name: Show Output
+        run: echo ${{ steps.deploy.outputs.url }}
