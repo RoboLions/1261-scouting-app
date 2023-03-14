@@ -22,7 +22,7 @@ jobs:
           pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
           echo "PULL_NUMBER=${{env.pull_number}}" >> GITHUB_ENV
       - name: Test
-        run: echo "${{env.PULL_NUMBER}}"
+        run: echo "${{ github.event.pull_request.number }}"
       # - name: Checkout
       #   uses: actions/checkout@v2
 
