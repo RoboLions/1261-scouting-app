@@ -1,7 +1,7 @@
 name: Deploy to Production from Master
 
 on:
-  pull-request:
+  pull_request:
     types: [opened, edited]
 
 env:
