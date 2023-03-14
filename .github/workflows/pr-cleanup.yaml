@@ -1,0 +1,34 @@
+name: Destroy PR build
+
+on:
+  pull-request:
+    types: [closed]
+
+env:
+  PROJECT_ID: scouting-1ce7e
+  REGION: us-east1
+
+jobs:
+  deploy:
+    environment:
+      name: production
+      url: https://scouting.prhsrobotics.com
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: '${{ secrets.gcp_auth }}'
+
+      - name: Destroy Cloud Run service
+        id: destroy
+        run: gcloud run services delete scouting-pr-${{ github.event.pull_request.number }}
