@@ -1,8 +1,8 @@
-name: Deploy to Production from Master
+name: Deploy to PR build
 
 on:
   pull_request:
-    types: [opened, edited]
+    types: [opened, synchronize]
 
 env:
   PROJECT_ID: scouting-1ce7e
